@@ -1,0 +1,19 @@
+bookdown::gitbook:
+  css: style.css
+  config:
+    toc:
+      collapse: section
+      scroll_highlight: true
+      before: |
+        <li><a href="./">A Researcher's Guide to Population Genomic Analysis</a></li>
+      after: |
+        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+    toolbar:
+      position: fixed
+    edit: null
+    fontsettings:
+      theme: night
+      family: sans
+    download: ["pdf", "epub"]
+    
+

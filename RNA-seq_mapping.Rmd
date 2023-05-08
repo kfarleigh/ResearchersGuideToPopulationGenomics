@@ -1,0 +1,85 @@
+# (PART) Tutorials {-}
+# RNA-seq mapping pipeline
+
+### ***This chapter is still under construction***
+
+This tutorial contains code to perform quality control, mapping, and variant calling of demultiplexed samples. The dataset used in this tutorial is unpublished, but I will provide the link to the associated publication once the manuscript is published. 
+
+This pipeline is written for paired-end (PE) sequencing data, but it has been tested with single-end (SE) sequencing data and I will note how commands can be changed to accommodate SE data. 
+
+## Chapter ToDo for KF
+ - Add workflow visualization
+ - Edit writing, add more details
+ - Add notes about loading programs and making sure you are on a compute node
+
+## Programs used in this pipeline
+ - [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) (Andrews, 2010)
+ - [Trimommatic](https://github.com/usadellab/Trimmomatic) (Bolger et al., 2014)
+ - [STAR](https://github.com/alexdobin/STAR) (Dobin et al., 2013)
+ - [Picard](https://broadinstitute.github.io/picard/)
+ - [GATK](https://gatk.broadinstitute.org/hc/en-us) (McKenna et al., 2010; but see [this website](https://gatk.broadinstitute.org/hc/en-us/articles/360035530852-How-should-I-cite-GATK-in-my-own-publications-) for additional papers published about GATK)
+
+
+Let's get started and analyze some data!
+
+## Quality Control with FastQC and Trimmomatic
+As with any sequencing data, the first thing that we do is quality control. We employ a two step quality control procedure. First, we use fastqc to analyze reads and manually inspect the output. Second, we use trimmomatic to perform any necessary read clipping, read filtering, or adapter removal.
+
+Assuming that you are in your working directory with all of the demultiplexed files
+``` 
+# Load fastqc if you need
+module load fastqc
+
+# Run fastqc on everything in the directory
+fastqc *
+```
+
+After fastqc runs, we are left with an html report for each of the files in our directory. Open a file and inspect the output, there is a lot here but we are most concerned with the Per base sequence quality graph. This graph shows us the quality scores across our reads. We expect that most of the quality scores to fall in the green area (above 28), but sometimes we see bases at the beginning or end of the read fall into the yellow (20-28) or red areas (0-20). I recommend trimming these reads to exclude anything outside of the green areas, but the decision is yours when it comes to your data. 
+
+But how do I trim the reads or remove reads of low-quality?
+
+We use trimmomatic to clip reads, remove low-quality reads, and exclude any adapters that are still present. I include example code below for an individual file and code to loop commands into a shell script so that you can be more efficient.
+
+```
+### Commands to trim a single individual/file
+# Trimmomatic requires java
+module load java
+# Make a trimmed directory to keep our working directory clean
+mkdir ./trimmed
+# Run the trimmomatic command
+java -jar /home/farleik/Software/trimmomatic-0.39.jar PE ${i}_1.fq.gz\ ${i}_2.fq.gz\ ./trimmed/${i}_1_paired.fq.gz\ ./trimmed/${i}_1_unpaired.fq.gz\ ./trimmed/${i}_2_paired.fq.gz ./trimmed/${i}_2_unpaired.fq.gz  ILLUMINACLIP:TruSeq3-PE.fa:2:30:10:2:keepBothReads LEADING:3 TRAILING:3 MINLEN:36
+
+### Loop it into a shell file for efficiency 
+# This command will create a file named trimmomatic.sh in your working directory
+touch trimmomatic.sh
+# Trimmomatic requires java so we add the command to load java to the trimmomatic.sh file
+echo module load java >> trimmomatic.sh
+# We don’t want to clutter up our working directory so we need to create a directory that holds all of the output 
+echo mkdir ./trimmed >> trimmomatic.sh
+# The for loop to generate the trimmomatic command for each individual/file
+for i in `ls -1 *_1.fq.gz | sed 's/\_1.fq.gz//'`; do echo java -jar /home/farleik/Software/trimmomatic-0.39.jar PE ${i}_1.fq.gz\ ${i}_2.fq.gz\ ./trimmed/${i}_1_paired.fq.gz\ ./trimmed/${i}_1_unpaired.fq.gz\ ./trimmed/${i}_2_paired.fq.gz ./trimmed/${i}_2_unpaired.fq.gz  ILLUMINACLIP:TruSeq3-PE.fa:2:30:10:2:keepBothReads LEADING:3 TRAILING:3 MINLEN:36 >> trimmomatic.sh; done
+# Trim everything
+sh trimmomatic.sh
+```
+Now that everything is trimmed we can move onto mapping with STAR
+
+## Mapping with STAR
+Mapping the RNA-seq data with STAR is relatively straightforward (only requires a couple commands), but I encourage you to familiarize yourself with the program by checking out the [manual](https://physiology.med.cornell.edu/faculty/skrabanek/lab/angsd/lecture_notes/STARmanual.pdf). The options I use here are specific for my project and while they may also be relevant to your project it is best to understand the settings you choose. 
+
+I use a for loop to make the process semi-automated like in trimmomatic. 
+```
+# Need to add a genome generete command 
+
+# This command is for SE data, not PE and will generate output for each individual.
+for i in `ls -1 *.fastq | sed 's/\.fastq//’ `; do echo STAR --runThreadN 2 --genomeDir /shared/jezkovt_farleik_shared/Platy_RNAseq/Anolis_Data/Genome/ --readFilesIn ${i}.fastq --readFilesCommand zcat --limitOutSJcollapsed 2000000 --outFileNamePrefix ./${i} --outSAMtype BAM SortedByCoordinate --limitBAMsortRAM 29000000000 --quantMode GeneCounts >> Anolis_IndMapping.txt; done
+```
+
+
+## Calling Variants
+
+
+## References
+ - Andrews, S. (2010). FastQC:  A Quality Control Tool for High Throughput Sequence Data [Online]. Available online at: http://www.bioinformatics.babraham.ac.uk/projects/fastqc/
+ - Bolger, A. M., Lohse, M., & Usadel, B. (2014). Trimmomatic: a flexible trimmer for Illumina sequence data. Bioinformatics, 30(15), 2114-2120.
+ - Dobin, A., Davis, C. A., Schlesinger, F., Drenkow, J., Zaleski, C., Jha, S., ... & Gingeras, T. R. (2013). STAR: ultrafast universal RNA-seq aligner. Bioinformatics, 29(1), 15-21.
+ - McKenna A, Hanna M, Banks E, Sivachenko A, Cibulskis K, Kernytsky A, Garimella K, Altshuler D, Gabriel S, Daly M, DePristo MA. (2010). The Genome Analysis Toolkit: a MapReduce framework for analyzing next-generation DNA sequencing data. Genome Res, 20:1297-303. DOI: 10.1101/gr.107524.110.
