@@ -1,0 +1,8 @@
+rna-seq-mapping-pipeline
+this-chapter-is-still-under-construction
+chapter-todo-for-kf
+programs-used-in-this-pipeline
+quality-control-with-fastqc-and-trimmomatic
+mapping-with-star
+calling-variants
+references
