@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Keaka Farleigh" />
 
 
-<meta name="date" content="2023-05-08" />
+<meta name="date" content="2023-05-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -93,11 +93,16 @@ set in the _output.yml file.</p>" />
 <ul>
 <li class="chapter" data-level="1.0.1" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#this-chapter-is-still-under-construction"><i class="fa fa-check"></i><b>1.0.1</b> <strong><em>This chapter is still under construction</em></strong></a></li>
 <li class="chapter" data-level="1.1" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#chapter-todo-for-kf"><i class="fa fa-check"></i><b>1.1</b> Chapter ToDo for KF</a></li>
-<li class="chapter" data-level="1.2" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#programs-used-in-this-pipeline"><i class="fa fa-check"></i><b>1.2</b> Programs used in this pipeline</a></li>
-<li class="chapter" data-level="1.3" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#quality-control-with-fastqc-and-trimmomatic"><i class="fa fa-check"></i><b>1.3</b> Quality Control with FastQC and Trimmomatic</a></li>
-<li class="chapter" data-level="1.4" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#mapping-with-star"><i class="fa fa-check"></i><b>1.4</b> Mapping with STAR</a></li>
-<li class="chapter" data-level="1.5" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#calling-variants"><i class="fa fa-check"></i><b>1.5</b> Calling Variants</a></li>
-<li class="chapter" data-level="1.6" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#references"><i class="fa fa-check"></i><b>1.6</b> References</a></li>
+<li class="chapter" data-level="1.2" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#files-required-for-this-pipeline"><i class="fa fa-check"></i><b>1.2</b> Files required for this pipeline</a></li>
+<li class="chapter" data-level="1.3" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#programs-used-in-this-pipeline"><i class="fa fa-check"></i><b>1.3</b> Programs used in this pipeline</a></li>
+<li class="chapter" data-level="1.4" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#notes-on-this-pipeline"><i class="fa fa-check"></i><b>1.4</b> Notes on this pipeline</a></li>
+<li class="chapter" data-level="1.5" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#quality-control-with-fastqc-and-trimmomatic"><i class="fa fa-check"></i><b>1.5</b> Quality control with FastQC and Trimmomatic</a></li>
+<li class="chapter" data-level="1.6" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#mapping-with-star"><i class="fa fa-check"></i><b>1.6</b> Mapping with STAR</a></li>
+<li class="chapter" data-level="1.7" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#calling-variants"><i class="fa fa-check"></i><b>1.7</b> Calling variants</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#variant-calling-steps"><i class="fa fa-check"></i><b>1.7.1</b> Variant calling steps</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#references"><i class="fa fa-check"></i><b>1.8</b> References</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -130,12 +135,17 @@ set in the _output.yml file.</p>" />
 <h2><span class="header-section-number">1.1</span> Chapter ToDo for KF<a href="rna-seq-mapping-pipeline.html#chapter-todo-for-kf" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Add workflow visualization</li>
-<li>Edit writing, add more details</li>
-<li>Add notes about loading programs and making sure you are on a compute node</li>
 </ul>
 </div>
-<div id="programs-used-in-this-pipeline" class="section level2 hasAnchor" number="1.2">
-<h2><span class="header-section-number">1.2</span> Programs used in this pipeline<a href="rna-seq-mapping-pipeline.html#programs-used-in-this-pipeline" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="files-required-for-this-pipeline" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Files required for this pipeline<a href="rna-seq-mapping-pipeline.html#files-required-for-this-pipeline" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>Demultiplexed RNA-seq data</li>
+<li>Genomic fasta file</li>
+</ol>
+</div>
+<div id="programs-used-in-this-pipeline" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Programs used in this pipeline<a href="rna-seq-mapping-pipeline.html#programs-used-in-this-pipeline" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/">FastQC</a> (Andrews, 2010)</li>
 <li><a href="https://github.com/usadellab/Trimmomatic">Trimommatic</a> (Bolger et al., 2014)</li>
@@ -143,10 +153,15 @@ set in the _output.yml file.</p>" />
 <li><a href="https://broadinstitute.github.io/picard/">Picard</a></li>
 <li><a href="https://gatk.broadinstitute.org/hc/en-us">GATK</a> (McKenna et al., 2010; but see <a href="https://gatk.broadinstitute.org/hc/en-us/articles/360035530852-How-should-I-cite-GATK-in-my-own-publications-">this website</a> for additional papers published about GATK)</li>
 </ul>
+</div>
+<div id="notes-on-this-pipeline" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> Notes on this pipeline<a href="rna-seq-mapping-pipeline.html#notes-on-this-pipeline" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This pipeline has been tested on Miami University’s <a href="https://miamioh.edu/research/research-computing-support/services/hpc-cluster/index.html">RedHawk High Performace Computing cluster</a> (HPC) and should work elsewhere, but that cannot be guaranteed. Additionally, if you are working on a cluster, please make sure you have reserved resources/are on a compute node before running this pipeline. Please <a href="https://kfarleigh.github.io/contact/">reach out</a> if you would like help running this using batch jobs or if you have any questions about working in an HPC environment.</p>
+<p>Finally, the for loops in this pipeline are written to work with fastq, fq.gz, or bam files. In essence, the loops use the file extensions or specific character strings to create a list of files to perform some kind of action on. In most loops, the actions is to echo a command into a batch or sh file so that we can save time and do not have to do it ourselves. These loops can be adjusted easily by changing the sed command, please <a href="https://kfarleigh.github.io/contact/">reach out</a> if you have any questions on how to adjust the loop.</p>
 <p>Let’s get started and analyze some data!</p>
 </div>
-<div id="quality-control-with-fastqc-and-trimmomatic" class="section level2 hasAnchor" number="1.3">
-<h2><span class="header-section-number">1.3</span> Quality Control with FastQC and Trimmomatic<a href="rna-seq-mapping-pipeline.html#quality-control-with-fastqc-and-trimmomatic" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="quality-control-with-fastqc-and-trimmomatic" class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> Quality control with FastQC and Trimmomatic<a href="rna-seq-mapping-pipeline.html#quality-control-with-fastqc-and-trimmomatic" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>As with any sequencing data, the first thing that we do is quality control. We employ a two step quality control procedure. First, we use fastqc to analyze reads and manually inspect the output. Second, we use trimmomatic to perform any necessary read clipping, read filtering, or adapter removal.</p>
 <p>Assuming that you are in your working directory with all of the demultiplexed files</p>
 <pre><code># Load fastqc if you need
@@ -178,20 +193,129 @@ for i in `ls -1 *_1.fq.gz | sed &#39;s/\_1.fq.gz//&#39;`; do echo java -jar /hom
 sh trimmomatic.sh</code></pre>
 <p>Now that everything is trimmed we can move onto mapping with STAR</p>
 </div>
-<div id="mapping-with-star" class="section level2 hasAnchor" number="1.4">
-<h2><span class="header-section-number">1.4</span> Mapping with STAR<a href="rna-seq-mapping-pipeline.html#mapping-with-star" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="mapping-with-star" class="section level2 hasAnchor" number="1.6">
+<h2><span class="header-section-number">1.6</span> Mapping with STAR<a href="rna-seq-mapping-pipeline.html#mapping-with-star" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Mapping the RNA-seq data with STAR is relatively straightforward (only requires a couple commands), but I encourage you to familiarize yourself with the program by checking out the <a href="https://physiology.med.cornell.edu/faculty/skrabanek/lab/angsd/lecture_notes/STARmanual.pdf">manual</a>. The options I use here are specific for my project and while they may also be relevant to your project it is best to understand the settings you choose.</p>
-<p>I use a for loop to make the process semi-automated like in trimmomatic.</p>
-<pre><code># Need to add a genome generete command 
+<p>First, we will use our genomic fasta to generate some files used by STAR during the mapping process. We then use a for loop similar to the one in the trimmomatic step to map and generate read counts for each individual.</p>
+<pre><code># Load STAR 
+module load star-2.7.5a
 
-# This command is for SE data, not PE and will generate output for each individual.
-for i in `ls -1 *.fastq | sed &#39;s/\.fastq//’ `; do echo STAR --runThreadN 2 --genomeDir /shared/jezkovt_farleik_shared/Platy_RNAseq/Anolis_Data/Genome/ --readFilesIn ${i}.fastq --readFilesCommand zcat --limitOutSJcollapsed 2000000 --outFileNamePrefix ./${i} --outSAMtype BAM SortedByCoordinate --limitBAMsortRAM 29000000000 --quantMode GeneCounts &gt;&gt; Anolis_IndMapping.txt; done</code></pre>
+# Converting GFF to GTF
+./gffread Phry_platy.gff -T -o Phry_platy_ann.gtf
+
+# Use the genome fasta to generate files used by STAR during mapping 
+STAR --runMode genomeGenerate --genomeDir ./indexes/ --genomeFastaFiles ../../redo_annotation/final_assembly.fa --sjdbGTFfile ./Phry_platy_ann.GTF
+
+# This command will create a file named trimmomatic.sh in your working directory
+touch RNAseq_mapping.sh
+# Trimmomatic requires java so we add the command to load java to the trimmomatic.sh file
+echo module load star-2.7.5a &gt;&gt; RNAseq_mapping.sh
+
+# This command is for PE data
+for i in `ls -1 *_1_paired.fq.gz | sed &#39;s/\_1_paired.fq.gz//’ `; do echo STAR --runThreadN 2 --genomeDir /shared/jezkovt_farleik_shared/Platy_RNAseq/Genome/ --readFilesIn ${i}_1_paired.fq.gz ${i}_2_paired.fq.gz --readFilesCommand zcat --limitOutSJcollapsed 2000000 --outFileNamePrefix ./${i} --outSAMtype BAM SortedByCoordinate --limitBAMsortRAM 29000000000 --quantMode GeneCounts &gt;&gt; RNAseq_mapping.sh; done
+
+sh RNAseq_mapping
+
+# This command is for SE data, notice that there is only one input file (--readFilesIn)
+for i in `ls -1 *.fastq | sed &#39;s/\.fastq//’ `; do echo STAR --runThreadN 2 --genomeDir /shared/jezkovt_farleik_shared/Platy_RNAseq/Anolis_Data/Genome/ --readFilesIn ${i}.fastq --readFilesCommand zcat --limitOutSJcollapsed 2000000 --outFileNamePrefix ./${i} --outSAMtype BAM SortedByCoordinate --limitBAMsortRAM 29000000000 --quantMode GeneCounts &gt;&gt; Anolis_IndMapping.sh; done</code></pre>
+<p>Mapping is done, well maybe. We can use the files output here to perform analyses such as differential gene expression analysis or weighted gene co-expression analysis, but if we want to call variants in our RNA-seq data I recommend following <a href="https://gatk.broadinstitute.org/hc/en-us/articles/360035531192-RNAseq-short-variant-discovery-SNPs-Indels-">GATK’s best practices</a> and using STAR’s two pass method. This method increases sensitivity to novel splice junctions and in the absence of annotations it is <a href="https://github.com/alexdobin/STAR/issues/1616">strongly recommended</a>.</p>
+<p>We will use the splice junction files generated by STAR (SJ.out.tab files) to re-generate our genome indices. First, we filter out potential false positive splice junctions that have very few reads, non-canonical junctions, and annotated junctions.</p>
+<pre><code># I like to move all of the files to a new directory to be safe
+mkdir SJ_files
+mv *SJ.out.tab ./SJ_files
+cd ./SJ_files
+# Filter our splice junction files
+cat *.tab | awk &#39;($5 &gt; 0 &amp;&amp; $7 &gt; 2 &amp;&amp; $6==0)&#39; | cut -f1-6 | sort | uniq &gt; SJ_out_filtered.tab
+
+cd ../</code></pre>
+<p>Now we can re-generate our genome indices</p>
+<pre><code># Generate genome indices again
+STAR --genomeDir ./ --runMode genomeGenerate --genomeFastaFiles /shared/jezkovt_farleik_shared/Platy_RNAseq/Genome/GCA_020142125.1_MUOH_PhPlat_1.1_genomic.fna --sjdbGTFfile /shared/jezkovt_farleik_shared/Platy_RNAseq/Genome/*.gtf --sjdbFileChrStartEnd ./SJ_files/SJ_out_filtered.tab --runThreadN 2</code></pre>
+<p>Finally, we will perform the second pass mapping.</p>
+<pre><code># Make a new directory to be tidy and not modify any of the files generated during step 1
+mkdir GenomeSecondPass
+mv * ./GenomeSecondPass
+
+cd ./GenomeSecondPass
+
+# Create the new file for 2nd pass mapping
+touch Platy_IndMapping_2ndPass.sh
+
+# Echo the STAR module into it
+echo module load star-2.7.5a &gt;&gt; Platy_IndMapping_2ndPass.sh
+
+# Map the reads again to the second pass genome file
+ for i in `ls -1 *_1_paired.fq.gz | sed &#39;s/\_1_paired.fq.gz//&#39; `; do echo STAR --runThreadN 2 --genomeDir /shared/jezkovt_farleik_shared/Platy_RNAseq/SecondPass/GenomeSecondPass/  --readFilesIn ${i}_1_paired.fq.gz ${i}_2_paired.fq.gz --readFilesCommand zcat --limitOutSJcollapsed 2000000 --outFileNamePrefix ./${i}_2ndPass --outSAMtype BAM SortedByCoordinate --limitBAMsortRAM 29000000000 --quantMode GeneCounts &gt;&gt; Platy_IndMapping_2ndPass.sh; done</code></pre>
+<p>2nd pass mapping is done! We can move onto variant calling with the GATK suite of tools.</p>
 </div>
-<div id="calling-variants" class="section level2 hasAnchor" number="1.5">
-<h2><span class="header-section-number">1.5</span> Calling Variants<a href="rna-seq-mapping-pipeline.html#calling-variants" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="calling-variants" class="section level2 hasAnchor" number="1.7">
+<h2><span class="header-section-number">1.7</span> Calling variants<a href="rna-seq-mapping-pipeline.html#calling-variants" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Calling variants is a bit more complicated and time consuming then mapping, but it is definitely doable especially since we will use loops to do most of the work.</p>
+<div id="variant-calling-steps" class="section level3 hasAnchor" number="1.7.1">
+<h3><span class="header-section-number">1.7.1</span> Variant calling steps<a href="rna-seq-mapping-pipeline.html#variant-calling-steps" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li><p>Add read group tags</p></li>
+<li><p>Duplicate filtering</p></li>
+<li><p>Dictionary creation</p></li>
+<li><p>Cigar splitting</p></li>
+<li><p>Preliminary site calling</p></li>
+<li><p>Base recalibration</p></li>
+<li><p>Variant calling</p></li>
+<li><p>We use picard to add read group tags to our reads. Note, that picard will need to be downloaded from the hyperlink listed above.</p></li>
+</ol>
+<pre><code>mkdir Add_Group
+
+touch Platy_AddGroups.sh
+echo module load java-20 &gt; Platy_AddGroups.sh
+for i in `ls -1 *2ndPassAligned.*.bam | sed &#39;s/\_2ndPassAligned.sortedByCoord.out.bam//&#39; `; do echo java -jar /home/farleik/Software/picard.jar AddOrReplaceReadGroups I= ${i}_2ndPassAligned.sortedByCoord.out.bam O= ./Add_Group/${i}_Add_Group.bam RGID=4 RGLB=lib1 RGPL=illumina RGPU=identifier RGSM=sample_name &gt;&gt; Platy_AddGroups.sh; done
+
+sh Platy_AddGroups.sh
+
+cd ./Add_Group</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>We remove any duplicate reads with picard.</li>
+</ol>
+<pre><code>mkdir Dup_filtered
+
+echo module load java-20 &gt; Platy_DupFiltering.sh
+
+for i in `ls -1 *Add_Group*.bam | sed &#39;s/\_Add_Group.bam//&#39; `; do echo java -jar /home/farleik/Software/picard.jar MarkDuplicates I= ${i}_Add_Group.bam O= ./Dup_filtered/${i}_DupFiltered.bam CREATE_INDEX=true VALIDATION_STRINGENCY=SILENT M= ./Dup_filtered/${i}_DupFiltered_stats.txt &gt;&gt; Platy_DupFiltering.sh; done
+
+cd ./Dup_filtered</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Create a dictionary from our reference sequence with picard.</li>
+</ol>
+<pre><code>java -jar /home/farleik/Software/picard.jar CreateSequenceDictionary -R /shared/jezkovt_farleik_shared/Platy_RNAseq/Genome/GCA_020142125.1_MUOH_PhPlat_1.1_genomic.fna -O Platy_ref.dict</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Now we will use GATK to split Cigar N reads and reassign quality scores</li>
+</ol>
+<pre><code>mkdir Cigar_Split
+
+echo module load gatk-4.1.2.0 &gt; Platy_CigarSplit.sh
+
+for i in `ls -1 *Dup*.bam | sed &#39;s/\_DupFiltered.bam//&#39; `; do echo gatk SplitNCigarReads -R Platy.fna -I ${i}_DupFiltered.bam -O ./Cigar_Split/${i}_CigarSplit.bam &gt;&gt; Platy_CigarSplit.sh; done
+
+sh Platy_CigarSplit.sh</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li>Preliminary variant calling. We do this so that we can recalibrate our bases.</li>
+</ol>
+<pre><code>mkdir ./Prelim_VCFcalling
+
+echo module load gatk-4.1.2.0 &gt; Platy_PrelimVCFcalling.sh
+
+for i in `ls -1 *Cigar*.bam | sed &#39;s/\_CigarSplit.bam//&#39; `; do echo gatk HaplotypeCaller -R ../Platy.fna -I ${i}_CigarSplit.bam -O ./Prelim_VCFcalling/${i}_Prelim.g.vcf.g.gz -ERC GVCF &gt;&gt; Platy_PrelimVCFcalling.sh; done
+
+sh Platy_PrelimVCFcalling.sh
+
+cd ./Prelim_VCFcalling
+# Combine the gVCFs into one multisample vcf
+ls *vcf.g.gz &gt; vcfs.list
+
+gatk CombineGVCFs -R /shared/jezkovt_farleik_shared/Platy_RNAseq/SecondPass/Add_Group/Dup_filtered/Platy.fna --variant vcfs.list -O Prelim_Platy.g.vcf.gz</code></pre>
 </div>
-<div id="references" class="section level2 hasAnchor" number="1.6">
-<h2><span class="header-section-number">1.6</span> References<a href="rna-seq-mapping-pipeline.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="references" class="section level2 hasAnchor" number="1.8">
+<h2><span class="header-section-number">1.8</span> References<a href="rna-seq-mapping-pipeline.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Andrews, S. (2010). FastQC: A Quality Control Tool for High Throughput Sequence Data [Online]. Available online at: <a href="http://www.bioinformatics.babraham.ac.uk/projects/fastqc/" class="uri">http://www.bioinformatics.babraham.ac.uk/projects/fastqc/</a></li>
 <li>Bolger, A. M., Lohse, M., &amp; Usadel, B. (2014). Trimmomatic: a flexible trimmer for Illumina sequence data. Bioinformatics, 30(15), 2114-2120.</li>
