@@ -9,8 +9,10 @@ This pipeline is written for paired-end (PE) sequencing data, but it has been te
 
 ## Chapter ToDo for KF
  - Add workflow visualization
- - Edit writing, add more details
- - Add notes about loading programs and making sure you are on a compute node
+
+## Files required for this pipeline
+ 1. Demultiplexed RNA-seq data
+ 2. Genomic fasta file
 
 ## Programs used in this pipeline
  - [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) (Andrews, 2010)
@@ -19,10 +21,14 @@ This pipeline is written for paired-end (PE) sequencing data, but it has been te
  - [Picard](https://broadinstitute.github.io/picard/)
  - [GATK](https://gatk.broadinstitute.org/hc/en-us) (McKenna et al., 2010; but see [this website](https://gatk.broadinstitute.org/hc/en-us/articles/360035530852-How-should-I-cite-GATK-in-my-own-publications-) for additional papers published about GATK)
 
+## Notes on this pipeline
+This pipeline has been tested on Miami University's [RedHawk High Performace Computing cluster](https://miamioh.edu/research/research-computing-support/services/hpc-cluster/index.html) (HPC) and should work elsewhere, but that cannot be guaranteed. Additionally, if you are working on a cluster, please make sure you have reserved resources/are on a compute node before running this pipeline. Please [reach out](https://kfarleigh.github.io/contact/) if you would like help running this using batch jobs or if you have any questions about working in an HPC environment. 
+
+Finally, the for loops in this pipeline are written to work with fastq, fq.gz, or bam files. In essence, the loops use the file extensions or specific character strings to create a list of files to perform some kind of action on. In most loops, the actions is to echo a command into a batch or sh file so that we can save time and do not have to do it ourselves. These loops can be adjusted easily by changing the sed command, please [reach out](https://kfarleigh.github.io/contact/) if you have any questions on how to adjust the loop. 
 
 Let's get started and analyze some data!
 
-## Quality Control with FastQC and Trimmomatic
+## Quality control with FastQC and Trimmomatic
 As with any sequencing data, the first thing that we do is quality control. We employ a two step quality control procedure. First, we use fastqc to analyze reads and manually inspect the output. Second, we use trimmomatic to perform any necessary read clipping, read filtering, or adapter removal.
 
 Assuming that you are in your working directory with all of the demultiplexed files
@@ -66,16 +72,148 @@ Now that everything is trimmed we can move onto mapping with STAR
 ## Mapping with STAR
 Mapping the RNA-seq data with STAR is relatively straightforward (only requires a couple commands), but I encourage you to familiarize yourself with the program by checking out the [manual](https://physiology.med.cornell.edu/faculty/skrabanek/lab/angsd/lecture_notes/STARmanual.pdf). The options I use here are specific for my project and while they may also be relevant to your project it is best to understand the settings you choose. 
 
-I use a for loop to make the process semi-automated like in trimmomatic. 
+First, we will use our genomic fasta to generate some files used by STAR during the mapping process. We then use a for loop similar to the one in the trimmomatic step to map and generate read counts for each individual. 
+
 ```
-# Need to add a genome generete command 
+# Load STAR 
+module load star-2.7.5a
 
-# This command is for SE data, not PE and will generate output for each individual.
-for i in `ls -1 *.fastq | sed 's/\.fastq//’ `; do echo STAR --runThreadN 2 --genomeDir /shared/jezkovt_farleik_shared/Platy_RNAseq/Anolis_Data/Genome/ --readFilesIn ${i}.fastq --readFilesCommand zcat --limitOutSJcollapsed 2000000 --outFileNamePrefix ./${i} --outSAMtype BAM SortedByCoordinate --limitBAMsortRAM 29000000000 --quantMode GeneCounts >> Anolis_IndMapping.txt; done
+# Converting GFF to GTF
+./gffread Phry_platy.gff -T -o Phry_platy_ann.gtf
+
+# Use the genome fasta to generate files used by STAR during mapping 
+STAR --runMode genomeGenerate --genomeDir ./indexes/ --genomeFastaFiles ../../redo_annotation/final_assembly.fa --sjdbGTFfile ./Phry_platy_ann.GTF
+
+# This command will create a file named trimmomatic.sh in your working directory
+touch RNAseq_mapping.sh
+# Trimmomatic requires java so we add the command to load java to the trimmomatic.sh file
+echo module load star-2.7.5a >> RNAseq_mapping.sh
+
+# This command is for PE data
+for i in `ls -1 *_1_paired.fq.gz | sed 's/\_1_paired.fq.gz//’ `; do echo STAR --runThreadN 2 --genomeDir /shared/jezkovt_farleik_shared/Platy_RNAseq/Genome/ --readFilesIn ${i}_1_paired.fq.gz ${i}_2_paired.fq.gz --readFilesCommand zcat --limitOutSJcollapsed 2000000 --outFileNamePrefix ./${i} --outSAMtype BAM SortedByCoordinate --limitBAMsortRAM 29000000000 --quantMode GeneCounts >> RNAseq_mapping.sh; done
+
+sh RNAseq_mapping
+
+# This command is for SE data, notice that there is only one input file (--readFilesIn)
+for i in `ls -1 *.fastq | sed 's/\.fastq//’ `; do echo STAR --runThreadN 2 --genomeDir /shared/jezkovt_farleik_shared/Platy_RNAseq/Anolis_Data/Genome/ --readFilesIn ${i}.fastq --readFilesCommand zcat --limitOutSJcollapsed 2000000 --outFileNamePrefix ./${i} --outSAMtype BAM SortedByCoordinate --limitBAMsortRAM 29000000000 --quantMode GeneCounts >> Anolis_IndMapping.sh; done
 ```
 
+Mapping is done, well maybe. We can use the files output here to perform analyses such as differential gene expression analysis or weighted gene co-expression analysis, but if we want to call variants in our RNA-seq data I recommend following [GATK's best practices](https://gatk.broadinstitute.org/hc/en-us/articles/360035531192-RNAseq-short-variant-discovery-SNPs-Indels-) and using STAR's two pass method. This method increases sensitivity to novel splice junctions and in the absence of annotations it is [strongly recommended](https://github.com/alexdobin/STAR/issues/1616).
 
-## Calling Variants
+
+We will use the splice junction files generated by STAR (SJ.out.tab files) to re-generate our genome indices. First, we filter out potential false positive splice junctions that have very few reads, non-canonical junctions, and annotated junctions.
+
+``` 
+# I like to move all of the files to a new directory to be safe
+mkdir SJ_files
+mv *SJ.out.tab ./SJ_files
+cd ./SJ_files
+# Filter our splice junction files
+cat *.tab | awk '($5 > 0 && $7 > 2 && $6==0)' | cut -f1-6 | sort | uniq > SJ_out_filtered.tab
+
+cd ../
+```
+
+Now we can re-generate our genome indices
+
+```
+# Generate genome indices again
+STAR --genomeDir ./ --runMode genomeGenerate --genomeFastaFiles /shared/jezkovt_farleik_shared/Platy_RNAseq/Genome/GCA_020142125.1_MUOH_PhPlat_1.1_genomic.fna --sjdbGTFfile /shared/jezkovt_farleik_shared/Platy_RNAseq/Genome/*.gtf --sjdbFileChrStartEnd ./SJ_files/SJ_out_filtered.tab --runThreadN 2
+``` 
+
+Finally, we will perform the second pass mapping.
+
+```
+# Make a new directory to be tidy and not modify any of the files generated during step 1
+mkdir GenomeSecondPass
+mv * ./GenomeSecondPass
+
+cd ./GenomeSecondPass
+
+# Create the new file for 2nd pass mapping
+touch Platy_IndMapping_2ndPass.sh
+
+# Echo the STAR module into it
+echo module load star-2.7.5a >> Platy_IndMapping_2ndPass.sh
+
+# Map the reads again to the second pass genome file
+ for i in `ls -1 *_1_paired.fq.gz | sed 's/\_1_paired.fq.gz//' `; do echo STAR --runThreadN 2 --genomeDir /shared/jezkovt_farleik_shared/Platy_RNAseq/SecondPass/GenomeSecondPass/  --readFilesIn ${i}_1_paired.fq.gz ${i}_2_paired.fq.gz --readFilesCommand zcat --limitOutSJcollapsed 2000000 --outFileNamePrefix ./${i}_2ndPass --outSAMtype BAM SortedByCoordinate --limitBAMsortRAM 29000000000 --quantMode GeneCounts >> Platy_IndMapping_2ndPass.sh; done
+```
+
+2nd pass mapping is done! We can move onto variant calling with the GATK suite of tools. 
+
+## Calling variants
+Calling variants is a bit more complicated and time consuming then mapping, but it is definitely doable especially since we will use loops to do most of the work. 
+
+### Variant calling steps
+  1. Add read group tags
+  2. Duplicate filtering
+  3. Dictionary creation
+  4. Cigar splitting
+  5. Preliminary site calling
+  6. Base recalibration
+  7. Variant calling 
+
+1. We use picard to add read group tags to our reads. Note, that picard will need to be downloaded from the hyperlink listed above. 
+```
+mkdir Add_Group
+
+touch Platy_AddGroups.sh
+echo module load java-20 > Platy_AddGroups.sh
+for i in `ls -1 *2ndPassAligned.*.bam | sed 's/\_2ndPassAligned.sortedByCoord.out.bam//' `; do echo java -jar /home/farleik/Software/picard.jar AddOrReplaceReadGroups I= ${i}_2ndPassAligned.sortedByCoord.out.bam O= ./Add_Group/${i}_Add_Group.bam RGID=4 RGLB=lib1 RGPL=illumina RGPU=identifier RGSM=sample_name >> Platy_AddGroups.sh; done
+
+sh Platy_AddGroups.sh
+
+cd ./Add_Group
+```
+
+2. We remove any duplicate reads with picard.
+
+```
+mkdir Dup_filtered
+
+echo module load java-20 > Platy_DupFiltering.sh
+
+for i in `ls -1 *Add_Group*.bam | sed 's/\_Add_Group.bam//' `; do echo java -jar /home/farleik/Software/picard.jar MarkDuplicates I= ${i}_Add_Group.bam O= ./Dup_filtered/${i}_DupFiltered.bam CREATE_INDEX=true VALIDATION_STRINGENCY=SILENT M= ./Dup_filtered/${i}_DupFiltered_stats.txt >> Platy_DupFiltering.sh; done
+
+cd ./Dup_filtered
+```
+
+3. Create a dictionary from our reference sequence with picard. 
+
+```
+java -jar /home/farleik/Software/picard.jar CreateSequenceDictionary -R /shared/jezkovt_farleik_shared/Platy_RNAseq/Genome/GCA_020142125.1_MUOH_PhPlat_1.1_genomic.fna -O Platy_ref.dict
+```
+
+4. Now we will use GATK to split Cigar N reads and reassign quality scores
+
+```
+mkdir Cigar_Split
+
+echo module load gatk-4.1.2.0 > Platy_CigarSplit.sh
+
+for i in `ls -1 *Dup*.bam | sed 's/\_DupFiltered.bam//' `; do echo gatk SplitNCigarReads -R Platy.fna -I ${i}_DupFiltered.bam -O ./Cigar_Split/${i}_CigarSplit.bam >> Platy_CigarSplit.sh; done
+
+sh Platy_CigarSplit.sh
+```
+
+5. Preliminary variant calling. We do this so that we can recalibrate our bases. 
+```
+mkdir ./Prelim_VCFcalling
+
+echo module load gatk-4.1.2.0 > Platy_PrelimVCFcalling.sh
+
+for i in `ls -1 *Cigar*.bam | sed 's/\_CigarSplit.bam//' `; do echo gatk HaplotypeCaller -R ../Platy.fna -I ${i}_CigarSplit.bam -O ./Prelim_VCFcalling/${i}_Prelim.g.vcf.g.gz -ERC GVCF >> Platy_PrelimVCFcalling.sh; done
+
+sh Platy_PrelimVCFcalling.sh
+
+cd ./Prelim_VCFcalling
+# Combine the gVCFs into one multisample vcf
+ls *vcf.g.gz > vcfs.list
+
+gatk CombineGVCFs -R /shared/jezkovt_farleik_shared/Platy_RNAseq/SecondPass/Add_Group/Dup_filtered/Platy.fna --variant vcfs.list -O Prelim_Platy.g.vcf.gz
+```
+
 
 
 ## References
