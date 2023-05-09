@@ -146,15 +146,15 @@ echo module load star-2.7.5a >> Platy_IndMapping_2ndPass.sh
 Calling variants is a bit more complicated and time consuming then mapping, but it is definitely doable especially since we will use loops to do most of the work. 
 
 ### Variant calling steps
-  1. Add read group tags
-  2. Duplicate filtering
-  3. Dictionary creation
-  4. Cigar splitting
-  5. Preliminary site calling
-  6. Base recalibration
-  7. Variant calling 
+1. Add read group tags
+2. Duplicate filtering
+3. Dictionary creation
+4. Cigar splitting
+5. Preliminary site calling
+6. Base recalibration
+7. Variant calling   
 
-1. We use picard to add read group tags to our reads. Note, that picard will need to be downloaded from the hyperlink listed above. 
+1\. We use picard to add read group tags to our reads. Note, that picard will need to be downloaded from the hyperlink listed above.
 ```
 mkdir Add_Group
 
@@ -167,7 +167,7 @@ sh Platy_AddGroups.sh
 cd ./Add_Group
 ```
 
-2. We remove any duplicate reads with picard.
+2\. We remove any duplicate reads with picard.
 
 ```
 mkdir Dup_filtered
@@ -179,13 +179,13 @@ for i in `ls -1 *Add_Group*.bam | sed 's/\_Add_Group.bam//' `; do echo java -jar
 cd ./Dup_filtered
 ```
 
-3. Create a dictionary from our reference sequence with picard. 
+3\. Create a dictionary from our reference sequence with picard. 
 
 ```
 java -jar /home/farleik/Software/picard.jar CreateSequenceDictionary -R /shared/jezkovt_farleik_shared/Platy_RNAseq/Genome/GCA_020142125.1_MUOH_PhPlat_1.1_genomic.fna -O Platy_ref.dict
 ```
 
-4. Now we will use GATK to split Cigar N reads and reassign quality scores
+4\. Now we will use GATK to split Cigar N reads and reassign quality scores
 
 ```
 mkdir Cigar_Split
@@ -197,7 +197,7 @@ for i in `ls -1 *Dup*.bam | sed 's/\_DupFiltered.bam//' `; do echo gatk SplitNCi
 sh Platy_CigarSplit.sh
 ```
 
-5. Preliminary variant calling. We do this so that we can recalibrate our bases. 
+5\. Preliminary variant calling. We do this so that we can recalibrate our bases. 
 ```
 mkdir ./Prelim_VCFcalling
 
