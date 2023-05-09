@@ -254,15 +254,15 @@ echo module load star-2.7.5a &gt;&gt; Platy_IndMapping_2ndPass.sh
 <div id="variant-calling-steps" class="section level3 hasAnchor" number="1.7.1">
 <h3><span class="header-section-number">1.7.1</span> Variant calling steps<a href="rna-seq-mapping-pipeline.html#variant-calling-steps" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
-<li><p>Add read group tags</p></li>
-<li><p>Duplicate filtering</p></li>
-<li><p>Dictionary creation</p></li>
-<li><p>Cigar splitting</p></li>
-<li><p>Preliminary site calling</p></li>
-<li><p>Base recalibration</p></li>
-<li><p>Variant calling</p></li>
-<li><p>We use picard to add read group tags to our reads. Note, that picard will need to be downloaded from the hyperlink listed above.</p></li>
+<li>Add read group tags</li>
+<li>Duplicate filtering</li>
+<li>Dictionary creation</li>
+<li>Cigar splitting</li>
+<li>Preliminary site calling</li>
+<li>Base recalibration</li>
+<li>Variant calling</li>
 </ol>
+<p>1. We use picard to add read group tags to our reads. Note, that picard will need to be downloaded from the hyperlink listed above.</p>
 <pre><code>mkdir Add_Group
 
 touch Platy_AddGroups.sh
@@ -272,9 +272,7 @@ for i in `ls -1 *2ndPassAligned.*.bam | sed &#39;s/\_2ndPassAligned.sortedByCoor
 sh Platy_AddGroups.sh
 
 cd ./Add_Group</code></pre>
-<ol start="2" style="list-style-type: decimal">
-<li>We remove any duplicate reads with picard.</li>
-</ol>
+<p>2. We remove any duplicate reads with picard.</p>
 <pre><code>mkdir Dup_filtered
 
 echo module load java-20 &gt; Platy_DupFiltering.sh
@@ -282,13 +280,9 @@ echo module load java-20 &gt; Platy_DupFiltering.sh
 for i in `ls -1 *Add_Group*.bam | sed &#39;s/\_Add_Group.bam//&#39; `; do echo java -jar /home/farleik/Software/picard.jar MarkDuplicates I= ${i}_Add_Group.bam O= ./Dup_filtered/${i}_DupFiltered.bam CREATE_INDEX=true VALIDATION_STRINGENCY=SILENT M= ./Dup_filtered/${i}_DupFiltered_stats.txt &gt;&gt; Platy_DupFiltering.sh; done
 
 cd ./Dup_filtered</code></pre>
-<ol start="3" style="list-style-type: decimal">
-<li>Create a dictionary from our reference sequence with picard.</li>
-</ol>
+<p>3. Create a dictionary from our reference sequence with picard.</p>
 <pre><code>java -jar /home/farleik/Software/picard.jar CreateSequenceDictionary -R /shared/jezkovt_farleik_shared/Platy_RNAseq/Genome/GCA_020142125.1_MUOH_PhPlat_1.1_genomic.fna -O Platy_ref.dict</code></pre>
-<ol start="4" style="list-style-type: decimal">
-<li>Now we will use GATK to split Cigar N reads and reassign quality scores</li>
-</ol>
+<p>4. Now we will use GATK to split Cigar N reads and reassign quality scores</p>
 <pre><code>mkdir Cigar_Split
 
 echo module load gatk-4.1.2.0 &gt; Platy_CigarSplit.sh
@@ -296,9 +290,7 @@ echo module load gatk-4.1.2.0 &gt; Platy_CigarSplit.sh
 for i in `ls -1 *Dup*.bam | sed &#39;s/\_DupFiltered.bam//&#39; `; do echo gatk SplitNCigarReads -R Platy.fna -I ${i}_DupFiltered.bam -O ./Cigar_Split/${i}_CigarSplit.bam &gt;&gt; Platy_CigarSplit.sh; done
 
 sh Platy_CigarSplit.sh</code></pre>
-<ol start="5" style="list-style-type: decimal">
-<li>Preliminary variant calling. We do this so that we can recalibrate our bases.</li>
-</ol>
+<p>5. Preliminary variant calling. We do this so that we can recalibrate our bases.</p>
 <pre><code>mkdir ./Prelim_VCFcalling
 
 echo module load gatk-4.1.2.0 &gt; Platy_PrelimVCFcalling.sh
