@@ -1,6 +1,7 @@
 # (PART) Tutorials {-}
 # RNA-seq mapping pipeline
 
+Updated by Keaka Farleigh on May 15th, 2023
 ### ***This chapter is still under construction***
 
 This tutorial contains code to perform quality control, mapping, and variant calling of demultiplexed samples. The dataset used in this tutorial is unpublished, but I will provide the link to the associated publication once the manuscript is published. 
@@ -114,7 +115,7 @@ cat *.tab | awk '($5 > 0 && $7 > 2 && $6==0)' | cut -f1-6 | sort | uniq > SJ_out
 cd ../
 ```
 
-Now we can re-generate our genome indices
+Now we can re-generate our genome indices.
 
 ```
 # Generate genome indices again
@@ -143,18 +144,18 @@ echo module load star-2.7.5a >> Platy_IndMapping_2ndPass.sh
 2nd pass mapping is done! We can move onto variant calling with the GATK suite of tools. 
 
 ## Calling variants
-Calling variants is a bit more complicated and time consuming then mapping, but it is definitely doable especially since we will use loops to do most of the work. 
+Calling variants is a bit more complicated and time consuming then mapping, but it is definitely doable. Especially since we will use loops to do most of the work for us! 
 
 ### Variant calling steps
 1. Add read group tags
-2. Duplicate filtering
+2. Duplicate identification
 3. Dictionary creation
 4. Cigar splitting
 5. Preliminary site calling
 6. Base recalibration
 7. Variant calling   
 
-1\. We use picard to add read group tags to our reads. Note, that picard will need to be downloaded from the hyperlink listed above.
+1\. We use picard to add read group tags to our reads. We add read groups tags because many programs assume that there is the presence of read group tags and will not work without them. Note, that picard will need to be downloaded from the hyperlink listed above. See the [AddorReplaceReadGroups page](https://gatk.broadinstitute.org/hc/en-us/articles/360037226472-AddOrReplaceReadGroups-Picard-) for more details. 
 ```
 mkdir Add_Group
 
@@ -167,7 +168,7 @@ sh Platy_AddGroups.sh
 cd ./Add_Group
 ```
 
-2\. We remove any duplicate reads with picard.
+2\. We identify any duplicate reads with picard. Picard identifies duplicates by comparing the 5 prime positions of reads and then differentiates the primary read from the duplicates using the sums of the base-quality scores. Duplicate reads are labelled in the output file. See the [MarkDuplicates page](https://gatk.broadinstitute.org/hc/en-us/articles/360037052812-MarkDuplicates-Picard-) for more details. 
 
 ```
 mkdir Dup_filtered
@@ -179,13 +180,13 @@ for i in `ls -1 *Add_Group*.bam | sed 's/\_Add_Group.bam//' `; do echo java -jar
 cd ./Dup_filtered
 ```
 
-3\. Create a dictionary from our reference sequence with picard. 
+3\. Create a dictionary from our reference sequence with picard. The dictionary created in this step is required by many tools and will be used in subsetquent steps. See the [CreateSequenceDictionary page](https://gatk.broadinstitute.org/hc/en-us/articles/360037422891-CreateSequenceDictionary-Picard-) for more details. 
 
 ```
 java -jar /home/farleik/Software/picard.jar CreateSequenceDictionary -R /shared/jezkovt_farleik_shared/Platy_RNAseq/Genome/GCA_020142125.1_MUOH_PhPlat_1.1_genomic.fna -O Platy_ref.dict
 ```
 
-4\. Now we will use GATK to split Cigar N reads and reassign quality scores
+4\. Now we will use GATK to split Cigar N reads and reassign quality scores. This tool will split reads that contain Ns in their cigar string. For RNAseq data, these are reads that span splice events. See the [SplitNCigarReads page](https://gatk.broadinstitute.org/hc/en-us/articles/360036858811-SplitNCigarReads) for details.
 
 ```
 mkdir Cigar_Split
@@ -197,7 +198,8 @@ for i in `ls -1 *Dup*.bam | sed 's/\_DupFiltered.bam//' `; do echo gatk SplitNCi
 sh Platy_CigarSplit.sh
 ```
 
-5\. Preliminary variant calling. We do this so that we can recalibrate our bases. 
+5\. Preliminary variant calling. We perform this step because our organism is a non-model organism and we do not know which sites are polymorphic. We need this "known sites" file so that we can perform base recalibraiton. You can skip this step if you already have a "known sites" file. This is important because the base recalibration algorithm treats mismatches as errors, but we expect variation at polymorphic sites so we use this file to skip over these sites.
+
 ```
 mkdir ./Prelim_VCFcalling
 
@@ -214,6 +216,41 @@ ls *vcf.g.gz > vcfs.list
 gatk CombineGVCFs -R /shared/jezkovt_farleik_shared/Platy_RNAseq/SecondPass/Add_Group/Dup_filtered/Platy.fna --variant vcfs.list -O Prelim_Platy.g.vcf.gz
 ```
 
+6\. Base recalibration. This is a really important step. Base quality scores can be thought of as per-base estimates of error calculated during sequencing. These scores can be subject to different types of error that influence base quality score estimates. The recalibration tool employs a machine learning model to adjust scores so that the over base quality scores are more accurate. See this [article](https://gatk.broadinstitute.org/hc/en-us/articles/360035890531-Base-Quality-Score-Recalibration-BQSR-) for details.
+
+```
+# Recalibrate base quality scores 
+echo module load gatk-4.1.2.0 > Platy_BQSR.txt
+
+# For loop for multiple files
+for i in `ls -1 *Cigar*.bam | sed 's/\_CigarSplit.bam//' `; do echo gatkBaseRecalibrator -R ../Platy.fna -I ${i}_CigarSplit.bam -–known-sites ./Prelim_VCFcalling/Prelim_Platy.g.vcf.gz -O ${i}_recalibration.table >> Platy_BQSR.txt; done
+
+# Apply the recalibration
+mkdir ./Recalibrated_Files 
+
+echo module load gatk-4.1.2.0 > Platy_ABQSR.txt
+
+# Loop for multiple files 
+for i in `ls -1 *Cigar*.bam | sed 's/\_CigarSplit.bam//' `; do echo gatk ApplyBQSR -R ../Platy.fna -I ${i}_CigarSplit.bam –bqsr-recal-file  ./${i}_recalibration.table -O ./Recalibrated_Files/${i}_Recalibrated.bam >> Platy_ABQSR.txt; done
+```
+
+7\. Variant calling. Finally, we get to the fun pary, variant calling. All of the data pre-processing steps have led to this and we only have a couple more to go before we have a file that is ready for analysis. This step is identical to step 5, but we use the recalibrated files from step 6 as input. See this [article](https://gatk.broadinstitute.org/hc/en-us/articles/360037225632-HaplotypeCaller) for a detailed discussion of how we call SNPs with gatk. 
+
+```
+# Make a directory for the vcf calling 
+mkdir ./VCFcalling
+
+# For Loop for the preliminary variant calling with multiple files
+echo module load gatk-4.1.2.0 > Platy_VCFcalling.txt
+
+for i in `ls -1 *Recalibrated*.bam | sed 's/\_Recalibrated.bam//' `; do echo gatk HaplotypeCaller -R ../Platy.fna -I ${i}_Recalibrated.bam -O ./VCFcalling/${i}.g.vcf.g.gz -ERC GVCF >>Platy_VCFcalling.txt; done
+
+### Combine into a multi-sample vcf 
+# List all files to combine
+ls *vcf.g.gz > vcfs.list
+
+gatk CombineGVCFs -R /shared/jezkovt_farleik_shared/Platy_RNAseq/SecondPass/Add_Group/Dup_filtered/Platy.fna --variant vcfs.list -O Platy.g.vcf.gz
+```
 
 
 ## References
