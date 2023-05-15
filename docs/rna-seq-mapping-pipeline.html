@@ -4,32 +4,26 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1 RNA-seq mapping pipeline | The Researcher’s Guide to Population Genomic Analysis</title>
-  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
-The HTML output format for this example is bookdown::gitbook,
-set in the _output.yml file.</p>" />
+  <title>1 RNA-seq mapping pipeline | The Researcher’s Guide to Population Genomic</title>
+  <meta name="description" content="This book provides an overview of population genomics, discusses relevant statistics, and includes tested tutorials and workflows that can be applied to population genomic datasets." />
   <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1 RNA-seq mapping pipeline | The Researcher’s Guide to Population Genomic Analysis" />
+  <meta property="og:title" content="1 RNA-seq mapping pipeline | The Researcher’s Guide to Population Genomic" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
-The HTML output format for this example is bookdown::gitbook,
-set in the _output.yml file.</p>" />
+  <meta property="og:description" content="This book provides an overview of population genomics, discusses relevant statistics, and includes tested tutorials and workflows that can be applied to population genomic datasets." />
   <meta name="github-repo" content="kfarleigh/RGTPG" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1 RNA-seq mapping pipeline | The Researcher’s Guide to Population Genomic Analysis" />
+  <meta name="twitter:title" content="1 RNA-seq mapping pipeline | The Researcher’s Guide to Population Genomic" />
   
-  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
-The HTML output format for this example is bookdown::gitbook,
-set in the _output.yml file.</p>" />
+  <meta name="twitter:description" content="This book provides an overview of population genomics, discusses relevant statistics, and includes tested tutorials and workflows that can be applied to population genomic datasets." />
   
 
 <meta name="author" content="Keaka Farleigh" />
 
 
-<meta name="date" content="2023-05-09" />
+<meta name="date" content="2023-05-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -91,7 +85,6 @@ set in the _output.yml file.</p>" />
 <li class="part"><span><b>I Tutorials</b></span></li>
 <li class="chapter" data-level="1" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html"><i class="fa fa-check"></i><b>1</b> RNA-seq mapping pipeline</a>
 <ul>
-<li class="chapter" data-level="1.0.1" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#this-chapter-is-still-under-construction"><i class="fa fa-check"></i><b>1.0.1</b> <strong><em>This chapter is still under construction</em></strong></a></li>
 <li class="chapter" data-level="1.1" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#chapter-todo-for-kf"><i class="fa fa-check"></i><b>1.1</b> Chapter ToDo for KF</a></li>
 <li class="chapter" data-level="1.2" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#files-required-for-this-pipeline"><i class="fa fa-check"></i><b>1.2</b> Files required for this pipeline</a></li>
 <li class="chapter" data-level="1.3" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#programs-used-in-this-pipeline"><i class="fa fa-check"></i><b>1.3</b> Programs used in this pipeline</a></li>
@@ -116,7 +109,7 @@ set in the _output.yml file.</p>" />
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The Researcher’s Guide to Population Genomic Analysis</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The Researcher’s Guide to Population Genomic</a>
           </h1>
         </div>
 
@@ -126,11 +119,10 @@ set in the _output.yml file.</p>" />
             <section class="normal" id="section-">
 <div id="rna-seq-mapping-pipeline" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">1</span> RNA-seq mapping pipeline<a href="rna-seq-mapping-pipeline.html#rna-seq-mapping-pipeline" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="this-chapter-is-still-under-construction" class="section level3 hasAnchor" number="1.0.1">
-<h3><span class="header-section-number">1.0.1</span> <strong><em>This chapter is still under construction</em></strong><a href="rna-seq-mapping-pipeline.html#this-chapter-is-still-under-construction" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Updated by Keaka Farleigh on May 15th, 2023
+### <strong><em>This chapter is still under construction</em></strong></p>
 <p>This tutorial contains code to perform quality control, mapping, and variant calling of demultiplexed samples. The dataset used in this tutorial is unpublished, but I will provide the link to the associated publication once the manuscript is published.</p>
 <p>This pipeline is written for paired-end (PE) sequencing data, but it has been tested with single-end (SE) sequencing data and I will note how commands can be changed to accommodate SE data.</p>
-</div>
 <div id="chapter-todo-for-kf" class="section level2 hasAnchor" number="1.1">
 <h2><span class="header-section-number">1.1</span> Chapter ToDo for KF<a href="rna-seq-mapping-pipeline.html#chapter-todo-for-kf" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
@@ -228,7 +220,7 @@ cd ./SJ_files
 cat *.tab | awk &#39;($5 &gt; 0 &amp;&amp; $7 &gt; 2 &amp;&amp; $6==0)&#39; | cut -f1-6 | sort | uniq &gt; SJ_out_filtered.tab
 
 cd ../</code></pre>
-<p>Now we can re-generate our genome indices</p>
+<p>Now we can re-generate our genome indices.</p>
 <pre><code># Generate genome indices again
 STAR --genomeDir ./ --runMode genomeGenerate --genomeFastaFiles /shared/jezkovt_farleik_shared/Platy_RNAseq/Genome/GCA_020142125.1_MUOH_PhPlat_1.1_genomic.fna --sjdbGTFfile /shared/jezkovt_farleik_shared/Platy_RNAseq/Genome/*.gtf --sjdbFileChrStartEnd ./SJ_files/SJ_out_filtered.tab --runThreadN 2</code></pre>
 <p>Finally, we will perform the second pass mapping.</p>
@@ -250,19 +242,19 @@ echo module load star-2.7.5a &gt;&gt; Platy_IndMapping_2ndPass.sh
 </div>
 <div id="calling-variants" class="section level2 hasAnchor" number="1.7">
 <h2><span class="header-section-number">1.7</span> Calling variants<a href="rna-seq-mapping-pipeline.html#calling-variants" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Calling variants is a bit more complicated and time consuming then mapping, but it is definitely doable especially since we will use loops to do most of the work.</p>
+<p>Calling variants is a bit more complicated and time consuming then mapping, but it is definitely doable. Especially since we will use loops to do most of the work for us!</p>
 <div id="variant-calling-steps" class="section level3 hasAnchor" number="1.7.1">
 <h3><span class="header-section-number">1.7.1</span> Variant calling steps<a href="rna-seq-mapping-pipeline.html#variant-calling-steps" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
 <li>Add read group tags</li>
-<li>Duplicate filtering</li>
+<li>Duplicate identification</li>
 <li>Dictionary creation</li>
 <li>Cigar splitting</li>
 <li>Preliminary site calling</li>
 <li>Base recalibration</li>
 <li>Variant calling</li>
 </ol>
-<p>1. We use picard to add read group tags to our reads. Note, that picard will need to be downloaded from the hyperlink listed above.</p>
+<p>1. We use picard to add read group tags to our reads. We add read groups tags because many programs assume that there is the presence of read group tags and will not work without them. Note, that picard will need to be downloaded from the hyperlink listed above. See the <a href="https://gatk.broadinstitute.org/hc/en-us/articles/360037226472-AddOrReplaceReadGroups-Picard-">AddorReplaceReadGroups page</a> for more details.</p>
 <pre><code>mkdir Add_Group
 
 touch Platy_AddGroups.sh
@@ -272,7 +264,7 @@ for i in `ls -1 *2ndPassAligned.*.bam | sed &#39;s/\_2ndPassAligned.sortedByCoor
 sh Platy_AddGroups.sh
 
 cd ./Add_Group</code></pre>
-<p>2. We remove any duplicate reads with picard.</p>
+<p>2. We identify any duplicate reads with picard. Picard identifies duplicates by comparing the 5 prime positions of reads and then differentiates the primary read from the duplicates using the sums of the base-quality scores. Duplicate reads are labelled in the output file. See the <a href="https://gatk.broadinstitute.org/hc/en-us/articles/360037052812-MarkDuplicates-Picard-">MarkDuplicates page</a> for more details.</p>
 <pre><code>mkdir Dup_filtered
 
 echo module load java-20 &gt; Platy_DupFiltering.sh
@@ -280,9 +272,9 @@ echo module load java-20 &gt; Platy_DupFiltering.sh
 for i in `ls -1 *Add_Group*.bam | sed &#39;s/\_Add_Group.bam//&#39; `; do echo java -jar /home/farleik/Software/picard.jar MarkDuplicates I= ${i}_Add_Group.bam O= ./Dup_filtered/${i}_DupFiltered.bam CREATE_INDEX=true VALIDATION_STRINGENCY=SILENT M= ./Dup_filtered/${i}_DupFiltered_stats.txt &gt;&gt; Platy_DupFiltering.sh; done
 
 cd ./Dup_filtered</code></pre>
-<p>3. Create a dictionary from our reference sequence with picard.</p>
+<p>3. Create a dictionary from our reference sequence with picard. The dictionary created in this step is required by many tools and will be used in subsetquent steps. See the <a href="https://gatk.broadinstitute.org/hc/en-us/articles/360037422891-CreateSequenceDictionary-Picard-">CreateSequenceDictionary page</a> for more details.</p>
 <pre><code>java -jar /home/farleik/Software/picard.jar CreateSequenceDictionary -R /shared/jezkovt_farleik_shared/Platy_RNAseq/Genome/GCA_020142125.1_MUOH_PhPlat_1.1_genomic.fna -O Platy_ref.dict</code></pre>
-<p>4. Now we will use GATK to split Cigar N reads and reassign quality scores</p>
+<p>4. Now we will use GATK to split Cigar N reads and reassign quality scores. This tool will split reads that contain Ns in their cigar string. For RNAseq data, these are reads that span splice events. See the <a href="https://gatk.broadinstitute.org/hc/en-us/articles/360036858811-SplitNCigarReads">SplitNCigarReads page</a> for details.</p>
 <pre><code>mkdir Cigar_Split
 
 echo module load gatk-4.1.2.0 &gt; Platy_CigarSplit.sh
@@ -290,7 +282,7 @@ echo module load gatk-4.1.2.0 &gt; Platy_CigarSplit.sh
 for i in `ls -1 *Dup*.bam | sed &#39;s/\_DupFiltered.bam//&#39; `; do echo gatk SplitNCigarReads -R Platy.fna -I ${i}_DupFiltered.bam -O ./Cigar_Split/${i}_CigarSplit.bam &gt;&gt; Platy_CigarSplit.sh; done
 
 sh Platy_CigarSplit.sh</code></pre>
-<p>5. Preliminary variant calling. We do this so that we can recalibrate our bases.</p>
+<p>5. Preliminary variant calling. We perform this step because our organism is a non-model organism and we do not know which sites are polymorphic. We need this “known sites” file so that we can perform base recalibraiton. You can skip this step if you already have a “known sites” file. This is important because the base recalibration algorithm treats mismatches as errors, but we expect variation at polymorphic sites so we use this file to skip over these sites.</p>
 <pre><code>mkdir ./Prelim_VCFcalling
 
 echo module load gatk-4.1.2.0 &gt; Platy_PrelimVCFcalling.sh
@@ -304,6 +296,34 @@ cd ./Prelim_VCFcalling
 ls *vcf.g.gz &gt; vcfs.list
 
 gatk CombineGVCFs -R /shared/jezkovt_farleik_shared/Platy_RNAseq/SecondPass/Add_Group/Dup_filtered/Platy.fna --variant vcfs.list -O Prelim_Platy.g.vcf.gz</code></pre>
+<p>6. Base recalibration. This is a really important step. Base quality scores can be thought of as per-base estimates of error calculated during sequencing. These scores can be subject to different types of error that influence base quality score estimates. The recalibration tool employs a machine learning model to adjust scores so that the over base quality scores are more accurate. See this <a href="https://gatk.broadinstitute.org/hc/en-us/articles/360035890531-Base-Quality-Score-Recalibration-BQSR-">article</a> for details.</p>
+<pre><code># Recalibrate base quality scores 
+echo module load gatk-4.1.2.0 &gt; Platy_BQSR.txt
+
+# For loop for multiple files
+for i in `ls -1 *Cigar*.bam | sed &#39;s/\_CigarSplit.bam//&#39; `; do echo gatkBaseRecalibrator -R ../Platy.fna -I ${i}_CigarSplit.bam -–known-sites ./Prelim_VCFcalling/Prelim_Platy.g.vcf.gz -O ${i}_recalibration.table &gt;&gt; Platy_BQSR.txt; done
+
+# Apply the recalibration
+mkdir ./Recalibrated_Files 
+
+echo module load gatk-4.1.2.0 &gt; Platy_ABQSR.txt
+
+# Loop for multiple files 
+for i in `ls -1 *Cigar*.bam | sed &#39;s/\_CigarSplit.bam//&#39; `; do echo gatk ApplyBQSR -R ../Platy.fna -I ${i}_CigarSplit.bam –bqsr-recal-file  ./${i}_recalibration.table -O ./Recalibrated_Files/${i}_Recalibrated.bam &gt;&gt; Platy_ABQSR.txt; done</code></pre>
+<p>7. Variant calling. Finally, we get to the fun pary, variant calling. All of the data pre-processing steps have led to this and we only have a couple more to go before we have a file that is ready for analysis. This step is identical to step 5, but we use the recalibrated files from step 6 as input. See this <a href="https://gatk.broadinstitute.org/hc/en-us/articles/360037225632-HaplotypeCaller">article</a> for a detailed discussion of how we call SNPs with gatk.</p>
+<pre><code># Make a directory for the vcf calling 
+mkdir ./VCFcalling
+
+# For Loop for the preliminary variant calling with multiple files
+echo module load gatk-4.1.2.0 &gt; Platy_VCFcalling.txt
+
+for i in `ls -1 *Recalibrated*.bam | sed &#39;s/\_Recalibrated.bam//&#39; `; do echo gatk HaplotypeCaller -R ../Platy.fna -I ${i}_Recalibrated.bam -O ./VCFcalling/${i}.g.vcf.g.gz -ERC GVCF &gt;&gt;Platy_VCFcalling.txt; done
+
+### Combine into a multi-sample vcf 
+# List all files to combine
+ls *vcf.g.gz &gt; vcfs.list
+
+gatk CombineGVCFs -R /shared/jezkovt_farleik_shared/Platy_RNAseq/SecondPass/Add_Group/Dup_filtered/Platy.fna --variant vcfs.list -O Platy.g.vcf.gz</code></pre>
 </div>
 </div>
 <div id="references" class="section level2 hasAnchor" number="1.8">

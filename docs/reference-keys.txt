@@ -1,5 +1,4 @@
 rna-seq-mapping-pipeline
-this-chapter-is-still-under-construction
 chapter-todo-for-kf
 files-required-for-this-pipeline
 programs-used-in-this-pipeline
