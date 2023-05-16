@@ -119,17 +119,20 @@ Now we can re-generate our genome indices.
 
 ```
 # Generate genome indices again
-STAR --genomeDir ./ --runMode genomeGenerate --genomeFastaFiles /shared/jezkovt_farleik_shared/Platy_RNAseq/Genome/GCA_020142125.1_MUOH_PhPlat_1.1_genomic.fna --sjdbGTFfile /shared/jezkovt_farleik_shared/Platy_RNAseq/Genome/*.gtf --sjdbFileChrStartEnd ./SJ_files/SJ_out_filtered.tab --runThreadN 2
+
+mkdir GenomeSecondPass
+
+STAR --genomeDir ./GenomeSecondPass/ --runMode genomeGenerate --genomeFastaFiles /shared/jezkovt_farleik_shared/Platy_RNAseq/Genome/GCA_020142125.1_MUOH_PhPlat_1.1_genomic.fna --sjdbGTFfile /shared/jezkovt_farleik_shared/Platy_RNAseq/Genome/*.gtf --sjdbFileChrStartEnd ./SJ_files/SJ_out_filtered.tab --runThreadN 2
 ``` 
 
 Finally, we will perform the second pass mapping.
 
 ```
 # Make a new directory to be tidy and not modify any of the files generated during step 1
-mkdir GenomeSecondPass
-mv * ./GenomeSecondPass
+mkdir SecondPass
+cp *.fq.gz ./SecondPass
 
-cd ./GenomeSecondPass
+cd ./SecondPass
 
 # Create the new file for 2nd pass mapping
 touch Platy_IndMapping_2ndPass.sh
@@ -137,8 +140,11 @@ touch Platy_IndMapping_2ndPass.sh
 # Echo the STAR module into it
 echo module load star-2.7.5a >> Platy_IndMapping_2ndPass.sh
 
-# Map the reads again to the second pass genome file
+# Map the reads again to the second pass genome file, this is for PE data
  for i in `ls -1 *_1_paired.fq.gz | sed 's/\_1_paired.fq.gz//' `; do echo STAR --runThreadN 2 --genomeDir /shared/jezkovt_farleik_shared/Platy_RNAseq/SecondPass/GenomeSecondPass/  --readFilesIn ${i}_1_paired.fq.gz ${i}_2_paired.fq.gz --readFilesCommand zcat --limitOutSJcollapsed 2000000 --outFileNamePrefix ./${i}_2ndPass --outSAMtype BAM SortedByCoordinate --limitBAMsortRAM 29000000000 --quantMode GeneCounts >> Platy_IndMapping_2ndPass.sh; done
+ 
+ # Command for SE data
+  for i in `ls -1 *.fastq.gz | sed 's/\.fastq.gz//' `; do echo STAR --runThreadN 2 --genomeDir /shared/jezkovt_farleik_shared/Platy_RNAseq/SecondPass/GenomeSecondPass/  --readFilesIn ${i}.fastq.gz --readFilesCommand zcat --limitOutSJcollapsed 2000000 --outFileNamePrefix ./${i}_2ndPass --outSAMtype BAM SortedByCoordinate --limitBAMsortRAM 29000000000 --quantMode GeneCounts >> Anolis_IndMapping_2ndPass.sh; done
 ```
 
 2nd pass mapping is done! We can move onto variant calling with the GATK suite of tools. 
@@ -234,7 +240,7 @@ echo module load gatk-4.1.2.0 > Platy_ABQSR.txt
 for i in `ls -1 *Cigar*.bam | sed 's/\_CigarSplit.bam//' `; do echo gatk ApplyBQSR -R ../Platy.fna -I ${i}_CigarSplit.bam –bqsr-recal-file  ./${i}_recalibration.table -O ./Recalibrated_Files/${i}_Recalibrated.bam >> Platy_ABQSR.txt; done
 ```
 
-7\. Variant calling. Finally, we get to the fun pary, variant calling. All of the data pre-processing steps have led to this and we only have a couple more to go before we have a file that is ready for analysis. This step is identical to step 5, but we use the recalibrated files from step 6 as input. See this [article](https://gatk.broadinstitute.org/hc/en-us/articles/360037225632-HaplotypeCaller) for a detailed discussion of how we call SNPs with gatk. 
+7\. Variant calling. Finally, we get to the fun part, variant calling. All of the data pre-processing steps have led to this and we only have a couple more to go before we have a file that is ready for analysis. This step is identical to step 5, but we use the recalibrated files from step 6 as input. See this [article](https://gatk.broadinstitute.org/hc/en-us/articles/360037225632-HaplotypeCaller) for a detailed discussion of how we call SNPs with gatk. 
 
 ```
 # Make a directory for the vcf calling 

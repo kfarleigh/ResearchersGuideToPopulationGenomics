@@ -28,4 +28,4 @@ I thank my wife, advisor, and collaborators for their support and help with many
 If you use any of the materials in this book please use the citation below and remember to cite any packages or data sets as well. 
 
 ### Citation {-}
-Farleigh, K. (2023). *The researcher's guide to population genomic analysis*. 
+Farleigh, K. (2023). *The researcher's guide to population genomics*. 

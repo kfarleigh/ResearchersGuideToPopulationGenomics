@@ -1,13 +1,5 @@
-Welcome! 
+Welcome to the Researcher's Guide to Population Genomics! 
 
-This is a minimal example of a book based on R Markdown and **bookdown** (https://github.com/rstudio/bookdown). 
+This book provides an overview of population genomics, discusses relevant statistics, and includes tested tutorials and workflows that can be applied to population genomic datasets.
 
-This template provides a skeleton file structure that you can edit to create your book. 
-
-The contents inside the .Rmd files provide some pointers to help you get started, but feel free to also delete the content in each file and start fresh.
-
-Additional resources:
-
-The **bookdown** book: https://bookdown.org/yihui/bookdown/
-
-The **bookdown** package reference site: https://pkgs.rstudio.com/bookdown
+Do not hesitate to reach out with any questions or comments. 
