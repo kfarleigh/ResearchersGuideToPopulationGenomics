@@ -12,8 +12,9 @@ bookdown::gitbook:
       position: fixed
     edit: null
     fontsettings:
-      theme: night
+      theme: day
       family: sans
-    download: ["pdf", "epub"]
+      color: "black"
+      download: ["pdf", "epub"]
     
 
