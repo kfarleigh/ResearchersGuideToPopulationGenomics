@@ -29,3 +29,7 @@ If you use any of the materials in this book please use the citation below and r
 
 ### Citation {-}
 Farleigh, K. (2023). *The researcher's guide to population genomics*. 
+
+
+## Disclaimer {-}
+Please note that this book uses Google Analytics to track the number of website views and traffic data. This data is used for the sole purpose of showing grant agencies (e.g., the National Science Foundation) that the chapters presented here are, in fact, being viewed.

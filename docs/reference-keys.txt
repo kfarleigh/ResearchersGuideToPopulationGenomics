@@ -1,6 +1,13 @@
 double-digest-restriction-site-associated-dna-sequencing-ddradseq
 purpose
 overview
+extraction
+digestion
+ligation
+size-selection
+polymerase-chain-reaction-pcr
+sequence
+questions-or-comments
 references
 rna-seq-mapping-pipeline
 purpose-1
