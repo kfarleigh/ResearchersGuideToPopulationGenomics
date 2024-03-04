@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>1 Double digest restriction site associated DNA sequencing (ddRADseq) | The Researcher’s Guide to Population Genomic</title>
+  <meta name="description" content="This book provides an overview of population genomics, discusses relevant statistics, and includes tested tutorials and workflows that can be applied to population genomic datasets." />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="1 Double digest restriction site associated DNA sequencing (ddRADseq) | The Researcher’s Guide to Population Genomic" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This book provides an overview of population genomics, discusses relevant statistics, and includes tested tutorials and workflows that can be applied to population genomic datasets." />
+  <meta name="github-repo" content="kfarleigh/RGTPG" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1 Double digest restriction site associated DNA sequencing (ddRADseq) | The Researcher’s Guide to Population Genomic" />
+  
+  <meta name="twitter:description" content="This book provides an overview of population genomics, discusses relevant statistics, and includes tested tutorials and workflows that can be applied to population genomic datasets." />
+  
+
+<meta name="author" content="Keaka Farleigh" />
+
+
+<meta name="date" content="2024-03-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="rna-seq-mapping-pipeline.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y75DCMT5TZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y75DCMT5TZ');
+</script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Researcher's Guide to Population Genomic Analysis</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#about-the-author"><i class="fa fa-check"></i>About the Author</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#motivation"><i class="fa fa-check"></i>Motivation</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#citing-this-book"><i class="fa fa-check"></i>Citing this book</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#citation"><i class="fa fa-check"></i>Citation</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>I Techniques</b></span></li>
+<li class="chapter" data-level="1" data-path="double-digest-restriction-site-associated-dna-sequencing-ddradseq.html"><a href="double-digest-restriction-site-associated-dna-sequencing-ddradseq.html"><i class="fa fa-check"></i><b>1</b> Double digest restriction site associated DNA sequencing (ddRADseq)</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="double-digest-restriction-site-associated-dna-sequencing-ddradseq.html"><a href="double-digest-restriction-site-associated-dna-sequencing-ddradseq.html#purpose"><i class="fa fa-check"></i><b>1.1</b> Purpose</a></li>
+<li class="chapter" data-level="1.2" data-path="double-digest-restriction-site-associated-dna-sequencing-ddradseq.html"><a href="double-digest-restriction-site-associated-dna-sequencing-ddradseq.html#overview"><i class="fa fa-check"></i><b>1.2</b> Overview</a></li>
+<li class="chapter" data-level="1.3" data-path="double-digest-restriction-site-associated-dna-sequencing-ddradseq.html"><a href="double-digest-restriction-site-associated-dna-sequencing-ddradseq.html#references"><i class="fa fa-check"></i><b>1.3</b> References</a></li>
+</ul></li>
+<li class="part"><span><b>II Tutorials</b></span></li>
+<li class="chapter" data-level="2" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html"><i class="fa fa-check"></i><b>2</b> RNA-seq mapping pipeline</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#purpose-1"><i class="fa fa-check"></i><b>2.1</b> Purpose</a></li>
+<li class="chapter" data-level="2.2" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#files-required-for-this-pipeline"><i class="fa fa-check"></i><b>2.2</b> Files required for this pipeline</a></li>
+<li class="chapter" data-level="2.3" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#programs-used-in-this-pipeline"><i class="fa fa-check"></i><b>2.3</b> Programs used in this pipeline</a></li>
+<li class="chapter" data-level="2.4" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#notes-on-this-pipeline"><i class="fa fa-check"></i><b>2.4</b> Notes on this pipeline</a></li>
+<li class="chapter" data-level="2.5" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#overview-1"><i class="fa fa-check"></i><b>2.5</b> Overview</a></li>
+<li class="chapter" data-level="2.6" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#quality-control-with-fastqc-and-trimmomatic"><i class="fa fa-check"></i><b>2.6</b> Quality control with FastQC and Trimmomatic</a></li>
+<li class="chapter" data-level="2.7" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#mapping-with-star"><i class="fa fa-check"></i><b>2.7</b> Mapping with STAR</a></li>
+<li class="chapter" data-level="2.8" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#variant-calling"><i class="fa fa-check"></i><b>2.8</b> Variant calling</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#variant-calling-steps"><i class="fa fa-check"></i><b>2.8.1</b> Variant calling steps</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#references-1"><i class="fa fa-check"></i><b>2.9</b> References</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The Researcher’s Guide to Population Genomic</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="double-digest-restriction-site-associated-dna-sequencing-ddradseq" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">1</span> Double digest restriction site associated DNA sequencing (ddRADseq)<a href="double-digest-restriction-site-associated-dna-sequencing-ddradseq.html#double-digest-restriction-site-associated-dna-sequencing-ddradseq" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><em>Updated by Keaka Farleigh on March 3rd, 2024</em></p>
+<p><em>Reviewed by: Joe Zianno</em></p>
+<div id="purpose" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Purpose<a href="double-digest-restriction-site-associated-dna-sequencing-ddradseq.html#purpose" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This chapter provides a basic overview of ddRADseq accompanied by visualizations to help researchers understand what is happening at each step in the workflow. If you would like detailed information on the technique, please see Peterson et al. (2012; the original paper).</p>
+</div>
+<div id="overview" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Overview<a href="double-digest-restriction-site-associated-dna-sequencing-ddradseq.html#overview" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>ddRADseq is part of the restriction site-associated DNA sequencing family, which are reduced representation sequencing approaches that allow us to generate genome-wide sequence data at a lower cost than whole genome sequencing (Andrews et al., 2016). Generally, these techniques involve DNA digestion with restriction enzyme(s) and attaching adapters to assign DNA fragments to individuals; please see Andrews et al. (2016) for more details.</p>
+<p>ddRADseq involves four or five major steps (depending on if you have extracted DNA or not). First, we extract DNA from tissues, then we digest the DNA with two restriction enzymes (hence the name), followed by adapter ligation, before size-selection, before polymerase chain reaction (PCR), quality-checks, and sequencing (Figure 1). We will walk through each step below.</p>
+<p><img src="imgs/ddRADseq_Lab_wkflw.png" width="2398" style="display: block; margin: auto;" /></p>
+<p><strong>Figure 1.</strong> A simplified double digest restriction site-associated DNA sequencing (ddRADseq) workflow. Black rectangles represent DNA, and colored rectangles represent individual-specific or pool-specific adapters.</p>
+</div>
+<div id="references" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> References<a href="double-digest-restriction-site-associated-dna-sequencing-ddradseq.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p>Andrews, K. R., Good, J. M., Miller, M. R., Luikart, G., &amp; Hohenlohe, P. A. (2016). Harnessing the power of RADseq for ecological and evolutionary genomics. Nature Reviews Genetics, 17(2), 81-92.</p></li>
+<li><p>Peterson, B. K., Weber, J. N., Kay, E. H., Fisher, H. S., &amp; Hoekstra, H. E. (2012). Double digest RADseq: an inexpensive method for de novo SNP discovery and genotyping in model and non-model species. PloS one, 7(5), e37135.</p></li>
+</ul>
+
+</div>
+</div>
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="rna-seq-mapping-pipeline.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "day",
+"family": "sans",
+"size": 2,
+"color": "black",
+"download": ["pdf", "epub"]
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

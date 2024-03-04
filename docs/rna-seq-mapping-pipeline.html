@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1 RNA-seq mapping pipeline | The Researcher’s Guide to Population Genomic</title>
+  <title>2 RNA-seq mapping pipeline | The Researcher’s Guide to Population Genomic</title>
   <meta name="description" content="This book provides an overview of population genomics, discusses relevant statistics, and includes tested tutorials and workflows that can be applied to population genomic datasets." />
   <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1 RNA-seq mapping pipeline | The Researcher’s Guide to Population Genomic" />
+  <meta property="og:title" content="2 RNA-seq mapping pipeline | The Researcher’s Guide to Population Genomic" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This book provides an overview of population genomics, discusses relevant statistics, and includes tested tutorials and workflows that can be applied to population genomic datasets." />
   <meta name="github-repo" content="kfarleigh/RGTPG" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1 RNA-seq mapping pipeline | The Researcher’s Guide to Population Genomic" />
+  <meta name="twitter:title" content="2 RNA-seq mapping pipeline | The Researcher’s Guide to Population Genomic" />
   
   <meta name="twitter:description" content="This book provides an overview of population genomics, discusses relevant statistics, and includes tested tutorials and workflows that can be applied to population genomic datasets." />
   
@@ -23,14 +23,14 @@
 <meta name="author" content="Keaka Farleigh" />
 
 
-<meta name="date" content="2024-02-15" />
+<meta name="date" content="2024-03-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
+<link rel="prev" href="double-digest-restriction-site-associated-dna-sequencing-ddradseq.html"/>
 
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -52,6 +52,15 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y75DCMT5TZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y75DCMT5TZ');
+</script>
 
 
 
@@ -86,21 +95,28 @@
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#citation"><i class="fa fa-check"></i>Citation</a></li>
 </ul></li>
 </ul></li>
-<li class="part"><span><b>I Tutorials</b></span></li>
-<li class="chapter" data-level="1" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html"><i class="fa fa-check"></i><b>1</b> RNA-seq mapping pipeline</a>
+<li class="part"><span><b>I Techniques</b></span></li>
+<li class="chapter" data-level="1" data-path="double-digest-restriction-site-associated-dna-sequencing-ddradseq.html"><a href="double-digest-restriction-site-associated-dna-sequencing-ddradseq.html"><i class="fa fa-check"></i><b>1</b> Double digest restriction site associated DNA sequencing (ddRADseq)</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#purpose"><i class="fa fa-check"></i><b>1.1</b> Purpose</a></li>
-<li class="chapter" data-level="1.2" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#files-required-for-this-pipeline"><i class="fa fa-check"></i><b>1.2</b> Files required for this pipeline</a></li>
-<li class="chapter" data-level="1.3" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#programs-used-in-this-pipeline"><i class="fa fa-check"></i><b>1.3</b> Programs used in this pipeline</a></li>
-<li class="chapter" data-level="1.4" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#notes-on-this-pipeline"><i class="fa fa-check"></i><b>1.4</b> Notes on this pipeline</a></li>
-<li class="chapter" data-level="1.5" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#overview"><i class="fa fa-check"></i><b>1.5</b> Overview</a></li>
-<li class="chapter" data-level="1.6" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#quality-control-with-fastqc-and-trimmomatic"><i class="fa fa-check"></i><b>1.6</b> Quality control with FastQC and Trimmomatic</a></li>
-<li class="chapter" data-level="1.7" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#mapping-with-star"><i class="fa fa-check"></i><b>1.7</b> Mapping with STAR</a></li>
-<li class="chapter" data-level="1.8" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#variant-calling"><i class="fa fa-check"></i><b>1.8</b> Variant calling</a>
-<ul>
-<li class="chapter" data-level="1.8.1" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#variant-calling-steps"><i class="fa fa-check"></i><b>1.8.1</b> Variant calling steps</a></li>
+<li class="chapter" data-level="1.1" data-path="double-digest-restriction-site-associated-dna-sequencing-ddradseq.html"><a href="double-digest-restriction-site-associated-dna-sequencing-ddradseq.html#purpose"><i class="fa fa-check"></i><b>1.1</b> Purpose</a></li>
+<li class="chapter" data-level="1.2" data-path="double-digest-restriction-site-associated-dna-sequencing-ddradseq.html"><a href="double-digest-restriction-site-associated-dna-sequencing-ddradseq.html#overview"><i class="fa fa-check"></i><b>1.2</b> Overview</a></li>
+<li class="chapter" data-level="1.3" data-path="double-digest-restriction-site-associated-dna-sequencing-ddradseq.html"><a href="double-digest-restriction-site-associated-dna-sequencing-ddradseq.html#references"><i class="fa fa-check"></i><b>1.3</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="1.9" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#references"><i class="fa fa-check"></i><b>1.9</b> References</a></li>
+<li class="part"><span><b>II Tutorials</b></span></li>
+<li class="chapter" data-level="2" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html"><i class="fa fa-check"></i><b>2</b> RNA-seq mapping pipeline</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#purpose-1"><i class="fa fa-check"></i><b>2.1</b> Purpose</a></li>
+<li class="chapter" data-level="2.2" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#files-required-for-this-pipeline"><i class="fa fa-check"></i><b>2.2</b> Files required for this pipeline</a></li>
+<li class="chapter" data-level="2.3" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#programs-used-in-this-pipeline"><i class="fa fa-check"></i><b>2.3</b> Programs used in this pipeline</a></li>
+<li class="chapter" data-level="2.4" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#notes-on-this-pipeline"><i class="fa fa-check"></i><b>2.4</b> Notes on this pipeline</a></li>
+<li class="chapter" data-level="2.5" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#overview-1"><i class="fa fa-check"></i><b>2.5</b> Overview</a></li>
+<li class="chapter" data-level="2.6" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#quality-control-with-fastqc-and-trimmomatic"><i class="fa fa-check"></i><b>2.6</b> Quality control with FastQC and Trimmomatic</a></li>
+<li class="chapter" data-level="2.7" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#mapping-with-star"><i class="fa fa-check"></i><b>2.7</b> Mapping with STAR</a></li>
+<li class="chapter" data-level="2.8" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#variant-calling"><i class="fa fa-check"></i><b>2.8</b> Variant calling</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#variant-calling-steps"><i class="fa fa-check"></i><b>2.8.1</b> Variant calling steps</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="rna-seq-mapping-pipeline.html"><a href="rna-seq-mapping-pipeline.html#references-1"><i class="fa fa-check"></i><b>2.9</b> References</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -122,23 +138,23 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="rna-seq-mapping-pipeline" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">1</span> RNA-seq mapping pipeline<a href="rna-seq-mapping-pipeline.html#rna-seq-mapping-pipeline" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="rna-seq-mapping-pipeline" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">2</span> RNA-seq mapping pipeline<a href="rna-seq-mapping-pipeline.html#rna-seq-mapping-pipeline" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p><em>Updated by Keaka Farleigh on February 15th, 2024</em></p>
-<div id="purpose" class="section level2 hasAnchor" number="1.1">
-<h2><span class="header-section-number">1.1</span> Purpose<a href="rna-seq-mapping-pipeline.html#purpose" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="purpose-1" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Purpose<a href="rna-seq-mapping-pipeline.html#purpose-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This tutorial contains code to perform quality control, mapping, and variant calling of demultiplexed bulk RNA-seq samples. The dataset used in this tutorial is unpublished, but I will link to the associated publication once the manuscript is published.</p>
 <p>I developed this pipeline for paired-end (PE) sequencing data and tested it with single-end (SE) sequencing data. I note how and where to change commands for SE data.</p>
 </div>
-<div id="files-required-for-this-pipeline" class="section level2 hasAnchor" number="1.2">
-<h2><span class="header-section-number">1.2</span> Files required for this pipeline<a href="rna-seq-mapping-pipeline.html#files-required-for-this-pipeline" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="files-required-for-this-pipeline" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Files required for this pipeline<a href="rna-seq-mapping-pipeline.html#files-required-for-this-pipeline" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li>Demultiplexed RNA-seq data</li>
 <li>Genomic fasta file</li>
 </ol>
 </div>
-<div id="programs-used-in-this-pipeline" class="section level2 hasAnchor" number="1.3">
-<h2><span class="header-section-number">1.3</span> Programs used in this pipeline<a href="rna-seq-mapping-pipeline.html#programs-used-in-this-pipeline" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="programs-used-in-this-pipeline" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Programs used in this pipeline<a href="rna-seq-mapping-pipeline.html#programs-used-in-this-pipeline" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><a href="https://samtools.github.io/bcftools/bcftools.html">bcftools</a> (Danecek et al., 2021)</li>
 <li><a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/">FastQC</a> (Andrews, 2010)</li>
@@ -148,21 +164,21 @@
 <li><a href="https://gatk.broadinstitute.org/hc/en-us">GATK</a> (McKenna et al., 2010; but see <a href="https://gatk.broadinstitute.org/hc/en-us/articles/360035530852-How-should-I-cite-GATK-in-my-own-publications-">this website</a> for additional papers published about GATK)</li>
 </ul>
 </div>
-<div id="notes-on-this-pipeline" class="section level2 hasAnchor" number="1.4">
-<h2><span class="header-section-number">1.4</span> Notes on this pipeline<a href="rna-seq-mapping-pipeline.html#notes-on-this-pipeline" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="notes-on-this-pipeline" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Notes on this pipeline<a href="rna-seq-mapping-pipeline.html#notes-on-this-pipeline" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This pipeline has been tested on Miami University’s <a href="https://miamioh.edu/research/research-computing-support/services/hpc-cluster/index.html">RedHawk High Performace Computing cluster</a> (HPC) and should work elsewhere, but I cannot guarantee it.</p>
 <p>Additionally, I use batch jobs but have written the pipeline to be interactive (using sh scripts), so reserve compute resources when running this pipeline. Please reach out if you have any questions or need help running the pipeline or working in an HPC environment.</p>
 <p>Finally, I wrote the for loops in this pipeline to work with fastq, fq.gz, or bam files. In essence, the loops use the file extensions or specific character strings to create a list of files to perform some action on. In most loops, the action is to echo a command into a batch or sh file so that we can save time and do not have to do it ourselves. You can easily adjust these loops by changing the sed command; please <a href="https://kfarleigh.github.io/contact/">reach out</a> if you have any questions about modifying the loop.</p>
 <p>Let’s get started and analyze some data!</p>
 </div>
-<div id="overview" class="section level2 hasAnchor" number="1.5">
-<h2><span class="header-section-number">1.5</span> Overview<a href="rna-seq-mapping-pipeline.html#overview" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="overview-1" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Overview<a href="rna-seq-mapping-pipeline.html#overview-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Analyzing bulk RNA-seq data is complex and feels like a marathon because of the many steps (~14 if you do variant calling). We can lessen our burden by using programs such as STAR (Dobin et al., 2013) and GATK (McKenna et al., 2010). Depending on what analysis you want to do, you may only have to do some of the steps (see Figure 1).</p>
 <p><img src="imgs/RNAseq_Analysis_wkflw.png" width="750px" height="1000px" style="display: block; margin: auto;" /></p>
 <p><strong>Figure 1.</strong> RNA-seq analysis workflow. Rounded rectangles indicate steps, and boxes containing multiple rectangles represent programs such as STAR (Dobin et al., 2013) or GATK (McKenna et al., 2010). Pink rectangles indicate analyses that can be performed at specific steps in the workflow.</p>
 </div>
-<div id="quality-control-with-fastqc-and-trimmomatic" class="section level2 hasAnchor" number="1.6">
-<h2><span class="header-section-number">1.6</span> Quality control with FastQC and Trimmomatic<a href="rna-seq-mapping-pipeline.html#quality-control-with-fastqc-and-trimmomatic" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="quality-control-with-fastqc-and-trimmomatic" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> Quality control with FastQC and Trimmomatic<a href="rna-seq-mapping-pipeline.html#quality-control-with-fastqc-and-trimmomatic" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>As with any sequencing data, the first thing that we do is quality control. We employ a two-step quality control procedure. First, we use fastqc to analyze reads and manually inspect the output. Second, we use trimmomatic to perform any necessary read clipping, read filtering, or adapter removal.</p>
 <p>Assuming that you are in your working directory with all of the demultiplexed files.</p>
 <pre><code># Load fastqc if you need
@@ -202,8 +218,8 @@ for i in `ls -1 *_1.fq.gz | sed &#39;s/\_1.fq.gz//&#39;`; do echo java -jar /hom
 sh trimmomatic.sh</code></pre>
 <p>Now that everything is trimmed we can move onto mapping with STAR!</p>
 </div>
-<div id="mapping-with-star" class="section level2 hasAnchor" number="1.7">
-<h2><span class="header-section-number">1.7</span> Mapping with STAR<a href="rna-seq-mapping-pipeline.html#mapping-with-star" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="mapping-with-star" class="section level2 hasAnchor" number="2.7">
+<h2><span class="header-section-number">2.7</span> Mapping with STAR<a href="rna-seq-mapping-pipeline.html#mapping-with-star" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Mapping the RNA-seq data with STAR is relatively straightforward (it only requires a couple of commands). Still, I encourage you to familiarize yourself with the program by checking out the <a href="https://physiology.med.cornell.edu/faculty/skrabanek/lab/angsd/lecture_notes/STARmanual.pdf">manual</a>. The options I use here are specific for my project. While they may also be relevant to your project, it is best to understand your chosen settings.</p>
 <p>First, we will use our genomic fasta to generate some files used by STAR during the mapping process. We then use a for loop similar to the trimmomatic step where we first isolate a prefix and then use that prefix to name input and output files to map and generate read counts for each individual.</p>
 <p><strong>Note</strong>. GFF read is a part of <a href="https://github.com/cole-trapnell-lab/cufflinks/tree/master">cufflinks</a>. Please see their GitHub for relevant citations.</p>
@@ -266,12 +282,12 @@ echo module load star-2.7.5a &gt;&gt; Platy_IndMapping_2ndPass.sh
   for i in `ls -1 *.fastq.gz | sed &#39;s/\.fastq.gz//&#39; `; do echo STAR --runThreadN 2 --genomeDir /shared/jezkovt_farleik_shared/Platy_RNAseq/SecondPass/GenomeSecondPass/  --readFilesIn ${i}.fastq.gz --readFilesCommand zcat --limitOutSJcollapsed 2000000 --outFileNamePrefix ./${i}_2ndPass --outSAMtype BAM SortedByCoordinate --limitBAMsortRAM 29000000000 --quantMode GeneCounts &gt;&gt; Anolis_IndMapping_2ndPass.sh; done</code></pre>
 <p>2nd pass mapping is done! We can move onto variant calling with the GATK suite of tools. You can also stop here for differential gene expression, alternative splicing, and more analyses (see Figure 1).</p>
 </div>
-<div id="variant-calling" class="section level2 hasAnchor" number="1.8">
-<h2><span class="header-section-number">1.8</span> Variant calling<a href="rna-seq-mapping-pipeline.html#variant-calling" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="variant-calling" class="section level2 hasAnchor" number="2.8">
+<h2><span class="header-section-number">2.8</span> Variant calling<a href="rna-seq-mapping-pipeline.html#variant-calling" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Variant calling is more complicated and time-consuming than mapping, but it is doable, especially since we will use loops to do most of our work!</p>
 <p><strong>Note</strong>. We do not have any differences in commands for PE and SE data from here forward.</p>
-<div id="variant-calling-steps" class="section level3 hasAnchor" number="1.8.1">
-<h3><span class="header-section-number">1.8.1</span> Variant calling steps<a href="rna-seq-mapping-pipeline.html#variant-calling-steps" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="variant-calling-steps" class="section level3 hasAnchor" number="2.8.1">
+<h3><span class="header-section-number">2.8.1</span> Variant calling steps<a href="rna-seq-mapping-pipeline.html#variant-calling-steps" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
 <li>Add read group tags</li>
 <li>Duplicate identification</li>
@@ -416,8 +432,8 @@ vcftools --gzvcf Platy_SNPs_only_filtered.vcf.gz --minDP 5 --max-missing 0.75 --
 <p>Congrats, you did it! You can use this vcf for various analyses, including variant effect prediction and sliding window statistics (see Figure 1). Please reach out if you find any bugs in the code or have any questions or suggestions on chapter or book additions.</p>
 </div>
 </div>
-<div id="references" class="section level2 hasAnchor" number="1.9">
-<h2><span class="header-section-number">1.9</span> References<a href="rna-seq-mapping-pipeline.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="references-1" class="section level2 hasAnchor" number="2.9">
+<h2><span class="header-section-number">2.9</span> References<a href="rna-seq-mapping-pipeline.html#references-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Andrews, S. (2010). FastQC: A Quality Control Tool for High Throughput Sequence Data [Online]. Available online at: <a href="http://www.bioinformatics.babraham.ac.uk/projects/fastqc/" class="uri">http://www.bioinformatics.babraham.ac.uk/projects/fastqc/</a></li>
 <li>Bolger, A. M., Lohse, M., &amp; Usadel, B. (2014). Trimmomatic: a flexible trimmer for Illumina sequence data. Bioinformatics, 30(15), 2114-2120.</li>
@@ -433,7 +449,7 @@ vcftools --gzvcf Platy_SNPs_only_filtered.vcf.gz --minDP 5 --max-missing 0.75 --
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="double-digest-restriction-site-associated-dna-sequencing-ddradseq.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>

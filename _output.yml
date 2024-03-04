@@ -1,4 +1,6 @@
 bookdown::gitbook:
+  includes:
+    in_header: [google_analytics.html]
   css: style.css
   config:
     toc:
@@ -16,5 +18,3 @@ bookdown::gitbook:
       family: sans
       color: "black"
       download: ["pdf", "epub"]
-    
-
