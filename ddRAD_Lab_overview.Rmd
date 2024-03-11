@@ -20,7 +20,7 @@ ddRADseq involves four or five major steps (depending on if you have extracted D
 knitr::include_graphics("./imgs/ddRADseq_Lab_wkflw.png")
 ```
 
-**Figure 1.** A simplified double digest restriction site-associated DNA sequencing (ddRADseq) workflow. Black rectangles represent DNA, and colored rectangles represent individual-specific or pool-specific adapters. 
+**Figure 1.** A simplified double digest restriction site-associated DNA sequencing (ddRADseq) workflow. Black rectangles represent DNA, and colored rectangles represent individual-specific or pool-specific adapters. ***Please note that this figure is a _simplified_ version of ddRADseq and that the process is more complex and involves more than just adding individual-specific and pool-specific adapters (see [Liu et al., 2017](https://peerj.com/articles/3837/) for details)***. 
 
 ### Extraction
 
@@ -89,6 +89,8 @@ Please reach out if I can help in any way or if you have questions or any commen
   - Andrews, K. R., Good, J. M., Miller, M. R., Luikart, G., & Hohenlohe, P. A. (2016). Harnessing the power of RADseq for              ecological and evolutionary genomics. Nature Reviews Genetics, 17(2), 81-92.
 
   - Peterson, B. K., Weber, J. N., Kay, E. H., Fisher, H. S., & Hoekstra, H. E. (2012). Double digest RADseq: an inexpensive            method for de novo SNP discovery and genotyping in model and non-model species. PloS one, 7(5), e37135.
+  
+  - Liu, M. Y., Worden, P., Monahan, L. G., DeMaere, M. Z., Burke, C. M., Djordjevic, S. P., ... & Darling, A. E. (2017).               Evaluation of ddRADseq for reduced representation metagenome sequencing. PeerJ, 5, e3837.
 
 
 
