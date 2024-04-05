@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2 RNA-seq mapping pipeline | The Researcher’s Guide to Population Genomic</title>
   <meta name="description" content="This book provides an overview of population genomics, discusses relevant statistics, and includes tested tutorials and workflows that can be applied to population genomic datasets." />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2 RNA-seq mapping pipeline | The Researcher’s Guide to Population Genomic" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Keaka Farleigh" />
 
 
-<meta name="date" content="2024-03-11" />
+<meta name="date" content="2024-04-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -356,7 +356,7 @@ sh Platy_CigarSplit.sh
 
 # Change into Cigar split directory
 cd ./Cigar_Split</code></pre>
-<p>5. Preliminary variant calling. We perform this step because our organism is a non-model organism, and we do not know which sites are polymorphic. We need this “known sites” file to perform base recalibration. You can skip this step if you already have a “known sites” file. The known sites file is essential because the base recalibration algorithm treats mismatches as errors, but we expect variation at polymorphic sites, so we use this file to skip over these sites.</p>
+<p>5. Preliminary variant calling. We perform this step because our organism is a non-model organism, and we do not know which sites are polymorphic. We need this “known sites” file to perform base recalibration. You can skip this step if you already have a “known sites” file. The known sites file is essential because the base recalibration algorithm treats mismatches as errors, but we expect variation at polymorphic sites, so we use this file to skip over these sites. <em>You need a “known sites” file regardless of whether you are working with a model or non-model organism, so you should run preliminary variant calling if you do not have a “known sites” file. </em></p>
 <pre><code># Create directory
 mkdir ./Prelim_VCFcalling
 
@@ -381,7 +381,7 @@ gatk CombineGVCFs -R /shared/jezkovt_farleik_shared/Platy_RNAseq/SecondPass/Add_
 echo module load gatk-4.1.2.0 &gt; Platy_BQSR.sh
 
 # For loop for multiple files
-for i in `ls -1 *Cigar*.bam | sed &#39;s/\_CigarSplit.bam//&#39; `; do echo gatkBaseRecalibrator -R ../Platy.fna -I ${i}_CigarSplit.bam -–known-sites ./Prelim_VCFcalling/Prelim_Platy.g.vcf.gz -O ${i}_recalibration.table &gt;&gt; Platy_BQSR.sh; done
+for i in `ls -1 *Cigar*.bam | sed &#39;s/\_CigarSplit.bam//&#39; `; do echo gatk BaseRecalibrator -R ../Platy.fna -I ${i}_CigarSplit.bam -–known-sites ./Prelim_VCFcalling/Prelim_Platy.g.vcf.gz -O ${i}_recalibration.table &gt;&gt; Platy_BQSR.sh; done
 
 sh Platy_BQSR.sh
 
@@ -405,7 +405,7 @@ for i in `ls *.g.vcf.g.gz | sed &#39;s/\.g.vcf.g.gz//&#39;`; do echo java -jar /
 sh Platy_SampleNaming.sh
 
 # Create indexes for each sample named file
-for file in *_sampnamed.g.vcf.g.gz; do gatk IndexFeatureFile -F ${file} -O ${file}.tbi</code></pre>
+for file in *_sampnamed.g.vcf.g.gz; do gatk IndexFeatureFile -F ${file} -O ${file}.tbi; done</code></pre>
 <p>8. Variant filtering. Finally, we get to the fun part: variant filtering. All of the data pre-processing steps have led to this, and we only have a couple more to go before we have a file ready for analysis. See this <a href="https://gatk.broadinstitute.org/hc/en-us/articles/360037225632-HaplotypeCaller">article</a> for a detailed discussion of how we call SNPs with GATK. I prefer to use bcftools to perform variant filtering but you can also use GATK.</p>
 <pre><code>### Combine into a multi-sample vcf 
 # List all files to combine

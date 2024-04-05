@@ -266,7 +266,7 @@ sh Platy_CigarSplit.sh
 cd ./Cigar_Split
 ```
 
-5\. Preliminary variant calling. We perform this step because our organism is a non-model organism, and we do not know which sites are polymorphic. We need this "known sites" file to perform base recalibration. You can skip this step if you already have a "known sites" file. The known sites file is essential because the base recalibration algorithm treats mismatches as errors, but we expect variation at polymorphic sites, so we use this file to skip over these sites.
+5\. Preliminary variant calling. We perform this step because our organism is a non-model organism, and we do not know which sites are polymorphic. We need this "known sites" file to perform base recalibration. You can skip this step if you already have a "known sites" file. The known sites file is essential because the base recalibration algorithm treats mismatches as errors, but we expect variation at polymorphic sites, so we use this file to skip over these sites. *You need a "known sites" file regardless of whether you are working with a model or non-model organism, so you should run preliminary variant calling if you do not have a "known sites" file. *
 
 ```
 # Create directory
@@ -297,7 +297,7 @@ gatk CombineGVCFs -R /shared/jezkovt_farleik_shared/Platy_RNAseq/SecondPass/Add_
 echo module load gatk-4.1.2.0 > Platy_BQSR.sh
 
 # For loop for multiple files
-for i in `ls -1 *Cigar*.bam | sed 's/\_CigarSplit.bam//' `; do echo gatkBaseRecalibrator -R ../Platy.fna -I ${i}_CigarSplit.bam -–known-sites ./Prelim_VCFcalling/Prelim_Platy.g.vcf.gz -O ${i}_recalibration.table >> Platy_BQSR.sh; done
+for i in `ls -1 *Cigar*.bam | sed 's/\_CigarSplit.bam//' `; do echo gatk BaseRecalibrator -R ../Platy.fna -I ${i}_CigarSplit.bam -–known-sites ./Prelim_VCFcalling/Prelim_Platy.g.vcf.gz -O ${i}_recalibration.table >> Platy_BQSR.sh; done
 
 sh Platy_BQSR.sh
 
@@ -325,7 +325,7 @@ for i in `ls *.g.vcf.g.gz | sed 's/\.g.vcf.g.gz//'`; do echo java -jar /home/far
 sh Platy_SampleNaming.sh
 
 # Create indexes for each sample named file
-for file in *_sampnamed.g.vcf.g.gz; do gatk IndexFeatureFile -F ${file} -O ${file}.tbi
+for file in *_sampnamed.g.vcf.g.gz; do gatk IndexFeatureFile -F ${file} -O ${file}.tbi; done
 ```
 
 8\. Variant filtering. Finally, we get to the fun part: variant filtering. All of the data pre-processing steps have led to this, and we only have a couple more to go before we have a file ready for analysis. See this [article](https://gatk.broadinstitute.org/hc/en-us/articles/360037225632-HaplotypeCaller) for a detailed discussion of how we call SNPs with GATK. I prefer to use bcftools to perform variant filtering but you can also use GATK. 
