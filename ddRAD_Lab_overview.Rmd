@@ -1,7 +1,9 @@
 # (PART) Techniques {-}
 # Double digest restriction site associated DNA sequencing (ddRADseq)
 
-*Updated by Keaka Farleigh on March 3rd, 2024*
+*Written by Keaka Farleigh on March 3rd, 2024*
+
+*Last updated by Keaka Farleigh on August 1st, 2025*
 
 *Reviewed by: Joe Zianno*
 

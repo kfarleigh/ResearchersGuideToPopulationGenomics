@@ -1,0 +1,24 @@
+# Data wrangling with R
+
+*Written by Keaka Farleigh on August 5th, 2025*
+
+*Last updated by Keaka Farleigh on August 5th, 2025*
+
+## Purpose
+
+
+## Files required for this pipeline
+
+## Programs used in this pipeline
+
+ - [R](https://www.r-project.org/) (R core team, 2025)
+ - [Rstudio](https://posit.co/download/rstudio-desktop/)
+
+
+## Notes on this tutorial
+
+
+## Overview
+
+
+## References

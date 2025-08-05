@@ -1,7 +1,9 @@
 # (PART) Tutorials {-}
 # RNA-seq mapping pipeline
 
-*Updated by Keaka Farleigh on April 16th, 2024*
+*Written by Keaka Farleigh on April 16th, 2024*
+
+*Last updated by Keaka Farleigh on April 21st, 2025*
 
 *Reviewed by: Benjamin A. Akande*
 
