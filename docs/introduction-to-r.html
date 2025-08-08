@@ -23,7 +23,7 @@
 <meta name="author" content="Keaka Farleigh" />
 
 
-<meta name="date" content="2025-08-05" />
+<meta name="date" content="2025-08-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -134,7 +134,10 @@
 <li class="chapter" data-level="3.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#programs-used-in-this-pipeline-1"><i class="fa fa-check"></i><b>3.3</b> Programs used in this pipeline</a></li>
 <li class="chapter" data-level="3.4" data-path="introduction-to-r.html"><a href="introduction-to-r.html#notes-on-this-tutorial"><i class="fa fa-check"></i><b>3.4</b> Notes on this tutorial</a></li>
 <li class="chapter" data-level="3.5" data-path="introduction-to-r.html"><a href="introduction-to-r.html#overview-2"><i class="fa fa-check"></i><b>3.5</b> Overview</a></li>
-<li class="chapter" data-level="3.6" data-path="introduction-to-r.html"><a href="introduction-to-r.html#references-2"><i class="fa fa-check"></i><b>3.6</b> References</a></li>
+<li class="chapter" data-level="3.6" data-path="introduction-to-r.html"><a href="introduction-to-r.html#what-is-r"><i class="fa fa-check"></i><b>3.6</b> What is R?</a></li>
+<li class="chapter" data-level="3.7" data-path="introduction-to-r.html"><a href="introduction-to-r.html#what-is-rstudio"><i class="fa fa-check"></i><b>3.7</b> What is Rstudio?</a></li>
+<li class="chapter" data-level="3.8" data-path="introduction-to-r.html"><a href="introduction-to-r.html#advantages-and-disadvantges-of-r"><i class="fa fa-check"></i><b>3.8</b> Advantages and disadvantges of R</a></li>
+<li class="chapter" data-level="3.9" data-path="introduction-to-r.html"><a href="introduction-to-r.html#references-2"><i class="fa fa-check"></i><b>3.9</b> References</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="data-wrangling-with-r.html"><a href="data-wrangling-with-r.html"><i class="fa fa-check"></i><b>4</b> Data wrangling with R</a>
 <ul>
@@ -176,13 +179,15 @@
             <section class="normal" id="section-">
 <div id="introduction-to-r" class="section level1 hasAnchor" number="3">
 <h1><span class="header-section-number">3</span> Introduction to R<a href="introduction-to-r.html#introduction-to-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p><em>Written by Keaka Farleigh on August 5th, 2025</em></p>
-<p><em>Last updated by Keaka Farleigh on August 5th, 2025</em></p>
+<p><em>Written by Keaka Farleigh on August 5th, 2025: edited from materials originally developed by Dr. Tereza Jezkova and Alfredo Ascanio</em></p>
+<p><em>Last updated by Keaka Farleigh on August 8th, 2025</em></p>
 <div id="purpose-2" class="section level2 hasAnchor" number="3.1">
 <h2><span class="header-section-number">3.1</span> Purpose<a href="introduction-to-r.html#purpose-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This tutorial will provide an introduction to the programming language <a href="https://www.r-project.org/">R</a>. I will assume that you have no experience with R and that you are at the beginning of your journey towards becoming an R expert.</p>
 </div>
 <div id="files-required-for-this-pipeline-1" class="section level2 hasAnchor" number="3.2">
 <h2><span class="header-section-number">3.2</span> Files required for this pipeline<a href="introduction-to-r.html#files-required-for-this-pipeline-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>None!</p>
 </div>
 <div id="programs-used-in-this-pipeline-1" class="section level2 hasAnchor" number="3.3">
 <h2><span class="header-section-number">3.3</span> Programs used in this pipeline<a href="introduction-to-r.html#programs-used-in-this-pipeline-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -193,12 +198,36 @@
 </div>
 <div id="notes-on-this-tutorial" class="section level2 hasAnchor" number="3.4">
 <h2><span class="header-section-number">3.4</span> Notes on this tutorial<a href="introduction-to-r.html#notes-on-this-tutorial" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The materials in this tutorial were originally developed as part of the <a href="https://sites.miamioh.edu/lambda/">Lambda bioinformatic workshop</a> at Miami University by Dr. Tereza Jezkova and Alfredo Ascanio. These materials are now presented at Lambda and the Foundations in R workshop at the University of Virginia.</p>
 </div>
 <div id="overview-2" class="section level2 hasAnchor" number="3.5">
 <h2><span class="header-section-number">3.5</span> Overview<a href="introduction-to-r.html#overview-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We will cover the basics of R and Rstudio before getting some hands-on experience!</p>
 </div>
-<div id="references-2" class="section level2 hasAnchor" number="3.6">
-<h2><span class="header-section-number">3.6</span> References<a href="introduction-to-r.html#references-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="what-is-r" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> What is R?<a href="introduction-to-r.html#what-is-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>R is a free and open-source (public) programming language that was developed in the 1990’s and published in 2000. It is based on the programming language S, which was developed by Bell labs in the 1970’s.</p>
+<p>I list some basic facts about R below:</p>
+<ul>
+<li><p>R can be run on any platform (e.g., Linux, Mac, Windows).</p></li>
+<li><p>R has public repositories that hold software that can be downloaded to perform a variety of analyses. These repositories are maintained by volunteers and require software to be documented and adhere to specific rules to be held in the repository.</p>
+<ul>
+<li>The official repository is the <a href="https://cran.r-project.org/">CRAN</a>.</li>
+<li>The other major repository is <a href="https://www.bioconductor.org/">BioConductor</a>.</li>
+</ul></li>
+<li><p>R software can also be hosted and downloaded from other repositories such as <a href="https://github.com/">GitHub</a>, but these repositories do not require specific documentation or require developers to adhere to specific practices (some still do).</p></li>
+<li><p>There is (and has been) a large community of R users, so there are a lot of helpful resources online if you have questions or run into any errors.</p></li>
+</ul>
+</div>
+<div id="what-is-rstudio" class="section level2 hasAnchor" number="3.7">
+<h2><span class="header-section-number">3.7</span> What is Rstudio?<a href="introduction-to-r.html#what-is-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Rstudio is an integrated development environment (IDE) for R. Rstudio is also free and open-source. So what is an IDE? An IDE is a software application that allows you to run analyses, develop software, debug code, and more all in a single interface. Rstudio is often used to run R, because, well, R was developed in the 1990’s and it looks like it. Rstudio allows us to have a more streamlined interface, see everything that we are working on, actively edit our code, and visualize plots as we go. It is more difficult to do these things in base R.</p>
+</div>
+<div id="advantages-and-disadvantges-of-r" class="section level2 hasAnchor" number="3.8">
+<h2><span class="header-section-number">3.8</span> Advantages and disadvantges of R<a href="introduction-to-r.html#advantages-and-disadvantges-of-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="references-2" class="section level2 hasAnchor" number="3.9">
+<h2><span class="header-section-number">3.9</span> References<a href="introduction-to-r.html#references-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
 </div>
 </div>
@@ -222,45 +251,45 @@
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-  "sharing": {
-    "github": false,
-    "facebook": true,
-    "twitter": true,
-    "linkedin": false,
-    "weibo": false,
-    "instapaper": false,
-    "vk": false,
-    "whatsapp": false,
-    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-  },
-  "fontsettings": {
-    "theme": "day",
-    "family": "sans",
-    "size": 2,
-    "color": "black",
-    "download": ["pdf", "epub"]
-  },
-  "edit": null,
-  "history": {
-    "link": null,
-    "text": null
-  },
-  "view": {
-    "link": null,
-    "text": null
-  },
-  "download": null,
-  "search": {
-    "engine": "fuse",
-    "options": null
-  },
-  "toc": {
-    "collapse": "section",
-    "scroll_highlight": true
-  },
-  "toolbar": {
-    "position": "fixed"
-  }
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "day",
+"family": "sans",
+"size": 2,
+"color": "black",
+"download": ["pdf", "epub"]
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed"
+}
 });
 });
 </script>

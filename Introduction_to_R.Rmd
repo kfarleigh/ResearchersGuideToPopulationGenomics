@@ -28,7 +28,27 @@ We will cover the basics of R and Rstudio before getting some hands-on experienc
 
 ## What is R?
 
+R is a free and open-source (public) programming language that was developed in the 1990's and published in 2000. It is based on the programming language S, which was developed by Bell labs in the 1970's.
+
+I list some basic facts about R below:
+
+- R can be run on any platform (e.g., Linux, Mac, Windows).
+
+- R has public repositories that hold software that can be downloaded to perform a variety of analyses. These repositories are maintained by volunteers and require software to be documented and adhere to specific rules to be held in the repository.
+  - The official repository is the [CRAN](https://cran.r-project.org/).
+  - The other major repository is [BioConductor](https://www.bioconductor.org/).
+  
+- R software can also be hosted and downloaded from other repositories such as [GitHub](https://github.com/), but these repositories do not require specific documentation or require developers to adhere to specific practices (some still do).
+
+- There is (and has been) a large community of R users, so there are a lot of helpful resources online if you have questions or run into any errors. 
+
 ## What is Rstudio?
+
+Rstudio is an integrated development environment (IDE) for R. Rstudio is also free and open-source. So what is an IDE? An IDE is a software application that allows you to run analyses, develop software, debug code, and more all in a single interface. Rstudio is often used to run R, because, well, R was developed in the 1990's and it looks like it. Rstudio allows us to have a more streamlined interface, see everything that we are working on, actively edit our code, and visualize plots as we go. It is more difficult to do these things in base R. 
+
+## Advantages and disadvantges of R
+
+
 
 
 
