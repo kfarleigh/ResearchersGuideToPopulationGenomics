@@ -1,13 +1,16 @@
 # Introduction to R
 
-*Written by Keaka Farleigh on August 5th, 2025*
+*Written by Keaka Farleigh on August 5th, 2025: edited from materials originally developed by Dr. Tereza Jezkova and Alfredo Ascanio*
 
-*Last updated by Keaka Farleigh on August 5th, 2025*
+*Last updated by Keaka Farleigh on August 8th, 2025*
 
 ## Purpose
 
+This tutorial will provide an introduction to the programming language [R](https://www.r-project.org/). I will assume that you have no experience with R and that you are at the beginning of your journey towards becoming an R expert. 
 
 ## Files required for this pipeline
+
+None!
 
 ## Programs used in this pipeline
 
@@ -17,8 +20,17 @@
 
 ## Notes on this tutorial
 
+The materials in this tutorial were originally developed as part of the [Lambda bioinformatic workshop](https://sites.miamioh.edu/lambda/) at Miami University by Dr. Tereza Jezkova and Alfredo Ascanio. These materials are now presented at Lambda and the Foundations in R workshop at the University of Virginia.
 
 ## Overview
+
+We will cover the basics of R and Rstudio before getting some hands-on experience!
+
+## What is R?
+
+## What is Rstudio?
+
+
 
 
 ## References
