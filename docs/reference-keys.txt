@@ -26,9 +26,15 @@ files-required-for-this-pipeline-1
 programs-used-in-this-pipeline-1
 notes-on-this-tutorial
 overview-2
+before-we-begin
 what-is-r
-what-is-rstudio
 advantages-and-disadvantges-of-r
+what-is-rstudio
+the-rstudio-layout
+r-console
+r-script
+environment
+plots-packages-and-help
 references-2
 data-wrangling-with-r
 purpose-3
