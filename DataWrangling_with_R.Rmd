@@ -2,12 +2,15 @@
 
 *Written by Keaka Farleigh on August 5th, 2025*
 
-*Last updated by Keaka Farleigh on August 5th, 2025*
+*Last updated by Keaka Farleigh on August 11th, 2025*
 
 ## Purpose
 
+This tutorial will give you an introduction to data wrangling. You will learn what it is and get some hands-on experience wrangling some data. I will assume that you have minimal experience with R and are a beginner user. Please read through the [Introduction to R chapter](https://kfarleigh.github.io/ResearchersGuideToPopulationGenomics/introduction-to-r.html) or send me an email if you do not feel comfortable with this tutorial. 
 
 ## Files required for this pipeline
+
+None!
 
 ## Programs used in this pipeline
 
@@ -17,8 +20,15 @@
 
 ## Notes on this tutorial
 
+The materials in this tutorial were originally developed as part of the Lambda bioinformatic workshop at Miami University by Dr. Tereza Jezkova and Alfredo Ascanio. These materials are now presented at Lambda and the Foundations in R workshop at the University of Virginia.
 
 ## Overview
+
+We will cover the basics of data wrangling before working through some examples!
+
+## What is data wrangling?
+
+Have you ever opened a file from a collaborator or output from a program but it was not formatted as you expected? What did you do? Did you leave it as is, or did you modify the file so that it conformed to your expectations? If you modified the file, then you have already wrangled some data. Data wrangling is a fancy way of saying data processing, transformation, and cleaning to prepare it for analysis, presentation, or visualization. For many researchers and data scientists, data wrangling consumes a lot of time and is therefore a foundation tool for modern data analysis. 
 
 
 ## References

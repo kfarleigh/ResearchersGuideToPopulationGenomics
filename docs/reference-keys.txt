@@ -36,6 +36,7 @@ files-required-for-this-pipeline-2
 programs-used-in-this-pipeline-2
 notes-on-this-tutorial-1
 overview-3
+what-is-data-wrangling
 references-3
 data-analysis-and-visualization-in-r
 purpose-4

@@ -23,7 +23,7 @@
 <meta name="author" content="Keaka Farleigh" />
 
 
-<meta name="date" content="2025-08-08" />
+<meta name="date" content="2025-08-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -146,7 +146,8 @@
 <li class="chapter" data-level="4.3" data-path="data-wrangling-with-r.html"><a href="data-wrangling-with-r.html#programs-used-in-this-pipeline-2"><i class="fa fa-check"></i><b>4.3</b> Programs used in this pipeline</a></li>
 <li class="chapter" data-level="4.4" data-path="data-wrangling-with-r.html"><a href="data-wrangling-with-r.html#notes-on-this-tutorial-1"><i class="fa fa-check"></i><b>4.4</b> Notes on this tutorial</a></li>
 <li class="chapter" data-level="4.5" data-path="data-wrangling-with-r.html"><a href="data-wrangling-with-r.html#overview-3"><i class="fa fa-check"></i><b>4.5</b> Overview</a></li>
-<li class="chapter" data-level="4.6" data-path="data-wrangling-with-r.html"><a href="data-wrangling-with-r.html#references-3"><i class="fa fa-check"></i><b>4.6</b> References</a></li>
+<li class="chapter" data-level="4.6" data-path="data-wrangling-with-r.html"><a href="data-wrangling-with-r.html#what-is-data-wrangling"><i class="fa fa-check"></i><b>4.6</b> What is data wrangling?</a></li>
+<li class="chapter" data-level="4.7" data-path="data-wrangling-with-r.html"><a href="data-wrangling-with-r.html#references-3"><i class="fa fa-check"></i><b>4.7</b> References</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="data-analysis-and-visualization-in-r.html"><a href="data-analysis-and-visualization-in-r.html"><i class="fa fa-check"></i><b>5</b> Data analysis and visualization in R</a>
 <ul>
@@ -180,12 +181,14 @@
 <div id="data-wrangling-with-r" class="section level1 hasAnchor" number="4">
 <h1><span class="header-section-number">4</span> Data wrangling with R<a href="data-wrangling-with-r.html#data-wrangling-with-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p><em>Written by Keaka Farleigh on August 5th, 2025</em></p>
-<p><em>Last updated by Keaka Farleigh on August 5th, 2025</em></p>
+<p><em>Last updated by Keaka Farleigh on August 11th, 2025</em></p>
 <div id="purpose-3" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> Purpose<a href="data-wrangling-with-r.html#purpose-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This tutorial will give you an introduction to data wrangling. You will learn what it is and get some hands-on experience wrangling some data. I will assume that you have minimal experience with R and are a beginner user. Please read through the <a href="https://kfarleigh.github.io/ResearchersGuideToPopulationGenomics/introduction-to-r.html">Introduction to R chapter</a> or send me an email if you do not feel comfortable with this tutorial.</p>
 </div>
 <div id="files-required-for-this-pipeline-2" class="section level2 hasAnchor" number="4.2">
 <h2><span class="header-section-number">4.2</span> Files required for this pipeline<a href="data-wrangling-with-r.html#files-required-for-this-pipeline-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>None!</p>
 </div>
 <div id="programs-used-in-this-pipeline-2" class="section level2 hasAnchor" number="4.3">
 <h2><span class="header-section-number">4.3</span> Programs used in this pipeline<a href="data-wrangling-with-r.html#programs-used-in-this-pipeline-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -196,12 +199,18 @@
 </div>
 <div id="notes-on-this-tutorial-1" class="section level2 hasAnchor" number="4.4">
 <h2><span class="header-section-number">4.4</span> Notes on this tutorial<a href="data-wrangling-with-r.html#notes-on-this-tutorial-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The materials in this tutorial were originally developed as part of the Lambda bioinformatic workshop at Miami University by Dr. Tereza Jezkova and Alfredo Ascanio. These materials are now presented at Lambda and the Foundations in R workshop at the University of Virginia.</p>
 </div>
 <div id="overview-3" class="section level2 hasAnchor" number="4.5">
 <h2><span class="header-section-number">4.5</span> Overview<a href="data-wrangling-with-r.html#overview-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We will cover the basics of data wrangling before working through some examples!</p>
 </div>
-<div id="references-3" class="section level2 hasAnchor" number="4.6">
-<h2><span class="header-section-number">4.6</span> References<a href="data-wrangling-with-r.html#references-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="what-is-data-wrangling" class="section level2 hasAnchor" number="4.6">
+<h2><span class="header-section-number">4.6</span> What is data wrangling?<a href="data-wrangling-with-r.html#what-is-data-wrangling" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Have you ever opened a file from a collaborator or output from a program but it was not formatted as you expected? What did you do? Did you leave it as is, or did you modify the file so that it conformed to your expectations? If you modified the file, then you have already wrangled some data. Data wrangling is a fancy way of saying data processing, transformation, and cleaning to prepare it for analysis, presentation, or visualization. For many researchers and data scientists, data wrangling consumes a lot of time and is therefore a foundation tool for modern data analysis.</p>
+</div>
+<div id="references-3" class="section level2 hasAnchor" number="4.7">
+<h2><span class="header-section-number">4.7</span> References<a href="data-wrangling-with-r.html#references-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
 </div>
 </div>
