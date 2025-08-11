@@ -209,7 +209,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.10.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#environment"><i class="fa fa-check"></i><b>3.10.3</b> Environment</a></li>
 <li class="chapter" data-level="3.10.4" data-path="introduction-to-r.html"><a href="introduction-to-r.html#plots-packages-and-help"><i class="fa fa-check"></i><b>3.10.4</b> Plots, Packages, and Help</a></li>
 </ul></li>
-<li class="chapter" data-level="3.11" data-path="introduction-to-r.html"><a href="introduction-to-r.html#references-2"><i class="fa fa-check"></i><b>3.11</b> References</a></li>
+<li class="chapter" data-level="3.11" data-path="introduction-to-r.html"><a href="introduction-to-r.html#working-directories"><i class="fa fa-check"></i><b>3.11</b> Working directories</a></li>
+<li class="chapter" data-level="3.12" data-path="introduction-to-r.html"><a href="introduction-to-r.html#software-e.g.-packages"><i class="fa fa-check"></i><b>3.12</b> Software (e.g., Packages)</a></li>
+<li class="chapter" data-level="3.13" data-path="introduction-to-r.html"><a href="introduction-to-r.html#assigning-variables"><i class="fa fa-check"></i><b>3.13</b> Assigning variables</a></li>
+<li class="chapter" data-level="3.14" data-path="introduction-to-r.html"><a href="introduction-to-r.html#types-of-variables-and-data"><i class="fa fa-check"></i><b>3.14</b> Types of variables and data</a>
+<ul>
+<li class="chapter" data-level="3.14.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#vectors"><i class="fa fa-check"></i><b>3.14.1</b> Vectors</a></li>
+<li class="chapter" data-level="3.14.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#data-frames"><i class="fa fa-check"></i><b>3.14.2</b> Data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="3.15" data-path="introduction-to-r.html"><a href="introduction-to-r.html#references-2"><i class="fa fa-check"></i><b>3.15</b> References</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="data-wrangling-with-r.html"><a href="data-wrangling-with-r.html"><i class="fa fa-check"></i><b>4</b> Data wrangling with R</a>
 <ul>
@@ -351,8 +359,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="introduction-to-r.html#cb17-1" tabindex="-1"></a>?mean</span></code></pre></div>
 </div>
 </div>
-<div id="references-2" class="section level2 hasAnchor" number="3.11">
-<h2><span class="header-section-number">3.11</span> References<a href="introduction-to-r.html#references-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="working-directories" class="section level2 hasAnchor" number="3.11">
+<h2><span class="header-section-number">3.11</span> Working directories<a href="introduction-to-r.html#working-directories" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="software-e.g.-packages" class="section level2 hasAnchor" number="3.12">
+<h2><span class="header-section-number">3.12</span> Software (e.g., Packages)<a href="introduction-to-r.html#software-e.g.-packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="assigning-variables" class="section level2 hasAnchor" number="3.13">
+<h2><span class="header-section-number">3.13</span> Assigning variables<a href="introduction-to-r.html#assigning-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="types-of-variables-and-data" class="section level2 hasAnchor" number="3.14">
+<h2><span class="header-section-number">3.14</span> Types of variables and data<a href="introduction-to-r.html#types-of-variables-and-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="vectors" class="section level3 hasAnchor" number="3.14.1">
+<h3><span class="header-section-number">3.14.1</span> Vectors<a href="introduction-to-r.html#vectors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="data-frames" class="section level3 hasAnchor" number="3.14.2">
+<h3><span class="header-section-number">3.14.2</span> Data frames<a href="introduction-to-r.html#data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+</div>
+<div id="references-2" class="section level2 hasAnchor" number="3.15">
+<h2><span class="header-section-number">3.15</span> References<a href="introduction-to-r.html#references-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
 </div>
 </div>
@@ -376,45 +402,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-  "sharing": {
-    "github": false,
-    "facebook": true,
-    "twitter": true,
-    "linkedin": false,
-    "weibo": false,
-    "instapaper": false,
-    "vk": false,
-    "whatsapp": false,
-    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-  },
-  "fontsettings": {
-    "theme": "day",
-    "family": "sans",
-    "size": 2,
-    "color": "black",
-    "download": ["pdf", "epub"]
-  },
-  "edit": null,
-  "history": {
-    "link": null,
-    "text": null
-  },
-  "view": {
-    "link": null,
-    "text": null
-  },
-  "download": null,
-  "search": {
-    "engine": "fuse",
-    "options": null
-  },
-  "toc": {
-    "collapse": "section",
-    "scroll_highlight": true
-  },
-  "toolbar": {
-    "position": "fixed"
-  }
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "day",
+"family": "sans",
+"size": 2,
+"color": "black",
+"download": ["pdf", "epub"]
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed"
+}
 });
 });
 </script>

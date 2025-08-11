@@ -35,6 +35,12 @@ r-console
 r-script
 environment
 plots-packages-and-help
+working-directories
+software-e.g.-packages
+assigning-variables
+types-of-variables-and-data
+vectors
+data-frames
 references-2
 data-wrangling-with-r
 purpose-3

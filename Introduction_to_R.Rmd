@@ -120,10 +120,16 @@ Try the code below to get help with the `mean` function:
 ?mean
 ```
 
+## Working directories
 
+## Software (e.g., Packages)
 
+## Assigning variables
 
+## Types of variables and data
 
+### Vectors
 
+### Data frames
 
 ## References
