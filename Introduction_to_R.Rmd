@@ -122,7 +122,37 @@ Try the code below to get help with the `mean` function:
 
 ## Working directories
 
+Like other coding languages, R works from within folders, or directories. Think of this as the location where you are doing your work. In this "working directory" you have immediate access to the files in that location, but if you need files from another location you need to either change into that other directory or use a file path to direct R to that file.
+
+Sometimes, you will get an error saying that a file does not exist, even though you can see it in a folder. This is often because you are in the wrong working directory.
+
+Here are a few ways to check and set your working directory:
+
+```{r Working directory, echo=TRUE, eval=FALSE}
+# View your working directory
+getwd()
+
+# Set your working directory
+setwd("/path/to/your/folder")
+```
+
+If you are in Rstudio, you can also use your mouse/touch pad to set your working directory. 
+
+Session --> Set Working Directory --> Choose Directory
+
 ## Software (e.g., Packages)
+
+The software that is available with R are called packages. These packages are bundles of code, data, and documentation that are compiled so that other people can use them. You have to install these packages the first time that you use them, and you have to load them in every R session that you wish to use them. 
+
+Here is an example of how to install and load the package [dplyr](https://dplyr.tidyverse.org/):
+
+```{r install packages, echo = TRUE, eval = FALSE}
+# Install dplyr
+install.packages("dplyr")
+
+# Load dplyr
+library(dplyr)
+```
 
 ## Assigning variables
 

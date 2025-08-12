@@ -23,7 +23,7 @@
 <meta name="author" content="Keaka Farleigh" />
 
 
-<meta name="date" content="2025-08-11" />
+<meta name="date" content="2025-08-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -361,9 +361,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="working-directories" class="section level2 hasAnchor" number="3.11">
 <h2><span class="header-section-number">3.11</span> Working directories<a href="introduction-to-r.html#working-directories" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Like other coding languages, R works from within folders, or directories. Think of this as the location where you are doing your work. In this “working directory” you have immediate access to the files in that location, but if you need files from another location you need to either change into that other directory or use a file path to direct R to that file.</p>
+<p>Sometimes, you will get an error saying that a file does not exist, even though you can see it in a folder. This is often because you are in the wrong working directory.</p>
+<p>Here are a few ways to check and set your working directory:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="introduction-to-r.html#cb18-1" tabindex="-1"></a><span class="co"># View your working directory</span></span>
+<span id="cb18-2"><a href="introduction-to-r.html#cb18-2" tabindex="-1"></a><span class="fu">getwd</span>()</span>
+<span id="cb18-3"><a href="introduction-to-r.html#cb18-3" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="introduction-to-r.html#cb18-4" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb18-5"><a href="introduction-to-r.html#cb18-5" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;/path/to/your/folder&quot;</span>)</span></code></pre></div>
+<p>If you are in Rstudio, you can also use your mouse/touch pad to set your working directory.</p>
+<p>Session –&gt; Set Working Directory –&gt; Choose Directory</p>
 </div>
 <div id="software-e.g.-packages" class="section level2 hasAnchor" number="3.12">
 <h2><span class="header-section-number">3.12</span> Software (e.g., Packages)<a href="introduction-to-r.html#software-e.g.-packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The software that is available with R are called packages. These packages are bundles of code, data, and documentation that are compiled so that other people can use them. You have to install these packages the first time that you use them, and you have to load them in every R session that you wish to use them.</p>
+<p>Here is an example of how to install and load the package <a href="https://dplyr.tidyverse.org/">dplyr</a>:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="introduction-to-r.html#cb19-1" tabindex="-1"></a><span class="co"># Install dplyr</span></span>
+<span id="cb19-2"><a href="introduction-to-r.html#cb19-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span>
+<span id="cb19-3"><a href="introduction-to-r.html#cb19-3" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="introduction-to-r.html#cb19-4" tabindex="-1"></a><span class="co"># Load dplyr</span></span>
+<span id="cb19-5"><a href="introduction-to-r.html#cb19-5" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
 </div>
 <div id="assigning-variables" class="section level2 hasAnchor" number="3.13">
 <h2><span class="header-section-number">3.13</span> Assigning variables<a href="introduction-to-r.html#assigning-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -402,45 +419,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "day",
-"family": "sans",
-"size": 2,
-"color": "black",
-"download": ["pdf", "epub"]
-},
-"edit": null,
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "section",
-"scroll_highlight": true
-},
-"toolbar": {
-"position": "fixed"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "day",
+    "family": "sans",
+    "size": 2,
+    "color": "black",
+    "download": ["pdf", "epub"]
+  },
+  "edit": null,
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section",
+    "scroll_highlight": true
+  },
+  "toolbar": {
+    "position": "fixed"
+  }
 });
 });
 </script>
