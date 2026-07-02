@@ -1,5 +1,5 @@
 --- 
-title: "The Researcher's Guide to Population Genomic"
+title: "The Researcher's Guide to Population Genomic Analysis"
 author: "Keaka Farleigh"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -14,6 +14,11 @@ github-repo: kfarleigh/RGTPG
 ---
 
 # Preface {-}
+
+```{r RGTPG logo, echo=FALSE, eval=TRUE, fig.align='center'}
+knitr::include_graphics("./imgs/RGTPG_logo.png")
+```
+
 ## About the Author {-}
 Hi! I am an bioinformatician, data scientist, and  NSF postdoctoral research fellow in biology Ph.D. candidate, bioinformatician, data scientist, working in the [Schield lab](https://schieldlab.org/) at the University of Virginia. I use bioinformatic techniques to understand how genomic and phenotypic variation is influenced by environmental factors. I am particularly interested in local adaptation, hybridization, and the development of new bioinformatic tools for biological applications. Feel free to visit my [website](https://kfarleigh.github.io/) or [CV](https://kfarleigh.github.io/CV/KFarleigh_CV_8-12-2025.pdf) if you'd like to check out my past work. 
 
@@ -28,7 +33,7 @@ I thank my wife, advisors, and collaborators for their support and help with man
 If you use any of the materials in this book please use the citation below and remember to cite any packages or data sets as well. 
 
 ### Citation {-}
-Farleigh, K. (2025). *The researcher's guide to population genomics*. 
+Farleigh, K. (2026). *The researcher's guide to population genomics*. 
 
 ## Disclaimer {-}
 Please note that this book uses Google Analytics to track the number of website views and traffic data. This data is used for the sole purpose of showing grant agencies (e.g., the National Science Foundation) that the chapters presented here are, in fact, being viewed.

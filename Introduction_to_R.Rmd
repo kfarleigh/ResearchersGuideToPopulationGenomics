@@ -57,7 +57,7 @@ I list some basic facts about R below:
 
 - There is (and has been) a large community of R users, so there are a lot of helpful resources online if you have questions or run into any errors. 
 
-## Advantages and disadvantges of R
+## Advantages and disadvantages of R
 
 Advantages
 

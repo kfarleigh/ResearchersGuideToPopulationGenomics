@@ -29,7 +29,7 @@ notes-on-this-tutorial
 overview-2
 before-we-begin
 what-is-r
-advantages-and-disadvantges-of-r
+advantages-and-disadvantages-of-r
 what-is-rstudio
 the-rstudio-layout
 r-console
