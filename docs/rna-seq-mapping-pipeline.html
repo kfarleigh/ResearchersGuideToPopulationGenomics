@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2 RNA-seq mapping pipeline | The Researcher’s Guide to Population Genomic</title>
   <meta name="description" content="This book provides an overview of population genomics, discusses relevant statistics, and includes tested tutorials and workflows that can be applied to population genomic datasets." />
-  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.45 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2 RNA-seq mapping pipeline | The Researcher’s Guide to Population Genomic" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Keaka Farleigh" />
 
 
-<meta name="date" content="2025-08-12" />
+<meta name="date" content="2026-07-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -194,30 +194,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3" data-path="introduction-to-r.html"><a href="introduction-to-r.html"><i class="fa fa-check"></i><b>3</b> Introduction to R</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#purpose-2"><i class="fa fa-check"></i><b>3.1</b> Purpose</a></li>
-<li class="chapter" data-level="3.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#files-required-for-this-pipeline-1"><i class="fa fa-check"></i><b>3.2</b> Files required for this pipeline</a></li>
-<li class="chapter" data-level="3.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#programs-used-in-this-pipeline-1"><i class="fa fa-check"></i><b>3.3</b> Programs used in this pipeline</a></li>
-<li class="chapter" data-level="3.4" data-path="introduction-to-r.html"><a href="introduction-to-r.html#notes-on-this-tutorial"><i class="fa fa-check"></i><b>3.4</b> Notes on this tutorial</a></li>
-<li class="chapter" data-level="3.5" data-path="introduction-to-r.html"><a href="introduction-to-r.html#overview-2"><i class="fa fa-check"></i><b>3.5</b> Overview</a></li>
-<li class="chapter" data-level="3.6" data-path="introduction-to-r.html"><a href="introduction-to-r.html#before-we-begin"><i class="fa fa-check"></i><b>3.6</b> Before we begin</a></li>
-<li class="chapter" data-level="3.7" data-path="introduction-to-r.html"><a href="introduction-to-r.html#what-is-r"><i class="fa fa-check"></i><b>3.7</b> What is R?</a></li>
-<li class="chapter" data-level="3.8" data-path="introduction-to-r.html"><a href="introduction-to-r.html#advantages-and-disadvantges-of-r"><i class="fa fa-check"></i><b>3.8</b> Advantages and disadvantges of R</a></li>
-<li class="chapter" data-level="3.9" data-path="introduction-to-r.html"><a href="introduction-to-r.html#what-is-rstudio"><i class="fa fa-check"></i><b>3.9</b> What is Rstudio?</a></li>
-<li class="chapter" data-level="3.10" data-path="introduction-to-r.html"><a href="introduction-to-r.html#the-rstudio-layout"><i class="fa fa-check"></i><b>3.10</b> The Rstudio layout</a>
+<li class="chapter" data-level="3.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#learning-objectives"><i class="fa fa-check"></i><b>3.2</b> Learning objectives</a></li>
+<li class="chapter" data-level="3.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#files-required-for-this-pipeline-1"><i class="fa fa-check"></i><b>3.3</b> Files required for this pipeline</a></li>
+<li class="chapter" data-level="3.4" data-path="introduction-to-r.html"><a href="introduction-to-r.html#programs-used-in-this-pipeline-1"><i class="fa fa-check"></i><b>3.4</b> Programs used in this pipeline</a></li>
+<li class="chapter" data-level="3.5" data-path="introduction-to-r.html"><a href="introduction-to-r.html#notes-on-this-tutorial"><i class="fa fa-check"></i><b>3.5</b> Notes on this tutorial</a></li>
+<li class="chapter" data-level="3.6" data-path="introduction-to-r.html"><a href="introduction-to-r.html#overview-2"><i class="fa fa-check"></i><b>3.6</b> Overview</a></li>
+<li class="chapter" data-level="3.7" data-path="introduction-to-r.html"><a href="introduction-to-r.html#before-we-begin"><i class="fa fa-check"></i><b>3.7</b> Before we begin</a></li>
+<li class="chapter" data-level="3.8" data-path="introduction-to-r.html"><a href="introduction-to-r.html#what-is-r"><i class="fa fa-check"></i><b>3.8</b> What is R?</a></li>
+<li class="chapter" data-level="3.9" data-path="introduction-to-r.html"><a href="introduction-to-r.html#advantages-and-disadvantges-of-r"><i class="fa fa-check"></i><b>3.9</b> Advantages and disadvantges of R</a></li>
+<li class="chapter" data-level="3.10" data-path="introduction-to-r.html"><a href="introduction-to-r.html#what-is-rstudio"><i class="fa fa-check"></i><b>3.10</b> What is Rstudio?</a></li>
+<li class="chapter" data-level="3.11" data-path="introduction-to-r.html"><a href="introduction-to-r.html#the-rstudio-layout"><i class="fa fa-check"></i><b>3.11</b> The Rstudio layout</a>
 <ul>
-<li class="chapter" data-level="3.10.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#r-console"><i class="fa fa-check"></i><b>3.10.1</b> R console</a></li>
-<li class="chapter" data-level="3.10.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#r-script"><i class="fa fa-check"></i><b>3.10.2</b> R script</a></li>
-<li class="chapter" data-level="3.10.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#environment"><i class="fa fa-check"></i><b>3.10.3</b> Environment</a></li>
-<li class="chapter" data-level="3.10.4" data-path="introduction-to-r.html"><a href="introduction-to-r.html#plots-packages-and-help"><i class="fa fa-check"></i><b>3.10.4</b> Plots, Packages, and Help</a></li>
+<li class="chapter" data-level="3.11.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#r-console"><i class="fa fa-check"></i><b>3.11.1</b> R console</a></li>
+<li class="chapter" data-level="3.11.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#r-script"><i class="fa fa-check"></i><b>3.11.2</b> R script</a></li>
+<li class="chapter" data-level="3.11.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#environment"><i class="fa fa-check"></i><b>3.11.3</b> Environment</a></li>
+<li class="chapter" data-level="3.11.4" data-path="introduction-to-r.html"><a href="introduction-to-r.html#plots-packages-and-help"><i class="fa fa-check"></i><b>3.11.4</b> Plots, Packages, and Help</a></li>
 </ul></li>
-<li class="chapter" data-level="3.11" data-path="introduction-to-r.html"><a href="introduction-to-r.html#working-directories"><i class="fa fa-check"></i><b>3.11</b> Working directories</a></li>
-<li class="chapter" data-level="3.12" data-path="introduction-to-r.html"><a href="introduction-to-r.html#software-e.g.-packages"><i class="fa fa-check"></i><b>3.12</b> Software (e.g., Packages)</a></li>
-<li class="chapter" data-level="3.13" data-path="introduction-to-r.html"><a href="introduction-to-r.html#assigning-variables"><i class="fa fa-check"></i><b>3.13</b> Assigning variables</a></li>
-<li class="chapter" data-level="3.14" data-path="introduction-to-r.html"><a href="introduction-to-r.html#types-of-variables-and-data"><i class="fa fa-check"></i><b>3.14</b> Types of variables and data</a>
+<li class="chapter" data-level="3.12" data-path="introduction-to-r.html"><a href="introduction-to-r.html#working-directories"><i class="fa fa-check"></i><b>3.12</b> Working directories</a></li>
+<li class="chapter" data-level="3.13" data-path="introduction-to-r.html"><a href="introduction-to-r.html#software-e.g.-packages"><i class="fa fa-check"></i><b>3.13</b> Software (e.g., Packages)</a></li>
+<li class="chapter" data-level="3.14" data-path="introduction-to-r.html"><a href="introduction-to-r.html#assigning-variables"><i class="fa fa-check"></i><b>3.14</b> Assigning variables</a></li>
+<li class="chapter" data-level="3.15" data-path="introduction-to-r.html"><a href="introduction-to-r.html#data-types-and-structures"><i class="fa fa-check"></i><b>3.15</b> Data types and structures</a>
 <ul>
-<li class="chapter" data-level="3.14.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#vectors"><i class="fa fa-check"></i><b>3.14.1</b> Vectors</a></li>
-<li class="chapter" data-level="3.14.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#data-frames"><i class="fa fa-check"></i><b>3.14.2</b> Data frames</a></li>
+<li class="chapter" data-level="3.15.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#data-types"><i class="fa fa-check"></i><b>3.15.1</b> Data types</a></li>
+<li class="chapter" data-level="3.15.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#data-structures"><i class="fa fa-check"></i><b>3.15.2</b> Data structures</a></li>
 </ul></li>
-<li class="chapter" data-level="3.15" data-path="introduction-to-r.html"><a href="introduction-to-r.html#references-2"><i class="fa fa-check"></i><b>3.15</b> References</a></li>
+<li class="chapter" data-level="3.16" data-path="introduction-to-r.html"><a href="introduction-to-r.html#function-elements"><i class="fa fa-check"></i><b>3.16</b> Function elements</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="data-wrangling-with-r.html"><a href="data-wrangling-with-r.html"><i class="fa fa-check"></i><b>4</b> Data wrangling with R</a>
 <ul>
@@ -227,7 +228,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.4" data-path="data-wrangling-with-r.html"><a href="data-wrangling-with-r.html#notes-on-this-tutorial-1"><i class="fa fa-check"></i><b>4.4</b> Notes on this tutorial</a></li>
 <li class="chapter" data-level="4.5" data-path="data-wrangling-with-r.html"><a href="data-wrangling-with-r.html#overview-3"><i class="fa fa-check"></i><b>4.5</b> Overview</a></li>
 <li class="chapter" data-level="4.6" data-path="data-wrangling-with-r.html"><a href="data-wrangling-with-r.html#what-is-data-wrangling"><i class="fa fa-check"></i><b>4.6</b> What is data wrangling?</a></li>
-<li class="chapter" data-level="4.7" data-path="data-wrangling-with-r.html"><a href="data-wrangling-with-r.html#references-3"><i class="fa fa-check"></i><b>4.7</b> References</a></li>
+<li class="chapter" data-level="4.7" data-path="data-wrangling-with-r.html"><a href="data-wrangling-with-r.html#references-2"><i class="fa fa-check"></i><b>4.7</b> References</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="data-analysis-and-visualization-in-r.html"><a href="data-analysis-and-visualization-in-r.html"><i class="fa fa-check"></i><b>5</b> Data analysis and visualization in R</a>
 <ul>
@@ -236,7 +237,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3" data-path="data-analysis-and-visualization-in-r.html"><a href="data-analysis-and-visualization-in-r.html#programs-used-in-this-pipeline-3"><i class="fa fa-check"></i><b>5.3</b> Programs used in this pipeline</a></li>
 <li class="chapter" data-level="5.4" data-path="data-analysis-and-visualization-in-r.html"><a href="data-analysis-and-visualization-in-r.html#notes-on-this-tutorial-2"><i class="fa fa-check"></i><b>5.4</b> Notes on this tutorial</a></li>
 <li class="chapter" data-level="5.5" data-path="data-analysis-and-visualization-in-r.html"><a href="data-analysis-and-visualization-in-r.html#overview-4"><i class="fa fa-check"></i><b>5.5</b> Overview</a></li>
-<li class="chapter" data-level="5.6" data-path="data-analysis-and-visualization-in-r.html"><a href="data-analysis-and-visualization-in-r.html#references-4"><i class="fa fa-check"></i><b>5.6</b> References</a></li>
+<li class="chapter" data-level="5.6" data-path="data-analysis-and-visualization-in-r.html"><a href="data-analysis-and-visualization-in-r.html#references-3"><i class="fa fa-check"></i><b>5.6</b> References</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>

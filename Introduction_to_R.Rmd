@@ -1,12 +1,23 @@
 # Introduction to R
 
-*Written by Keaka Farleigh on August 5th, 2025: edited from materials originally developed by Dr. Tereza Jezkova and Alfredo Ascanio*
+*Written by Keaka Farleigh on August 5th, 2025: edited from materials originally developed by Dr. Tereza Jezkova and Dr. Alfredo Ascanio*
 
-*Last updated by Keaka Farleigh on August 11th, 2025* 
+*Last updated by Keaka Farleigh on July 2nd, 2026* 
 
 ## Purpose
 
 This tutorial will provide an introduction to the programming language [R](https://www.r-project.org/). I will assume that you have no experience with R and that you are at the beginning of your journey towards becoming an R expert. 
+
+## Learning objectives
+
+- Learn what R is.
+- Learn the advantages and disadvantages of R.
+- Learn what Rstudio is and how to navigate it.
+- Learn how to load a software package and get help.
+- Learn the data types and structures used in R.
+- Learn the elements of a function.
+
+
 
 ## Files required for this pipeline
 
@@ -156,10 +167,50 @@ library(dplyr)
 
 ## Assigning variables
 
-## Types of variables and data
+Variables (also called objects) are assigned with the `<-` or `=`. Either work, but I prefer `<-` for stylistic reasons. These variables are then stored in the global environment after you create them. 
 
-### Vectors
+```{r assign variables, echo = TRUE, eval = FALSE}
 
-### Data frames
+# Variable assignment with <-
 
-## References
+my_variable <- c(1,2,3,4)
+
+# Variable assignment with =
+
+my_variable = c(1,2,3,4)
+
+```
+
+
+## Data types and structures
+
+Data in R can take a few forms and be store in a few different structures. We list them below and provide examples of each one. 
+
+### Data types
+
+- Numeric: numbers with decimals
+- Integers: whole numbers
+- Characters: strings, like "abc"
+- Logical: TRUE or FALSE
+- Complex: Formulas, including imaginary numbers (1 + 1i)
+- Factors: A categorical classification of data
+
+### Data structures
+
+- Vector: 1 dimensional object containing data of the same type (e.g., all numbers)
+- Matrix: 2 dimensional (rows and columns) object containing data of same type (e.g., all numbers)
+- Dataframe: 2 dimensional (rows and columns) object containing data of same or different types (e.g., one column of characters and one of numbers)
+- List: 1 dimensional object that can contain different data structures. Each object in a list is called an element. A list, for example could contain vector, matrix, and data frame elements. 
+
+## Function elements
+
+A function is a bundle of code that you or someone else has written to make an analysis easier. The function will consist of the name of the function and arguments. Arguments tell the function which data to use and how to use it. The `mean` function below, for example, uses the `x` argument to determine which data to take the mean of. 
+
+```{r function elements, echo = TRUE, eval = FALSE}
+
+mean(x = c(10,20,30,40))
+
+```
+
+Thanks for reading this chapter, please reach out if you have any questions!
+
