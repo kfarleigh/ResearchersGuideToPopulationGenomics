@@ -43,6 +43,7 @@ data-types-and-structures
 data-types
 data-structures
 function-elements
+references-2
 data-wrangling-with-r
 purpose-3
 files-required-for-this-pipeline-2
@@ -50,11 +51,11 @@ programs-used-in-this-pipeline-2
 notes-on-this-tutorial-1
 overview-3
 what-is-data-wrangling
-references-2
+references-3
 data-analysis-and-visualization-in-r
 purpose-4
 files-required-for-this-pipeline-3
 programs-used-in-this-pipeline-3
 notes-on-this-tutorial-2
 overview-4
-references-3
+references-4

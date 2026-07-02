@@ -214,3 +214,6 @@ mean(x = c(10,20,30,40))
 
 Thanks for reading this chapter, please reach out if you have any questions!
 
+## References
+
+R Core Team (2025). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. https://www.R-project.org/.
