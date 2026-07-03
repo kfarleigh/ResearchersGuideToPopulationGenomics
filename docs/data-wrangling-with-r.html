@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4 Data wrangling with R | The Researcher’s Guide to Population Genomic Analysis</title>
+  <title>4 Data wrangling with R | The Researcher’s Guide to Population Genomics</title>
   <meta name="description" content="This book provides an overview of population genomics, discusses relevant statistics, and includes tested tutorials and workflows that can be applied to population genomic datasets." />
   <meta name="generator" content="bookdown 0.45 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4 Data wrangling with R | The Researcher’s Guide to Population Genomic Analysis" />
+  <meta property="og:title" content="4 Data wrangling with R | The Researcher’s Guide to Population Genomics" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This book provides an overview of population genomics, discusses relevant statistics, and includes tested tutorials and workflows that can be applied to population genomic datasets." />
   <meta name="github-repo" content="kfarleigh/RGTPG" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 Data wrangling with R | The Researcher’s Guide to Population Genomic Analysis" />
+  <meta name="twitter:title" content="4 Data wrangling with R | The Researcher’s Guide to Population Genomics" />
   
   <meta name="twitter:description" content="This book provides an overview of population genomics, discusses relevant statistics, and includes tested tutorials and workflows that can be applied to population genomic datasets." />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="Keaka Farleigh" />
 
 
-<meta name="date" content="2026-07-02" />
+<meta name="date" content="2026-07-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -224,12 +224,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="data-wrangling-with-r.html"><a href="data-wrangling-with-r.html"><i class="fa fa-check"></i><b>4</b> Data wrangling with R</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="data-wrangling-with-r.html"><a href="data-wrangling-with-r.html#purpose-3"><i class="fa fa-check"></i><b>4.1</b> Purpose</a></li>
-<li class="chapter" data-level="4.2" data-path="data-wrangling-with-r.html"><a href="data-wrangling-with-r.html#files-required-for-this-pipeline-2"><i class="fa fa-check"></i><b>4.2</b> Files required for this pipeline</a></li>
-<li class="chapter" data-level="4.3" data-path="data-wrangling-with-r.html"><a href="data-wrangling-with-r.html#programs-used-in-this-pipeline-2"><i class="fa fa-check"></i><b>4.3</b> Programs used in this pipeline</a></li>
-<li class="chapter" data-level="4.4" data-path="data-wrangling-with-r.html"><a href="data-wrangling-with-r.html#notes-on-this-tutorial-1"><i class="fa fa-check"></i><b>4.4</b> Notes on this tutorial</a></li>
-<li class="chapter" data-level="4.5" data-path="data-wrangling-with-r.html"><a href="data-wrangling-with-r.html#overview-3"><i class="fa fa-check"></i><b>4.5</b> Overview</a></li>
-<li class="chapter" data-level="4.6" data-path="data-wrangling-with-r.html"><a href="data-wrangling-with-r.html#what-is-data-wrangling"><i class="fa fa-check"></i><b>4.6</b> What is data wrangling?</a></li>
-<li class="chapter" data-level="4.7" data-path="data-wrangling-with-r.html"><a href="data-wrangling-with-r.html#references-3"><i class="fa fa-check"></i><b>4.7</b> References</a></li>
+<li class="chapter" data-level="4.2" data-path="data-wrangling-with-r.html"><a href="data-wrangling-with-r.html#learning-objectives-1"><i class="fa fa-check"></i><b>4.2</b> Learning objectives</a></li>
+<li class="chapter" data-level="4.3" data-path="data-wrangling-with-r.html"><a href="data-wrangling-with-r.html#files-required-for-this-pipeline-2"><i class="fa fa-check"></i><b>4.3</b> Files required for this pipeline</a></li>
+<li class="chapter" data-level="4.4" data-path="data-wrangling-with-r.html"><a href="data-wrangling-with-r.html#programs-used-in-this-pipeline-2"><i class="fa fa-check"></i><b>4.4</b> Programs used in this pipeline</a></li>
+<li class="chapter" data-level="4.5" data-path="data-wrangling-with-r.html"><a href="data-wrangling-with-r.html#notes-on-this-tutorial-1"><i class="fa fa-check"></i><b>4.5</b> Notes on this tutorial</a></li>
+<li class="chapter" data-level="4.6" data-path="data-wrangling-with-r.html"><a href="data-wrangling-with-r.html#overview-3"><i class="fa fa-check"></i><b>4.6</b> Overview</a></li>
+<li class="chapter" data-level="4.7" data-path="data-wrangling-with-r.html"><a href="data-wrangling-with-r.html#what-is-data-wrangling-and-why-is-it-a-common-first-step"><i class="fa fa-check"></i><b>4.7</b> What is data wrangling and why is it a common first step?</a></li>
+<li class="chapter" data-level="4.8" data-path="data-wrangling-with-r.html"><a href="data-wrangling-with-r.html#so-how-do-i-wrangle-data"><i class="fa fa-check"></i><b>4.8</b> So how do I wrangle data?</a></li>
+<li class="chapter" data-level="4.9" data-path="data-wrangling-with-r.html"><a href="data-wrangling-with-r.html#filtering-data"><i class="fa fa-check"></i><b>4.9</b> Filtering data</a></li>
+<li class="chapter" data-level="4.10" data-path="data-wrangling-with-r.html"><a href="data-wrangling-with-r.html#sorting-data"><i class="fa fa-check"></i><b>4.10</b> Sorting data</a></li>
+<li class="chapter" data-level="4.11" data-path="data-wrangling-with-r.html"><a href="data-wrangling-with-r.html#summarize"><i class="fa fa-check"></i><b>4.11</b> Summarize</a></li>
+<li class="chapter" data-level="4.12" data-path="data-wrangling-with-r.html"><a href="data-wrangling-with-r.html#pivot"><i class="fa fa-check"></i><b>4.12</b> Pivot</a></li>
+<li class="chapter" data-level="4.13" data-path="data-wrangling-with-r.html"><a href="data-wrangling-with-r.html#references-3"><i class="fa fa-check"></i><b>4.13</b> References</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="data-analysis-and-visualization-in-r.html"><a href="data-analysis-and-visualization-in-r.html"><i class="fa fa-check"></i><b>5</b> Data analysis and visualization in R</a>
 <ul>
@@ -252,7 +258,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The Researcher’s Guide to Population Genomic Analysis</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The Researcher’s Guide to Population Genomics</a>
           </h1>
         </div>
 
@@ -263,36 +269,97 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="data-wrangling-with-r" class="section level1 hasAnchor" number="4">
 <h1><span class="header-section-number">4</span> Data wrangling with R<a href="data-wrangling-with-r.html#data-wrangling-with-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p><em>Written by Keaka Farleigh on August 5th, 2025</em></p>
-<p><em>Last updated by Keaka Farleigh on August 11th, 2025</em></p>
+<p><em>Last updated by Keaka Farleigh on July 3rd, 2026</em></p>
 <div id="purpose-3" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> Purpose<a href="data-wrangling-with-r.html#purpose-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This tutorial will give you an introduction to data wrangling. You will learn what it is and get some hands-on experience wrangling some data. I will assume that you have minimal experience with R and are a beginner user. Please read through the <a href="https://kfarleigh.github.io/ResearchersGuideToPopulationGenomics/introduction-to-r.html">Introduction to R chapter</a> or send me an email if you do not feel comfortable with this tutorial.</p>
 </div>
-<div id="files-required-for-this-pipeline-2" class="section level2 hasAnchor" number="4.2">
-<h2><span class="header-section-number">4.2</span> Files required for this pipeline<a href="data-wrangling-with-r.html#files-required-for-this-pipeline-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="learning-objectives-1" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Learning objectives<a href="data-wrangling-with-r.html#learning-objectives-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Learn why data transformation and management is common.</li>
+<li>Learn how to filter, sort, and summarize data.</li>
+<li>Learn how to pivot data.</li>
+</ul>
+</div>
+<div id="files-required-for-this-pipeline-2" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Files required for this pipeline<a href="data-wrangling-with-r.html#files-required-for-this-pipeline-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>None!</p>
 </div>
-<div id="programs-used-in-this-pipeline-2" class="section level2 hasAnchor" number="4.3">
-<h2><span class="header-section-number">4.3</span> Programs used in this pipeline<a href="data-wrangling-with-r.html#programs-used-in-this-pipeline-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="programs-used-in-this-pipeline-2" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Programs used in this pipeline<a href="data-wrangling-with-r.html#programs-used-in-this-pipeline-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><a href="https://www.r-project.org/">R</a> (R core team, 2025)</li>
 <li><a href="https://posit.co/download/rstudio-desktop/">Rstudio</a></li>
+<li><a href="https://tidyverse.org/">tidyverse packages</a></li>
 </ul>
+<p>Install the tidyverse using the command below.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="data-wrangling-with-r.html#cb22-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
+<span id="cb22-2"><a href="data-wrangling-with-r.html#cb22-2" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="data-wrangling-with-r.html#cb22-3" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 </div>
-<div id="notes-on-this-tutorial-1" class="section level2 hasAnchor" number="4.4">
-<h2><span class="header-section-number">4.4</span> Notes on this tutorial<a href="data-wrangling-with-r.html#notes-on-this-tutorial-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The materials in this tutorial were originally developed as part of the Lambda bioinformatic workshop at Miami University by Dr. Tereza Jezkova and Alfredo Ascanio. These materials are now presented at Lambda and the Foundations in R workshop at the University of Virginia.</p>
+<div id="notes-on-this-tutorial-1" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> Notes on this tutorial<a href="data-wrangling-with-r.html#notes-on-this-tutorial-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The materials in this tutorial were originally developed as part of the Lambda bioinformatic workshop at Miami University by Dr. Tereza Jezkova and Dr. Alfredo Ascanio. These materials are now presented at Lambda and the Foundations in R workshop at the University of Virginia.</p>
 </div>
-<div id="overview-3" class="section level2 hasAnchor" number="4.5">
-<h2><span class="header-section-number">4.5</span> Overview<a href="data-wrangling-with-r.html#overview-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="overview-3" class="section level2 hasAnchor" number="4.6">
+<h2><span class="header-section-number">4.6</span> Overview<a href="data-wrangling-with-r.html#overview-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We will cover the basics of data wrangling before working through some examples!</p>
 </div>
-<div id="what-is-data-wrangling" class="section level2 hasAnchor" number="4.6">
-<h2><span class="header-section-number">4.6</span> What is data wrangling?<a href="data-wrangling-with-r.html#what-is-data-wrangling" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="what-is-data-wrangling-and-why-is-it-a-common-first-step" class="section level2 hasAnchor" number="4.7">
+<h2><span class="header-section-number">4.7</span> What is data wrangling and why is it a common first step?<a href="data-wrangling-with-r.html#what-is-data-wrangling-and-why-is-it-a-common-first-step" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Have you ever opened a file from a collaborator or output from a program but it was not formatted as you expected? What did you do? Did you leave it as is, or did you modify the file so that it conformed to your expectations? If you modified the file, then you have already wrangled some data. Data wrangling is a fancy way of saying data processing, transformation, and cleaning to prepare it for analysis, presentation, or visualization. For many researchers and data scientists, data wrangling consumes a lot of time and is therefore a foundation tool for modern data analysis.</p>
 </div>
-<div id="references-3" class="section level2 hasAnchor" number="4.7">
-<h2><span class="header-section-number">4.7</span> References<a href="data-wrangling-with-r.html#references-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="so-how-do-i-wrangle-data" class="section level2 hasAnchor" number="4.8">
+<h2><span class="header-section-number">4.8</span> So how do I wrangle data?<a href="data-wrangling-with-r.html#so-how-do-i-wrangle-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Data wrangling can be performed in base R (without loading any packages) or using specially designed packages like <a href="https://dplyr.tidyverse.org/">dplyr</a> or others in the <a href="https://tidyverse.org/">tidyverse</a>. We will walk through a few examples below.</p>
+</div>
+<div id="filtering-data" class="section level2 hasAnchor" number="4.9">
+<h2><span class="header-section-number">4.9</span> Filtering data<a href="data-wrangling-with-r.html#filtering-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Imagine you only want to retain specific rows in data. We will use the <code>filter</code> command from dplyr to select rows that satisfy a specific condition. In this case, we will use the <a href="https://www.rdocumentation.org/packages/datasets/versions/3.6.2/topics/iris">iris dataset</a> to only select data from the setosa species. I will provide a solution with dplyr and with base R.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="data-wrangling-with-r.html#cb23-1" tabindex="-1"></a><span class="co"># Get the data </span></span>
+<span id="cb23-2"><a href="data-wrangling-with-r.html#cb23-2" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
+<span id="cb23-3"><a href="data-wrangling-with-r.html#cb23-3" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="data-wrangling-with-r.html#cb23-4" tabindex="-1"></a><span class="co"># dplyr solution</span></span>
+<span id="cb23-5"><a href="data-wrangling-with-r.html#cb23-5" tabindex="-1"></a>setosa_df <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Species <span class="sc">==</span> <span class="st">&quot;setosa&quot;</span>)</span>
+<span id="cb23-6"><a href="data-wrangling-with-r.html#cb23-6" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="data-wrangling-with-r.html#cb23-7" tabindex="-1"></a><span class="co"># base R solution</span></span>
+<span id="cb23-8"><a href="data-wrangling-with-r.html#cb23-8" tabindex="-1"></a>setosa_df2 <span class="ot">&lt;-</span> iris[<span class="fu">which</span>(iris<span class="sc">$</span>Species <span class="sc">==</span> <span class="st">&quot;setosa&quot;</span>),]</span></code></pre></div>
+<p>Notice that specialized packages like dplyr often provide a simplified line of code (relative to base R), even though they produce the same result. In the dplyr code, we are providing the iris data and telling R to only retain (filter) rows where the species is setosa. In the base R code, we are identifying which elements in the <code>iris$Species</code> column are setosa and then telling R to retain those rows by putting the which command before the comma.</p>
+</div>
+<div id="sorting-data" class="section level2 hasAnchor" number="4.10">
+<h2><span class="header-section-number">4.10</span> Sorting data<a href="data-wrangling-with-r.html#sorting-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Another common task of data wrangling is sorting to understand which observations are the smallest or largest or even which ones are close together. Like filtering, there are multiple ways to do this and we will use dplyr and base R. Let’s sort our data by <code>Petal.Width</code>.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="data-wrangling-with-r.html#cb24-1" tabindex="-1"></a>setosa_pw_ord <span class="ot">&lt;-</span> setosa_df <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(Petal.Width)</span>
+<span id="cb24-2"><a href="data-wrangling-with-r.html#cb24-2" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="data-wrangling-with-r.html#cb24-3" tabindex="-1"></a>setosa_pw_ord2 <span class="ot">&lt;-</span> setosa_df2[<span class="fu">order</span>(setosa_df2<span class="sc">$</span>Petal.Width), ]</span></code></pre></div>
+<p>Again, the dplyr command is simpler than the base R command. We simply use the arrange command, while base R requires us to again identify the order of the rows that we want (order function) and then specify that row order by putting the order command before the comma.</p>
+</div>
+<div id="summarize" class="section level2 hasAnchor" number="4.11">
+<h2><span class="header-section-number">4.11</span> Summarize<a href="data-wrangling-with-r.html#summarize" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Summarizing data is a key component of any analysis and often done during exploratory data analysis to identify any potential trends in our data. We will use the <code>group_by</code> function from dplyr to summarise the iris data by species to estimate the mean <code>Petal.Length</code>.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="data-wrangling-with-r.html#cb25-1" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-2"><a href="data-wrangling-with-r.html#cb25-2" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_PL =</span> <span class="fu">mean</span>(Petal.Length)) <span class="sc">%&gt;%</span></span>
+<span id="cb25-3"><a href="data-wrangling-with-r.html#cb25-3" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code></pre></div>
+<p>Here our command first groups the data by species. Then, we use the summarise and mean functions to calculate the mean <code>Petal.Length</code> for each group (species). Finally, as a best practice we ungroup the data so that we don’t influence any future analyses.</p>
+<p>In base R this would have required us to split the data into three different object, take the mean within each of those objects, then put it back together.</p>
+</div>
+<div id="pivot" class="section level2 hasAnchor" number="4.12">
+<h2><span class="header-section-number">4.12</span> Pivot<a href="data-wrangling-with-r.html#pivot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The last thing we will learn to do is pivot data. This means to transform the data from wide to long or long to wide format. Wide format means data where there are more columns than rows and long format means more rows than columns. Again, the tidyverse provides solutions for this, but we can also do it in base R. Let’s pivot our iris data. We will add a column named <code>Ind</code> and pivot the data to long format where each row represents an individual and one of its characteristics (e.g., Petal.Length, Petal.Width).</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="data-wrangling-with-r.html#cb26-1" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> </span>
+<span id="cb26-2"><a href="data-wrangling-with-r.html#cb26-2" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Ind =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">150</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb26-3"><a href="data-wrangling-with-r.html#cb26-3" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">names_to =</span> <span class="st">&quot;Variable&quot;</span>, </span>
+<span id="cb26-4"><a href="data-wrangling-with-r.html#cb26-4" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;Value&quot;</span>)</span></code></pre></div>
+<p>In this command we add the individual labels with mutate, then we pivot the data to long
+format with pivot_longer.</p>
+<p>We are done! As always, please reach out with any questions or suggestions.</p>
+</div>
+<div id="references-3" class="section level2 hasAnchor" number="4.13">
+<h2><span class="header-section-number">4.13</span> References<a href="data-wrangling-with-r.html#references-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>R Core Team (2025). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. <a href="https://www.R-project.org/" class="uri">https://www.R-project.org/</a>.</p>
+<p>Wickham, H., François, R., Henry, L., Müller, K., &amp; Vaughan, D. (2026). dplyr: A Grammar of Data Manipulation. R package version 1.2.1. <a href="https://dplyr.tidyverse.org" class="uri">https://dplyr.tidyverse.org</a></p>
+<p>Wickham, H., et al. (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686. <a href="https://doi.org/10.21105/joss.01686" class="uri">https://doi.org/10.21105/joss.01686</a></p>
 
 </div>
 </div>
