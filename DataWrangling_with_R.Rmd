@@ -70,6 +70,25 @@ setosa_df2 <- iris[which(iris$Species == "setosa"),]
 
 Notice that specialized packages like dplyr often provide a simplified line of code (relative to base R), even though they produce the same result. In the dplyr code, we are providing the iris data and telling R to only retain (filter) rows where the species is setosa. In the base R code, we are identifying which elements in the `iris$Species` column are setosa and then telling R to retain those rows by putting the which command before the comma. 
 
+**Now you try**
+
+How would you filter for rows associated with *virginica*? Try it yourself, then reveal the code below.
+
+<details>
+<summary>Click to show solution</summary>
+
+```{r filter practice, collapse = TRUE}
+
+# dplyr solution
+setosa_df <- iris %>% filter(Species == "virginica")
+
+# base R solution
+setosa_df2 <- iris[which(iris$Species == "virginica"),]
+
+
+```
+
+</details>
 
 ## Sorting data
 
@@ -84,6 +103,22 @@ setosa_pw_ord2 <- setosa_df2[order(setosa_df2$Petal.Width), ]
 ```
 
 Again, the dplyr command is simpler than the base R command. We simply use the arrange command, while base R requires us to again identify the order of the rows that we want (order function) and then specify that row order by putting the order command before the comma.
+
+**Now you try**
+
+How would you sort by `Petal.Length`? Try it yourself, then reveal the code below.
+
+
+```{r arranging practice, echo = TRUE, eval = FALSE}
+
+setosa_pl_ord <- setosa_df %>% arrange(Petal.Length)
+
+setosa_pl_ord2 <- setosa_df2[order(setosa_df2$Petal.Length), ]
+
+```
+
+<details>
+<summary>Click to show solution</summary>
 
 ## Summarize
 
@@ -100,6 +135,22 @@ iris %>% group_by(Species) %>%
 Here our command first groups the data by species. Then, we use the summarise and mean functions to calculate the mean `Petal.Length` for each group (species). Finally, as a best practice we ungroup the data so that we don't influence any future analyses.
 
 In base R this would have required us to split the data into three different object, take the mean within each of those objects, then put it back together. 
+
+**Now you try**
+
+How would you summarize by `Petal.Width`? Try it yourself, then reveal the code below.
+
+
+```{r summarize practice, echo = TRUE, eval = FALSE}
+
+iris %>% group_by(Species) %>% 
+  summarise(mean_PL = mean(Petal.Width)) %>%
+  ungroup()
+
+```
+
+<details>
+<summary>Click to show solution</summary>
 
 ## Pivot
 
