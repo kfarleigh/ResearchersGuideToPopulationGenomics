@@ -349,13 +349,14 @@ Click to show solution
 <p>Again, the dplyr command is simpler than the base R command. We simply use the arrange command, while base R requires us to again identify the order of the rows that we want (order function) and then specify that row order by putting the order command before the comma.</p>
 <p><strong>Now you try</strong></p>
 <p>How would you sort by <code>Petal.Length</code>? Try it yourself, then reveal the code below.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="data-wrangling-with-r.html#cb26-1" tabindex="-1"></a>setosa_pl_ord <span class="ot">&lt;-</span> setosa_df <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(Petal.Length)</span>
-<span id="cb26-2"><a href="data-wrangling-with-r.html#cb26-2" tabindex="-1"></a></span>
-<span id="cb26-3"><a href="data-wrangling-with-r.html#cb26-3" tabindex="-1"></a>setosa_pl_ord2 <span class="ot">&lt;-</span> setosa_df2[<span class="fu">order</span>(setosa_df2<span class="sc">$</span>Petal.Length), ]</span></code></pre></div>
 <details>
 <summary>
 Click to show solution
 </summary>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="data-wrangling-with-r.html#cb26-1" tabindex="-1"></a>setosa_pl_ord <span class="ot">&lt;-</span> setosa_df <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(Petal.Length)</span>
+<span id="cb26-2"><a href="data-wrangling-with-r.html#cb26-2" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="data-wrangling-with-r.html#cb26-3" tabindex="-1"></a>setosa_pl_ord2 <span class="ot">&lt;-</span> setosa_df2[<span class="fu">order</span>(setosa_df2<span class="sc">$</span>Petal.Length), ]</span></code></pre></div>
+<details>
 </div>
 <div id="summarize" class="section level2 hasAnchor" number="4.11">
 <h2><span class="header-section-number">4.11</span> Summarize<a href="data-wrangling-with-r.html#summarize" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -367,13 +368,14 @@ Click to show solution
 <p>In base R this would have required us to split the data into three different object, take the mean within each of those objects, then put it back together.</p>
 <p><strong>Now you try</strong></p>
 <p>How would you summarize by <code>Petal.Width</code>? Try it yourself, then reveal the code below.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="data-wrangling-with-r.html#cb28-1" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span> </span>
-<span id="cb28-2"><a href="data-wrangling-with-r.html#cb28-2" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_PL =</span> <span class="fu">mean</span>(Petal.Width)) <span class="sc">%&gt;%</span></span>
-<span id="cb28-3"><a href="data-wrangling-with-r.html#cb28-3" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code></pre></div>
 <details>
 <summary>
 Click to show solution
 </summary>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="data-wrangling-with-r.html#cb28-1" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-2"><a href="data-wrangling-with-r.html#cb28-2" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_PL =</span> <span class="fu">mean</span>(Petal.Width)) <span class="sc">%&gt;%</span></span>
+<span id="cb28-3"><a href="data-wrangling-with-r.html#cb28-3" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code></pre></div>
+<details>
 </div>
 <div id="pivot" class="section level2 hasAnchor" number="4.12">
 <h2><span class="header-section-number">4.12</span> Pivot<a href="data-wrangling-with-r.html#pivot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
