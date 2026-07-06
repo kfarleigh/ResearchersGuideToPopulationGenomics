@@ -120,7 +120,7 @@ setosa_pl_ord2 <- setosa_df2[order(setosa_df2$Petal.Length), ]
 
 ```
 
-<details>
+</details>
 
 ## Summarize
 
@@ -153,7 +153,7 @@ iris %>% group_by(Species) %>%
 
 ```
 
-<details>
+</details>
 
 ## Pivot
 
@@ -161,7 +161,7 @@ The last thing we will learn to do is pivot data. This means to transform the da
 
 ```{r pivot, echo=TRUE, eval=FALSE}
 
-iris %>% 
+iris_long <- iris %>% 
 	mutate(Ind = 1:150) %>%
 	pivot_longer(cols = 1:4, names_to = "Variable", 
 	values_to = "Value")
@@ -172,6 +172,21 @@ iris %>%
 In this command we add the individual labels with mutate, then we pivot the data to long
 format with pivot_longer. 
 
+**Now you try**
+
+Can you pivot the `iris_long` data frame to wide format? Hint, you can use the function `pivot_wider`. Try it yourself, then reveal the code below.
+
+<details>
+<summary>Click to show solution</summary>
+
+```{r pivot practice, echo = TRUE, eval = FALSE}
+
+iris_wide <- iris_long %>% 
+  pivot_wider(names_from = Variable, values_from = Value)
+
+```
+
+</details>
 
 
 We are done! As always, please reach out with any questions or suggestions.

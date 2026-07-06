@@ -23,7 +23,7 @@
 <meta name="author" content="Keaka Farleigh" />
 
 
-<meta name="date" content="2026-07-05" />
+<meta name="date" content="2026-07-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -356,7 +356,7 @@ Click to show solution
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="data-wrangling-with-r.html#cb26-1" tabindex="-1"></a>setosa_pl_ord <span class="ot">&lt;-</span> setosa_df <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(Petal.Length)</span>
 <span id="cb26-2"><a href="data-wrangling-with-r.html#cb26-2" tabindex="-1"></a></span>
 <span id="cb26-3"><a href="data-wrangling-with-r.html#cb26-3" tabindex="-1"></a>setosa_pl_ord2 <span class="ot">&lt;-</span> setosa_df2[<span class="fu">order</span>(setosa_df2<span class="sc">$</span>Petal.Length), ]</span></code></pre></div>
-<details>
+</details>
 </div>
 <div id="summarize" class="section level2 hasAnchor" number="4.11">
 <h2><span class="header-section-number">4.11</span> Summarize<a href="data-wrangling-with-r.html#summarize" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -375,17 +375,26 @@ Click to show solution
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="data-wrangling-with-r.html#cb28-1" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span> </span>
 <span id="cb28-2"><a href="data-wrangling-with-r.html#cb28-2" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_PL =</span> <span class="fu">mean</span>(Petal.Width)) <span class="sc">%&gt;%</span></span>
 <span id="cb28-3"><a href="data-wrangling-with-r.html#cb28-3" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code></pre></div>
-<details>
+</details>
 </div>
 <div id="pivot" class="section level2 hasAnchor" number="4.12">
 <h2><span class="header-section-number">4.12</span> Pivot<a href="data-wrangling-with-r.html#pivot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The last thing we will learn to do is pivot data. This means to transform the data from wide to long or long to wide format. Wide format means data where there are more columns than rows and long format means more rows than columns. Again, the tidyverse provides solutions for this, but we can also do it in base R. Let’s pivot our iris data. We will add a column named <code>Ind</code> and pivot the data to long format where each row represents an individual and one of its characteristics (e.g., Petal.Length, Petal.Width).</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="data-wrangling-with-r.html#cb29-1" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> </span>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="data-wrangling-with-r.html#cb29-1" tabindex="-1"></a>iris_long <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span> </span>
 <span id="cb29-2"><a href="data-wrangling-with-r.html#cb29-2" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Ind =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">150</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb29-3"><a href="data-wrangling-with-r.html#cb29-3" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">names_to =</span> <span class="st">&quot;Variable&quot;</span>, </span>
 <span id="cb29-4"><a href="data-wrangling-with-r.html#cb29-4" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;Value&quot;</span>)</span></code></pre></div>
 <p>In this command we add the individual labels with mutate, then we pivot the data to long
 format with pivot_longer.</p>
+<p><strong>Now you try</strong></p>
+<p>Can you pivot the <code>iris_long</code> data frame to wide format? Hint, you can use the function <code>pivot_wider</code>. Try it yourself, then reveal the code below.</p>
+<details>
+<summary>
+Click to show solution
+</summary>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="data-wrangling-with-r.html#cb30-1" tabindex="-1"></a>iris_wide <span class="ot">&lt;-</span> iris_long <span class="sc">%&gt;%</span> </span>
+<span id="cb30-2"><a href="data-wrangling-with-r.html#cb30-2" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> Variable, <span class="at">values_from =</span> Value)</span></code></pre></div>
+</details>
 <p>We are done! As always, please reach out with any questions or suggestions.</p>
 </div>
 <div id="references-3" class="section level2 hasAnchor" number="4.13">
