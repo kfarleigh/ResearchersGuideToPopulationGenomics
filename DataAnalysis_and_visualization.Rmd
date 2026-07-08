@@ -2,23 +2,73 @@
 
 *Written by Keaka Farleigh on August 5th, 2025*
 
-*Last updated by Keaka Farleigh on August 5th, 2025*
+*Last updated by Keaka Farleigh on August July 8th, 2025*
 
 ## Purpose
 
+This tutorial will give you an introduction to data analysis and visualization. You will learn how to perform some basic analyses and how to visualize those results. I will assume that you have minimal experience with R and are a beginner user. Please read through the [Introduction to R chapter](https://kfarleigh.github.io/ResearchersGuideToPopulationGenomics/introduction-to-r.html) or send me an email if you do not feel comfortable with this tutorial. 
+
+## Learning objectives
+
+- Learn how to choose a statistical analysis.
+- Learn how to estimate correlation between two variables.
+- Learn how to perform linear regression.
+- Learn how to perform a t-test.
+- Learn best practices for plotting.
+- Learn how to make scatter plots.
+- Learn how to make boxplots.
+- Learn how to make a multipanel figure.
 
 ## Files required for this pipeline
+
+None!
 
 ## Programs used in this pipeline
 
  - [R](https://www.r-project.org/) (R core team, 2025)
  - [Rstudio](https://posit.co/download/rstudio-desktop/)
+ - [tidyverse packages](https://tidyverse.org/)
+ 
+ 
+Install the tidyverse using the command below.
+
+```{r install tidyverse data analysis, echo=TRUE, eval=FALSE}
+
+install.packages("tidyverse")
+
+library(tidyverse)
+
+```
 
 
 ## Notes on this tutorial
 
+The materials in this tutorial were originally developed as part of the [Lambda](https://sites.miamioh.edu/lambda/) bioinformatic workshop at Miami University by Dr. Tereza Jezkova and Dr. Alfredo Ascanio. These materials are now presented at Lambda and the Foundations in R workshop at the University of Virginia.
 
 ## Overview
 
+This tutorial will be broken into separate sections for data analysis and visualization, respectively. We will walk through the basics of analysis and visualization before working through some examples!
+
+## Data analysis
+
+### How to choose a statistical method
+
+### Correlation
+
+### Regression 
+
+### T-test
+
+## Data visualization
+
+### Scatterplot
+
+### Boxplot
+
+### Multipanel figure
 
 ## References
+
+R Core Team (2025). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. https://www.R-project.org/.
+
+Wickham, H., et al. (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686. https://doi.org/10.21105/joss.01686

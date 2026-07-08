@@ -37,7 +37,7 @@ library(tidyverse)
 
 ## Notes on this tutorial
 
-The materials in this tutorial were originally developed as part of the Lambda bioinformatic workshop at Miami University by Dr. Tereza Jezkova and Dr. Alfredo Ascanio. These materials are now presented at Lambda and the Foundations in R workshop at the University of Virginia.
+The materials in this tutorial were originally developed as part of the [Lambda](https://sites.miamioh.edu/lambda/) bioinformatic workshop at Miami University by Dr. Tereza Jezkova and Dr. Alfredo Ascanio. These materials are now presented at Lambda and the Foundations in R workshop at the University of Virginia.
 
 ## Overview
 
