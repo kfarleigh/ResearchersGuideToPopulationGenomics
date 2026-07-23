@@ -4,6 +4,8 @@
 
 *Last updated by Keaka Farleigh on August July 8th, 2025*
 
+*I am updating this chapter. The new version will be posted by July 27th, 2026. Please email me if you need help with data analysis and visualization!*
+
 ## Purpose
 
 This tutorial will give you an introduction to data analysis and visualization. You will learn how to perform some basic analyses and how to visualize those results. I will assume that you have minimal experience with R and are a beginner user. Please read through the [Introduction to R chapter](https://kfarleigh.github.io/ResearchersGuideToPopulationGenomics/introduction-to-r.html) or send me an email if you do not feel comfortable with this tutorial. 
