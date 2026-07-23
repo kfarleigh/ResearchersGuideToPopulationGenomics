@@ -317,7 +317,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Install the tidyverse using the command below.</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="data-analysis-and-visualization-in-r.html#cb31-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
 <span id="cb31-2"><a href="data-analysis-and-visualization-in-r.html#cb31-2" tabindex="-1"></a></span>
-<span id="cb31-3"><a href="data-analysis-and-visualization-in-r.html#cb31-3" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<span id="cb31-3"><a href="data-analysis-and-visualization-in-r.html#cb31-3" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb31-4"><a href="data-analysis-and-visualization-in-r.html#cb31-4" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="data-analysis-and-visualization-in-r.html#cb31-5" tabindex="-1"></a><span class="co"># Load data</span></span>
+<span id="cb31-6"><a href="data-analysis-and-visualization-in-r.html#cb31-6" tabindex="-1"></a><span class="fu">data</span>(iris)</span></code></pre></div>
 </div>
 <div id="notes-on-this-tutorial-2" class="section level2 hasAnchor" number="5.5">
 <h2><span class="header-section-number">5.5</span> Notes on this tutorial<a href="data-analysis-and-visualization-in-r.html#notes-on-this-tutorial-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -329,11 +332,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="data-analysis" class="section level2 hasAnchor" number="5.7">
 <h2><span class="header-section-number">5.7</span> Data analysis<a href="data-analysis-and-visualization-in-r.html#data-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We analyze data to understand the relationships between variables in our data and extract meaningful insights that help us understand the processes driving those relationships, make decisions, and much more. Without data analysis there is not much for us to visualize or do in a study.</p>
 <div id="how-to-choose-a-statistical-method" class="section level3 hasAnchor" number="5.7.1">
 <h3><span class="header-section-number">5.7.1</span> How to choose a statistical method<a href="data-analysis-and-visualization-in-r.html#how-to-choose-a-statistical-method" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A critical part of data analysis is making sure that you are using the right method to analyze your data. This depends on the characteristics of your data and what we would like to test. A dataset, for example, may have different types of variables. Some may be numerical values on a continous scale (e.g., temperature), while others may represent different classes (e.g., level of education, land cover type). We will walk through a few commonly used analyses, when they are appropriate, and how to perform them in R.</p>
 </div>
 <div id="correlation" class="section level3 hasAnchor" number="5.7.2">
 <h3><span class="header-section-number">5.7.2</span> Correlation<a href="data-analysis-and-visualization-in-r.html#correlation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Evaluate the correlation between two variables is a common first step in many studies. Correlations use two continous variables and determines the relationship between them. If one variable increases with the other then these variables are postively correlated. If one increases when the other decreases they are negatively correlated. Correlations typically range from -1 to 1.</p>
+<p>In R, we use the <code>cor</code> function to evaluate the correlation between two variables and the <code>cor.test</code>function to test if the correlation is significantly different than 0.</p>
+<p>We can ask, for example, are the Sepal and Petal lengths of flowers in the iris dataset correlated? Is this correlation different from 0?</p>
+<pre class="correlation"><code>
+cor(x = iris$Petal.Length, y = iris$Sepal.Length)
+
+cor.test(x = iris$Petal.Length, y = iris$Sepal.Length)
+</code></pre>
+<p>Note that there are different kinds of correlations you can perform. Check out the method argument of the <code>cor</code> and <code>cor.test</code> functions to learn about them.</p>
 </div>
 <div id="regression" class="section level3 hasAnchor" number="5.7.3">
 <h3><span class="header-section-number">5.7.3</span> Regression<a href="data-analysis-and-visualization-in-r.html#regression" class="anchor-section" aria-label="Anchor link to header"></a></h3>

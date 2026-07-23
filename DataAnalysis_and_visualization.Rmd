@@ -40,6 +40,9 @@ install.packages("tidyverse")
 
 library(tidyverse)
 
+# Load data
+data(iris)
+
 ```
 
 
@@ -53,9 +56,29 @@ This tutorial will be broken into separate sections for data analysis and visual
 
 ## Data analysis
 
+We analyze data to understand the relationships between variables in our data and extract meaningful insights that help us understand the processes driving those relationships, make decisions, and much more. Without data analysis there is not much for us to visualize or do in a study. 
+
 ### How to choose a statistical method
 
+A critical part of data analysis is making sure that you are using the right method to analyze your data. This depends on the characteristics of your data and what we would like to test. A dataset, for example, may have different types of variables. Some may be numerical values on a continous scale (e.g., temperature), while others may represent different classes (e.g., level of education, land cover type). We will walk through a few commonly used analyses, when they are appropriate, and how to perform them in R. 
+
 ### Correlation
+
+Evaluate the correlation between two variables is a common first step in many studies. Correlations use two continous variables and determines the relationship between them. If one variable increases with the other then these variables are postively correlated. If one increases when the other decreases they are negatively correlated. Correlations typically range from -1 to 1. 
+
+In R, we use the `cor` function to evaluate the correlation between two variables and the `cor.test`function to test if the correlation is significantly different than 0.
+
+We can ask, for example, are the Sepal and Petal lengths of flowers in the iris dataset correlated? Is this correlation different from 0?
+
+```{correlation tests, echo = TRUE, eval = FALSE}
+
+cor(x = iris$Petal.Length, y = iris$Sepal.Length)
+
+cor.test(x = iris$Petal.Length, y = iris$Sepal.Length)
+
+```
+
+Note that there are different kinds of correlations you can perform. Check out the method argument of the `cor` and `cor.test` functions to learn about them. 
 
 ### Regression 
 
