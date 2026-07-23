@@ -339,21 +339,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="correlation" class="section level3 hasAnchor" number="5.7.2">
 <h3><span class="header-section-number">5.7.2</span> Correlation<a href="data-analysis-and-visualization-in-r.html#correlation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Evaluate the correlation between two variables is a common first step in many studies. Correlations use two continous variables and determines the relationship between them. If one variable increases with the other then these variables are postively correlated. If one increases when the other decreases they are negatively correlated. Correlations typically range from -1 to 1.</p>
+<p>Evaluate the correlation between two variables is a common first step in many studies. Correlations use two continous variables and determines the strength and direction of the relationship between them. If one variable increases with the other then these variables are postively correlated. If one increases when the other decreases they are negatively correlated. Correlations typically range from -1 to 1.</p>
 <p>In R, we use the <code>cor</code> function to evaluate the correlation between two variables and the <code>cor.test</code>function to test if the correlation is significantly different than 0.</p>
 <p>We can ask, for example, are the Sepal and Petal lengths of flowers in the iris dataset correlated? Is this correlation different from 0?</p>
-<pre class="correlation"><code>
-cor(x = iris$Petal.Length, y = iris$Sepal.Length)
-
-cor.test(x = iris$Petal.Length, y = iris$Sepal.Length)
-</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="data-analysis-and-visualization-in-r.html#cb32-1" tabindex="-1"></a><span class="fu">cor</span>(<span class="at">x =</span> iris<span class="sc">$</span>Petal.Length, <span class="at">y =</span> iris<span class="sc">$</span>Sepal.Length)</span>
+<span id="cb32-2"><a href="data-analysis-and-visualization-in-r.html#cb32-2" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="data-analysis-and-visualization-in-r.html#cb32-3" tabindex="-1"></a><span class="fu">cor.test</span>(<span class="at">x =</span> iris<span class="sc">$</span>Petal.Length, <span class="at">y =</span> iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
 <p>Note that there are different kinds of correlations you can perform. Check out the method argument of the <code>cor</code> and <code>cor.test</code> functions to learn about them.</p>
 </div>
 <div id="regression" class="section level3 hasAnchor" number="5.7.3">
 <h3><span class="header-section-number">5.7.3</span> Regression<a href="data-analysis-and-visualization-in-r.html#regression" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Another way to explore the relationship between two variables is regression. Regression can include categorical data, but we will focus on linear regression between two continous variables. Regression is different than correlation because it defines which variable is independent and which is dependent. In terms of analysis, we are asking how changing in the independent variable influences the dependent variable. We then can derive a mathematical equation from this relationship that can be used to predict dependent values given the independent variable value. For example, we could predict house prices based on square footage, business sales given advertising spend, or how long it will take a car to stop given its speed. Regression can be used to determine a cause and effect relationship between two variables, but this can only be done in an extremely controlled setting where absolutely everything else in the environment is controlled and we only change the variable of interest. For this reason, we often do not infer a cause and effect relationship between variables. Now, let’s run a simple regression of our own.</p>
+<p>Imagine we have a reason to believe that a flowers sepal length is determined by its petal length. We will build a model where sepal lenght is a function of petal length. We provide a formula <code>Sepal.Length ~ Petal.Length</code> using the column names of the variables we want to use and the data.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="data-analysis-and-visualization-in-r.html#cb33-1" tabindex="-1"></a><span class="fu">lm</span>(<span class="at">formula =</span> Sepal.Length <span class="sc">~</span> Petal.Length, <span class="at">data =</span> iris) </span>
+<span id="cb33-2"><a href="data-analysis-and-visualization-in-r.html#cb33-2" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="data-analysis-and-visualization-in-r.html#cb33-3" tabindex="-1"></a><span class="fu">lm</span>(<span class="at">formula =</span> Sepal.Length <span class="sc">~</span> Petal.Length, <span class="at">data =</span> iris) <span class="sc">%&gt;%</span> <span class="fu">summary</span>()</span></code></pre></div>
+<p>When you run this you will see a few statistics. We are interested in the p-value for each term (Pr(&gt;|t|)), specifically Petal.Length. We see that the relationship between sepal length and petal length is significant. Indicating that as petal length increases, so does sepal length.</p>
 </div>
 <div id="t-test" class="section level3 hasAnchor" number="5.7.4">
 <h3><span class="header-section-number">5.7.4</span> T-test<a href="data-analysis-and-visualization-in-r.html#t-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Thus far, we have only applied analyses to continous numeric variables. Now we will test for differences between categories using a t-test. T-tests are used to understand if there is a difference between the means of <strong>two</strong> different groups. For example, if a new drug for weight loss actually results in weight loss, researchers may compare the mean of the group that took the drug to a control group to understand if the treatment group had a lower mean then the control group.</p>
+<p>We will test to see if <code>Sepal.length</code> is differt between different iris species. Notice that we filter the data down to two groups and then perform the test using a formula.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="data-analysis-and-visualization-in-r.html#cb34-1" tabindex="-1"></a>iris.filt <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Species <span class="sc">!=</span> <span class="st">&#39;setosa&#39;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-2"><a href="data-analysis-and-visualization-in-r.html#cb34-2" tabindex="-1"></a>    <span class="fu">select</span>(<span class="dv">1</span>,<span class="dv">5</span>)</span>
+<span id="cb34-3"><a href="data-analysis-and-visualization-in-r.html#cb34-3" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="data-analysis-and-visualization-in-r.html#cb34-4" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">formula =</span> Sepal.Length <span class="sc">~</span> Species, <span class="at">data =</span> iris.filt)</span></code></pre></div>
+<p>We see that there is a difference between groups, the mean for virginica is higher than that for versicolor.</p>
 </div>
 </div>
 <div id="data-visualization" class="section level2 hasAnchor" number="5.8">
