@@ -192,21 +192,29 @@ Scatterplots are used to visualize the relationships between two numeric variabl
 
 In this code, we will create a plot `ggplot(data = iris)` and then add a point layer `geom_point(aes(x = Sepal.Length, y = Petal.Length))`. We also label the axes with `xlab` and `ylab`, including the units. 
 
-```{r scatterplot}
+```{r scatterplot, eval = FALSE}
 
 ggplot(data = iris) + geom_point(aes(x = Sepal.Length, y = Petal.Length)) + xlab("Sepal Length (cm)") + ylab("Petal Length (cm)")
 
 ```
 
 
+```{r scatterplot viz, echo=FALSE, eval=TRUE, fig.align='center'}
+knitr::include_graphics("./imgs/data_viz_scatternocolor.png")
+```
+
 Now let's add some color. We will color the points by species. 
 
-```{r scatterplot color}
+```{r scatterplot color, eval = FALSE}
 
 scatter_PLvsSL <- ggplot(data = iris) + geom_point(aes(x = Sepal.Length, y = Petal.Length, colour = Species)) + xlab("Sepal Length (cm)") + ylab("Petal Length (cm)")
 
 scatter_PLvsSL
 
+```
+
+```{r scatterplot color viz, echo=FALSE, eval=TRUE, fig.align='center'}
+knitr::include_graphics("./imgs/data_viz_scattercolor.png")
 ```
 
 **Now you try**
@@ -220,6 +228,12 @@ Can you change the colors of the different species? Hint, look up [scale_color_m
 
 scatter_PLvsSL_color <- ggplot(data = iris) + geom_point(aes(x = Sepal.Length, y = Petal.Length, colour = Species)) + xlab("Sepal Length (cm)") + ylab("Petal Length (cm)") + scale_color_manual(values = c("red", "purple", "blue"))
 
+scatter_PLvsSL_color
+
+```
+
+```{r scatterplot practice viz, echo=FALSE, eval=TRUE, fig.align='center'}
+knitr::include_graphics("./imgs/data_viz_scattercolor_practice.png")
 ```
 
 </details>
@@ -231,12 +245,16 @@ Notice that when we color the points by species we see that `Petal.Length` seems
 
 We will make a boxplot which is best used when there are single numerical variables. Boxplots are often used when you want to show the difference (or similarity) between two groups. We will use the `geom_boxplot`. We will still include a point layer with `geom_point` so that we display our raw data along with the boxplots. Notice that we have moved the `aes` argument into the `ggplot` function and placed the `geom_point` function after `geom_boxplot`. This tells ggplot2 to use the plotting attributes established in `ggplot(data = iris, aes(x = Species, y = Petal.Length))` for the entire plot and to put the point layer on top of the boxplots.
 
-```{r boxplot}
+```{r boxplot, eval = FALSE}
 
 boxplot_PL <- ggplot(data = iris, aes(x = Species, y = Petal.Length)) + geom_boxplot() + geom_point() +  xlab("Species") + ylab("Petal Length (cm)")
 
 boxplot_PL
 
+```
+
+```{r boxplot viz, echo=FALSE, eval=TRUE, fig.align='center'}
+knitr::include_graphics("./imgs/data_viz_boxplot_nocolor.png")
 ```
 
 **Now you try**
@@ -248,8 +266,14 @@ Can you change the colors of the different species like you did for the scatterp
 
 ```{r boxplot practice, collapse = TRUE, eval=FALSE}
 
-ggplot(data = iris, aes(x = Species, y = Petal.Length, color = Species)) + geom_boxplot() + geom_point() +  xlab("Species") + ylab("Petal Length (cm)") + scale_color_manual(values = c("red", "purple", "blue"))
+boxplot_PL_color <- ggplot(data = iris, aes(x = Species, y = Petal.Length, color = Species)) + geom_boxplot() + geom_point() +  xlab("Species") + ylab("Petal Length (cm)") + scale_color_manual(values = c("red", "purple", "blue"))
 
+boxplot_PL_color
+
+```
+
+```{r boxplot viz practice, echo=FALSE, eval=TRUE, fig.align='center'}
+knitr::include_graphics("./imgs/data_viz_boxplot_color.png")
 ```
 
 </details>
@@ -283,6 +307,9 @@ dev.off()
 
 ```
 
+```{r multipanel viz, echo=FALSE, eval=TRUE, fig.align='center'}
+knitr::include_graphics("./imgs/data_viz_multipanel.png")
+```
 
 **Now you try**
 
@@ -310,6 +337,10 @@ plotGG(boxplot_PL_color, x = 4.2, y = 0.1, width = 4, height = 4)
 # Close the connection
 dev.off()
 
+```
+
+```{r multipanel viz practice, echo=FALSE, eval=TRUE, fig.align='center'}
+knitr::include_graphics("./imgs/data_viz_multipanel2.png")
 ```
 
 </details>
