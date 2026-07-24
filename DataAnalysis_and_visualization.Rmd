@@ -2,9 +2,7 @@
 
 *Written by Keaka Farleigh on August 5th, 2025*
 
-*Last updated by Keaka Farleigh on August July 8th, 2025*
-
-*I am updating this chapter. The new version will be posted by July 27th, 2026. Please email me if you need help with data analysis and visualization!*
+*Last updated by Keaka Farleigh on July 24th, 2026*
 
 ## Purpose
 
@@ -30,6 +28,7 @@ None!
  - [R](https://www.r-project.org/) (R core team, 2025)
  - [Rstudio](https://posit.co/download/rstudio-desktop/)
  - [tidyverse packages](https://tidyverse.org/)
+ - [plotgardener](https://phanstiellab.github.io/plotgardener/index.html)
  
  
 Install the tidyverse using the command below.
@@ -39,6 +38,13 @@ Install the tidyverse using the command below.
 install.packages("tidyverse")
 
 library(tidyverse)
+
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+BiocManager::install("plotgardener")
+
+library(plotgardener)
 
 # Load data
 data(iris)
@@ -80,6 +86,21 @@ cor.test(x = iris$Petal.Length, y = iris$Sepal.Length)
 
 Note that there are different kinds of correlations you can perform. Check out the method argument of the `cor` and `cor.test` functions to learn about them. 
 
+**Now you try**
+
+How would you estimate the correlation between `Sepal.Width` and `Sepal.Length`? Try it yourself, then reveal the code below.
+
+<details>
+<summary>Click to show solution</summary>
+
+```{r correlation practice, collapse = TRUE, eval=FALSE}
+
+cor(x = iris$Sepal.Width, y = iris$Sepal.Length)
+
+```
+
+</details>
+
 ### Regression 
 
 Another way to explore the relationship between two variables is regression. Regression can include categorical data, but we will focus on linear regression between two continous variables. Regression is different than correlation because it defines which variable is independent and which is dependent. In terms of analysis, we are asking how changing in the independent variable influences the dependent variable. We then can derive a mathematical equation from this relationship that can be used to predict dependent values given the independent variable value. For example, we could predict house prices based on square footage, business sales given advertising spend, or how long it will take a car to stop given its speed. Regression can be used to determine a cause and effect relationship between two variables, but this can only be done in an extremely controlled setting where absolutely everything else in the environment is controlled and we only change the variable of interest. For this reason, we often do not infer a cause and effect relationship between variables. Now, let's run a simple regression of our own.
@@ -95,6 +116,22 @@ lm(formula = Sepal.Length ~ Petal.Length, data = iris) %>% summary()
 ```
 
 When you run this you will see a few statistics. We are interested in the p-value for each term (Pr(>|t|)), specifically Petal.Length. We see that the relationship between sepal length and petal length is significant. Indicating that as petal length increases, so does sepal length. 
+
+
+**Now you try**
+
+Suppose we believe that `Sepal.Width` influences `Sepal.Length`. Can you build a linear model for this relationship and summarize it? Try it yourself, then reveal the code below.
+
+<details>
+<summary>Click to show solution</summary>
+
+```{r regression practice, collapse = TRUE, eval=FALSE}
+
+lm(formula = Sepal.Length ~ Sepal.Width, data = iris) %>% summary()
+
+```
+
+</details>
 
 ### T-test
 
@@ -113,15 +150,175 @@ t.test(formula = Sepal.Length ~ Species, data = iris.filt)
 
 We see that there is a difference between groups, the mean for virginica is higher than that for versicolor.
 
+**Now you try**
+
+Is there a difference of mean `Sepal.Width` between virginica and versicolor? Try it yourself, then reveal the code below.
+
+<details>
+<summary>Click to show solution</summary>
+
+```{r t-test practice, collapse = TRUE, eval=FALSE}
+
+t.test(formula = Sepal.Width ~ Species, data = iris.filt)
+
+```
+
+</details>
+
 ## Data visualization
+
+Data visualization is a critical step in any study. It can be used in exploratory data analysis as a first step to understand potential relationships in data and to act as a quick quality check to ensure that they data are what you expect. If not, you can do additional investigation to understand if the unexpected patterns are due to an error, or if they are real. Data visualization is also a powerful way to show our results, rather than merely reporting them in text. Thus, **visualizing data should be a first and last step in any study**. We will walk through some plotting best practices before generating a couple of the most commonly used plots. Don't be afraid to explore the different kinds of plots! Just make sure that every plot you make has a clear message that helps the reader understand your results. 
+
+### Plotting best-practices
+
+There are a few plotting best-practices. This varies from person to person, but I have listed a couple below.
+
+1. **Always label your axes, including units**. Labelled axes allow readers to understand what they are looking at and provides clarity.
+2. **Dependent variables generally go on the y-axis**. This is a standard practice and it is done because it shows how the dependent variable changes in response to the independent variable.
+3. **Try multiple plot types**. Different types of plots can tell different stories using the same data, consider what you want your plot to convey.
+4. **Draw you plot on paper**. This helps you think about what you want the reader to take away from the plot and is a quick alternative to spending a lot of time writing code for each plot type. This does not have to be precise in terms of data, it is just to help you think. 
+5. **Avoid complexity and redundancy**. Keeping the plot simple helps your plot remain clear. Extra information increases the chance that your reader will get off track.
+
+### What is ggplot2?
+
+We will use the R package [ggplot2](https://ggplot2.tidyverse.org/) to make our plots. While base R can make plots, ggplot2 is the standard package for many researchers as it enables you to make any plot you wish. This also means it is a little complicated, but the examples we walk through below will get you started on the right path.
+
+The most important thing to understand about ggplot2 is that is builds plots in layers. You will create a plot with the `ggplot` function. Then you will add layers on top of this plot, such as points `geom_point` or boxplots `geom_boxplot`. 
+
 
 ### Scatterplot
 
+Scatterplots are used to visualize the relationships between two numeric variables. Each data point is visualized as a dot. Scatterplots can be useful when we have tested the correlation between two variables or built a linear model. Let's make one using the iris data.
+
+In this code, we will create a plot `ggplot(data = iris)` and then add a point layer `geom_point(aes(x = Sepal.Length, y = Petal.Length))`. We also label the axes with `xlab` and `ylab`, including the units. 
+
+```{r scatterplot}
+
+ggplot(data = iris) + geom_point(aes(x = Sepal.Length, y = Petal.Length)) + xlab("Sepal Length (cm)") + ylab("Petal Length (cm)")
+
+```
+
+
+Now let's add some color. We will color the points by species. 
+
+```{r scatterplot color}
+
+scatter_PLvsSL <- ggplot(data = iris) + geom_point(aes(x = Sepal.Length, y = Petal.Length, colour = Species)) + xlab("Sepal Length (cm)") + ylab("Petal Length (cm)")
+
+scatter_PLvsSL
+
+```
+
+**Now you try**
+
+Can you change the colors of the different species? Hint, look up [scale_color_manual](https://ggplot2.tidyverse.org/reference/scale_manual.html).Try it yourself, then reveal the code below.
+
+<details>
+<summary>Click to show solution</summary>
+
+```{r scatterplot practice, collapse = TRUE, eval=FALSE}
+
+scatter_PLvsSL_color <- ggplot(data = iris) + geom_point(aes(x = Sepal.Length, y = Petal.Length, colour = Species)) + xlab("Sepal Length (cm)") + ylab("Petal Length (cm)") + scale_color_manual(values = c("red", "purple", "blue"))
+
+```
+
+</details>
+
+Notice that when we color the points by species we see that `Petal.Length` seems to be different between setosa and the other species. A better way to visualize this would be to use a boxplot, we will do that below.
+
+
 ### Boxplot
+
+We will make a boxplot which is best used when there are single numerical variables. Boxplots are often used when you want to show the difference (or similarity) between two groups. We will use the `geom_boxplot`. We will still include a point layer with `geom_point` so that we display our raw data along with the boxplots. Notice that we have moved the `aes` argument into the `ggplot` function and placed the `geom_point` function after `geom_boxplot`. This tells ggplot2 to use the plotting attributes established in `ggplot(data = iris, aes(x = Species, y = Petal.Length))` for the entire plot and to put the point layer on top of the boxplots.
+
+```{r boxplot}
+
+boxplot_PL <- ggplot(data = iris, aes(x = Species, y = Petal.Length)) + geom_boxplot() + geom_point() +  xlab("Species") + ylab("Petal Length (cm)")
+
+boxplot_PL
+
+```
+
+**Now you try**
+
+Can you change the colors of the different species like you did for the scatterpots? Hint, look up [scale_color_manual](https://ggplot2.tidyverse.org/reference/scale_manual.html). Try it yourself, then reveal the code below.
+
+<details>
+<summary>Click to show solution</summary>
+
+```{r boxplot practice, collapse = TRUE, eval=FALSE}
+
+ggplot(data = iris, aes(x = Species, y = Petal.Length, color = Species)) + geom_boxplot() + geom_point() +  xlab("Species") + ylab("Petal Length (cm)") + scale_color_manual(values = c("red", "purple", "blue"))
+
+```
+
+</details>
 
 ### Multipanel figure
 
+We will use [plotgardener](https://phanstiellab.github.io/plotgardener/index.html)(Kramer et al., 2022) to make a multipanel figure. Multipanel figures are commonly used in studies and allow us to package different, but related plots into a single figure. In plotgardener, we will first create a page of dimensions that we define using `pageCreate`, then we will place each of our plots onto that page using `plotGG`. We specify where we want to place the plots on the page using the `x` and `y` arguments, respectively. We defined the size of each plot using `width` and `height`, this makes it useful to control the aspect ratio of plots. The defauly units are inches. 
+
+We will make sure this saves as a pdf by first opening a pdf, creating our figure in that pdf then closing the pdf.
+
+
+
+We will plot the scatterplot next to the boxplot.
+
+```{r multipanel figure, echo=TRUE, eval=FALSE}
+
+# create pdf
+pdf("multipanel_figure.pdf", width = 11, height = 8.5)
+
+# Make page
+pageCreate(width = 11, height = 8.5, showGuides = FALSE)
+
+# Scatter plot
+plotGG(scatter_PLvsSL, x = 0.1, y = 0.1, width = 4, height = 4)
+
+# Scatter plot
+plotGG(boxplot_PL, x = 4.2, y = 0.1, width = 4, height = 4)
+
+# Close the connection
+dev.off()
+
+```
+
+
+**Now you try**
+
+Can you replace the plots with the plots colored by species? Hint, we have made these throughout this chapter. Try it yourself, then reveal the code below.
+
+<details>
+<summary>Click to show solution</summary>
+
+```{r multipanel practice, collapse = TRUE, eval=FALSE}
+
+boxplot_PL_color <- ggplot(data = iris, aes(x = Species, y = Petal.Length, color = Species)) + geom_boxplot() + geom_point() +  xlab("Species") + ylab("Petal Length (cm)") + scale_color_manual(values = c("red", "purple", "blue"))
+
+# create pdf
+pdf("multipanel_figure_v2.pdf", width = 11, height = 8.5)
+
+# Make page
+pageCreate(width = 11, height = 8.5, showGuides = FALSE)
+
+# Scatter plot
+plotGG(scatter_PLvsSL_color, x = 0.1, y = 0.1, width = 4, height = 4)
+
+# Scatter plot
+plotGG(boxplot_PL_color, x = 4.2, y = 0.1, width = 4, height = 4)
+
+# Close the connection
+dev.off()
+
+```
+
+</details>
+
+We are done! As always, please reach out with any questions or suggestions.
+
 ## References
+
+Kramer, N. E., Davis, E. S., Wenger, C. D., Deoudes, E. M., Parker, S. M., Love, M. I., & Phanstiel, D. H. (2022). Plotgardener: cultivating precise multi-panel figures in R. Bioinformatics, 38(7), 2042-2045.
 
 R Core Team (2025). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. https://www.R-project.org/.
 

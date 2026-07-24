@@ -23,7 +23,7 @@
 <meta name="author" content="Keaka Farleigh" />
 
 
-<meta name="date" content="2026-07-23" />
+<meta name="date" content="2026-07-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -255,9 +255,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.8" data-path="data-analysis-and-visualization-in-r.html"><a href="data-analysis-and-visualization-in-r.html#data-visualization"><i class="fa fa-check"></i><b>5.8</b> Data visualization</a>
 <ul>
-<li class="chapter" data-level="5.8.1" data-path="data-analysis-and-visualization-in-r.html"><a href="data-analysis-and-visualization-in-r.html#scatterplot"><i class="fa fa-check"></i><b>5.8.1</b> Scatterplot</a></li>
-<li class="chapter" data-level="5.8.2" data-path="data-analysis-and-visualization-in-r.html"><a href="data-analysis-and-visualization-in-r.html#boxplot"><i class="fa fa-check"></i><b>5.8.2</b> Boxplot</a></li>
-<li class="chapter" data-level="5.8.3" data-path="data-analysis-and-visualization-in-r.html"><a href="data-analysis-and-visualization-in-r.html#multipanel-figure"><i class="fa fa-check"></i><b>5.8.3</b> Multipanel figure</a></li>
+<li class="chapter" data-level="5.8.1" data-path="data-analysis-and-visualization-in-r.html"><a href="data-analysis-and-visualization-in-r.html#plotting-best-practices"><i class="fa fa-check"></i><b>5.8.1</b> Plotting best-practices</a></li>
+<li class="chapter" data-level="5.8.2" data-path="data-analysis-and-visualization-in-r.html"><a href="data-analysis-and-visualization-in-r.html#what-is-ggplot2"><i class="fa fa-check"></i><b>5.8.2</b> What is ggplot2?</a></li>
+<li class="chapter" data-level="5.8.3" data-path="data-analysis-and-visualization-in-r.html"><a href="data-analysis-and-visualization-in-r.html#scatterplot"><i class="fa fa-check"></i><b>5.8.3</b> Scatterplot</a></li>
+<li class="chapter" data-level="5.8.4" data-path="data-analysis-and-visualization-in-r.html"><a href="data-analysis-and-visualization-in-r.html#boxplot"><i class="fa fa-check"></i><b>5.8.4</b> Boxplot</a></li>
+<li class="chapter" data-level="5.8.5" data-path="data-analysis-and-visualization-in-r.html"><a href="data-analysis-and-visualization-in-r.html#multipanel-figure"><i class="fa fa-check"></i><b>5.8.5</b> Multipanel figure</a></li>
 </ul></li>
 <li class="chapter" data-level="5.9" data-path="data-analysis-and-visualization-in-r.html"><a href="data-analysis-and-visualization-in-r.html#references-4"><i class="fa fa-check"></i><b>5.9</b> References</a></li>
 </ul></li>
@@ -284,8 +286,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="data-analysis-and-visualization-in-r" class="section level1 hasAnchor" number="5">
 <h1><span class="header-section-number">5</span> Data analysis and visualization in R<a href="data-analysis-and-visualization-in-r.html#data-analysis-and-visualization-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p><em>Written by Keaka Farleigh on August 5th, 2025</em></p>
-<p><em>Last updated by Keaka Farleigh on August July 8th, 2025</em></p>
-<p><em>I am updating this chapter. The new version will be posted by July 27th, 2026. Please email me if you need help with data analysis and visualization!</em></p>
+<p><em>Last updated by Keaka Farleigh on July 24th, 2026</em></p>
 <div id="purpose-4" class="section level2 hasAnchor" number="5.1">
 <h2><span class="header-section-number">5.1</span> Purpose<a href="data-analysis-and-visualization-in-r.html#purpose-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This tutorial will give you an introduction to data analysis and visualization. You will learn how to perform some basic analyses and how to visualize those results. I will assume that you have minimal experience with R and are a beginner user. Please read through the <a href="https://kfarleigh.github.io/ResearchersGuideToPopulationGenomics/introduction-to-r.html">Introduction to R chapter</a> or send me an email if you do not feel comfortable with this tutorial.</p>
@@ -313,14 +314,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="https://www.r-project.org/">R</a> (R core team, 2025)</li>
 <li><a href="https://posit.co/download/rstudio-desktop/">Rstudio</a></li>
 <li><a href="https://tidyverse.org/">tidyverse packages</a></li>
+<li><a href="https://phanstiellab.github.io/plotgardener/index.html">plotgardener</a></li>
 </ul>
 <p>Install the tidyverse using the command below.</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="data-analysis-and-visualization-in-r.html#cb31-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
 <span id="cb31-2"><a href="data-analysis-and-visualization-in-r.html#cb31-2" tabindex="-1"></a></span>
 <span id="cb31-3"><a href="data-analysis-and-visualization-in-r.html#cb31-3" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb31-4"><a href="data-analysis-and-visualization-in-r.html#cb31-4" tabindex="-1"></a></span>
-<span id="cb31-5"><a href="data-analysis-and-visualization-in-r.html#cb31-5" tabindex="-1"></a><span class="co"># Load data</span></span>
-<span id="cb31-6"><a href="data-analysis-and-visualization-in-r.html#cb31-6" tabindex="-1"></a><span class="fu">data</span>(iris)</span></code></pre></div>
+<span id="cb31-5"><a href="data-analysis-and-visualization-in-r.html#cb31-5" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">&quot;BiocManager&quot;</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb31-6"><a href="data-analysis-and-visualization-in-r.html#cb31-6" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;BiocManager&quot;</span>)</span>
+<span id="cb31-7"><a href="data-analysis-and-visualization-in-r.html#cb31-7" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="data-analysis-and-visualization-in-r.html#cb31-8" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>(<span class="st">&quot;plotgardener&quot;</span>)</span>
+<span id="cb31-9"><a href="data-analysis-and-visualization-in-r.html#cb31-9" tabindex="-1"></a></span>
+<span id="cb31-10"><a href="data-analysis-and-visualization-in-r.html#cb31-10" tabindex="-1"></a><span class="fu">library</span>(plotgardener)</span>
+<span id="cb31-11"><a href="data-analysis-and-visualization-in-r.html#cb31-11" tabindex="-1"></a></span>
+<span id="cb31-12"><a href="data-analysis-and-visualization-in-r.html#cb31-12" tabindex="-1"></a><span class="co"># Load data</span></span>
+<span id="cb31-13"><a href="data-analysis-and-visualization-in-r.html#cb31-13" tabindex="-1"></a><span class="fu">data</span>(iris)</span></code></pre></div>
 </div>
 <div id="notes-on-this-tutorial-2" class="section level2 hasAnchor" number="5.5">
 <h2><span class="header-section-number">5.5</span> Notes on this tutorial<a href="data-analysis-and-visualization-in-r.html#notes-on-this-tutorial-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -346,41 +355,161 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb32-2"><a href="data-analysis-and-visualization-in-r.html#cb32-2" tabindex="-1"></a></span>
 <span id="cb32-3"><a href="data-analysis-and-visualization-in-r.html#cb32-3" tabindex="-1"></a><span class="fu">cor.test</span>(<span class="at">x =</span> iris<span class="sc">$</span>Petal.Length, <span class="at">y =</span> iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
 <p>Note that there are different kinds of correlations you can perform. Check out the method argument of the <code>cor</code> and <code>cor.test</code> functions to learn about them.</p>
+<p><strong>Now you try</strong></p>
+<p>How would you estimate the correlation between <code>Sepal.Width</code> and <code>Sepal.Length</code>? Try it yourself, then reveal the code below.</p>
+<details>
+<summary>
+Click to show solution
+</summary>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="data-analysis-and-visualization-in-r.html#cb33-1" tabindex="-1"></a></span>
+<span id="cb33-2"><a href="data-analysis-and-visualization-in-r.html#cb33-2" tabindex="-1"></a><span class="fu">cor</span>(<span class="at">x =</span> iris<span class="sc">$</span>Sepal.Width, <span class="at">y =</span> iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
+</details>
 </div>
 <div id="regression" class="section level3 hasAnchor" number="5.7.3">
 <h3><span class="header-section-number">5.7.3</span> Regression<a href="data-analysis-and-visualization-in-r.html#regression" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Another way to explore the relationship between two variables is regression. Regression can include categorical data, but we will focus on linear regression between two continous variables. Regression is different than correlation because it defines which variable is independent and which is dependent. In terms of analysis, we are asking how changing in the independent variable influences the dependent variable. We then can derive a mathematical equation from this relationship that can be used to predict dependent values given the independent variable value. For example, we could predict house prices based on square footage, business sales given advertising spend, or how long it will take a car to stop given its speed. Regression can be used to determine a cause and effect relationship between two variables, but this can only be done in an extremely controlled setting where absolutely everything else in the environment is controlled and we only change the variable of interest. For this reason, we often do not infer a cause and effect relationship between variables. Now, let’s run a simple regression of our own.</p>
 <p>Imagine we have a reason to believe that a flowers sepal length is determined by its petal length. We will build a model where sepal lenght is a function of petal length. We provide a formula <code>Sepal.Length ~ Petal.Length</code> using the column names of the variables we want to use and the data.</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="data-analysis-and-visualization-in-r.html#cb33-1" tabindex="-1"></a><span class="fu">lm</span>(<span class="at">formula =</span> Sepal.Length <span class="sc">~</span> Petal.Length, <span class="at">data =</span> iris) </span>
-<span id="cb33-2"><a href="data-analysis-and-visualization-in-r.html#cb33-2" tabindex="-1"></a></span>
-<span id="cb33-3"><a href="data-analysis-and-visualization-in-r.html#cb33-3" tabindex="-1"></a><span class="fu">lm</span>(<span class="at">formula =</span> Sepal.Length <span class="sc">~</span> Petal.Length, <span class="at">data =</span> iris) <span class="sc">%&gt;%</span> <span class="fu">summary</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="data-analysis-and-visualization-in-r.html#cb34-1" tabindex="-1"></a><span class="fu">lm</span>(<span class="at">formula =</span> Sepal.Length <span class="sc">~</span> Petal.Length, <span class="at">data =</span> iris) </span>
+<span id="cb34-2"><a href="data-analysis-and-visualization-in-r.html#cb34-2" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="data-analysis-and-visualization-in-r.html#cb34-3" tabindex="-1"></a><span class="fu">lm</span>(<span class="at">formula =</span> Sepal.Length <span class="sc">~</span> Petal.Length, <span class="at">data =</span> iris) <span class="sc">%&gt;%</span> <span class="fu">summary</span>()</span></code></pre></div>
 <p>When you run this you will see a few statistics. We are interested in the p-value for each term (Pr(&gt;|t|)), specifically Petal.Length. We see that the relationship between sepal length and petal length is significant. Indicating that as petal length increases, so does sepal length.</p>
+<p><strong>Now you try</strong></p>
+<p>Suppose we believe that <code>Sepal.Width</code> influences <code>Sepal.Length</code>. Can you build a linear model for this relationship and summarize it? Try it yourself, then reveal the code below.</p>
+<details>
+<summary>
+Click to show solution
+</summary>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="data-analysis-and-visualization-in-r.html#cb35-1" tabindex="-1"></a></span>
+<span id="cb35-2"><a href="data-analysis-and-visualization-in-r.html#cb35-2" tabindex="-1"></a><span class="fu">lm</span>(<span class="at">formula =</span> Sepal.Length <span class="sc">~</span> Sepal.Width, <span class="at">data =</span> iris) <span class="sc">%&gt;%</span> <span class="fu">summary</span>()</span></code></pre></div>
+</details>
 </div>
 <div id="t-test" class="section level3 hasAnchor" number="5.7.4">
 <h3><span class="header-section-number">5.7.4</span> T-test<a href="data-analysis-and-visualization-in-r.html#t-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Thus far, we have only applied analyses to continous numeric variables. Now we will test for differences between categories using a t-test. T-tests are used to understand if there is a difference between the means of <strong>two</strong> different groups. For example, if a new drug for weight loss actually results in weight loss, researchers may compare the mean of the group that took the drug to a control group to understand if the treatment group had a lower mean then the control group.</p>
 <p>We will test to see if <code>Sepal.length</code> is differt between different iris species. Notice that we filter the data down to two groups and then perform the test using a formula.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="data-analysis-and-visualization-in-r.html#cb34-1" tabindex="-1"></a>iris.filt <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Species <span class="sc">!=</span> <span class="st">&#39;setosa&#39;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb34-2"><a href="data-analysis-and-visualization-in-r.html#cb34-2" tabindex="-1"></a>    <span class="fu">select</span>(<span class="dv">1</span>,<span class="dv">5</span>)</span>
-<span id="cb34-3"><a href="data-analysis-and-visualization-in-r.html#cb34-3" tabindex="-1"></a></span>
-<span id="cb34-4"><a href="data-analysis-and-visualization-in-r.html#cb34-4" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">formula =</span> Sepal.Length <span class="sc">~</span> Species, <span class="at">data =</span> iris.filt)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="data-analysis-and-visualization-in-r.html#cb36-1" tabindex="-1"></a>iris.filt <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Species <span class="sc">!=</span> <span class="st">&#39;setosa&#39;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb36-2"><a href="data-analysis-and-visualization-in-r.html#cb36-2" tabindex="-1"></a>    <span class="fu">select</span>(<span class="dv">1</span>,<span class="dv">5</span>)</span>
+<span id="cb36-3"><a href="data-analysis-and-visualization-in-r.html#cb36-3" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="data-analysis-and-visualization-in-r.html#cb36-4" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">formula =</span> Sepal.Length <span class="sc">~</span> Species, <span class="at">data =</span> iris.filt)</span></code></pre></div>
 <p>We see that there is a difference between groups, the mean for virginica is higher than that for versicolor.</p>
+<p><strong>Now you try</strong></p>
+<p>Is there a difference of mean <code>Sepal.Width</code> between virginica and versicolor? Try it yourself, then reveal the code below.</p>
+<details>
+<summary>
+Click to show solution
+</summary>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="data-analysis-and-visualization-in-r.html#cb37-1" tabindex="-1"></a></span>
+<span id="cb37-2"><a href="data-analysis-and-visualization-in-r.html#cb37-2" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">formula =</span> Sepal.Width <span class="sc">~</span> Species, <span class="at">data =</span> iris.filt)</span></code></pre></div>
+</details>
 </div>
 </div>
 <div id="data-visualization" class="section level2 hasAnchor" number="5.8">
 <h2><span class="header-section-number">5.8</span> Data visualization<a href="data-analysis-and-visualization-in-r.html#data-visualization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="scatterplot" class="section level3 hasAnchor" number="5.8.1">
-<h3><span class="header-section-number">5.8.1</span> Scatterplot<a href="data-analysis-and-visualization-in-r.html#scatterplot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Data visualization is a critical step in any study. It can be used in exploratory data analysis as a first step to understand potential relationships in data and to act as a quick quality check to ensure that they data are what you expect. If not, you can do additional investigation to understand if the unexpected patterns are due to an error, or if they are real. Data visualization is also a powerful way to show our results, rather than merely reporting them in text. Thus, <strong>visualizing data should be a first and last step in any study</strong>. We will walk through some plotting best practices before generating a couple of the most commonly used plots. Don’t be afraid to explore the different kinds of plots! Just make sure that every plot you make has a clear message that helps the reader understand your results.</p>
+<div id="plotting-best-practices" class="section level3 hasAnchor" number="5.8.1">
+<h3><span class="header-section-number">5.8.1</span> Plotting best-practices<a href="data-analysis-and-visualization-in-r.html#plotting-best-practices" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>There are a few plotting best-practices. This varies from person to person, but I have listed a couple below.</p>
+<ol style="list-style-type: decimal">
+<li><strong>Always label your axes, including units</strong>. Labelled axes allow readers to understand what they are looking at and provides clarity.</li>
+<li><strong>Dependent variables generally go on the y-axis</strong>. This is a standard practice and it is done because it shows how the dependent variable changes in response to the independent variable.</li>
+<li><strong>Try multiple plot types</strong>. Different types of plots can tell different stories using the same data, consider what you want your plot to convey.</li>
+<li><strong>Draw you plot on paper</strong>. This helps you think about what you want the reader to take away from the plot and is a quick alternative to spending a lot of time writing code for each plot type. This does not have to be precise in terms of data, it is just to help you think.</li>
+<li><strong>Avoid complexity and redundancy</strong>. Keeping the plot simple helps your plot remain clear. Extra information increases the chance that your reader will get off track.</li>
+</ol>
 </div>
-<div id="boxplot" class="section level3 hasAnchor" number="5.8.2">
-<h3><span class="header-section-number">5.8.2</span> Boxplot<a href="data-analysis-and-visualization-in-r.html#boxplot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="what-is-ggplot2" class="section level3 hasAnchor" number="5.8.2">
+<h3><span class="header-section-number">5.8.2</span> What is ggplot2?<a href="data-analysis-and-visualization-in-r.html#what-is-ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We will use the R package <a href="https://ggplot2.tidyverse.org/">ggplot2</a> to make our plots. While base R can make plots, ggplot2 is the standard package for many researchers as it enables you to make any plot you wish. This also means it is a little complicated, but the examples we walk through below will get you started on the right path.</p>
+<p>The most important thing to understand about ggplot2 is that is builds plots in layers. You will create a plot with the <code>ggplot</code> function. Then you will add layers on top of this plot, such as points <code>geom_point</code> or boxplots <code>geom_boxplot</code>.</p>
 </div>
-<div id="multipanel-figure" class="section level3 hasAnchor" number="5.8.3">
-<h3><span class="header-section-number">5.8.3</span> Multipanel figure<a href="data-analysis-and-visualization-in-r.html#multipanel-figure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="scatterplot" class="section level3 hasAnchor" number="5.8.3">
+<h3><span class="header-section-number">5.8.3</span> Scatterplot<a href="data-analysis-and-visualization-in-r.html#scatterplot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Scatterplots are used to visualize the relationships between two numeric variables. Each data point is visualized as a dot. Scatterplots can be useful when we have tested the correlation between two variables or built a linear model. Let’s make one using the iris data.</p>
+<p>In this code, we will create a plot <code>ggplot(data = iris)</code> and then add a point layer <code>geom_point(aes(x = Sepal.Length, y = Petal.Length))</code>. We also label the axes with <code>xlab</code> and <code>ylab</code>, including the units.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="data-analysis-and-visualization-in-r.html#cb38-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> iris) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length)) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">&quot;Sepal Length (cm)&quot;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Petal Length (cm)&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/scatterplot-1.png" width="672" /></p>
+<p>Now let’s add some color. We will color the points by species.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="data-analysis-and-visualization-in-r.html#cb39-1" tabindex="-1"></a>scatter_PLvsSL <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> iris) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length, <span class="at">colour =</span> Species)) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">&quot;Sepal Length (cm)&quot;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Petal Length (cm)&quot;</span>)</span>
+<span id="cb39-2"><a href="data-analysis-and-visualization-in-r.html#cb39-2" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="data-analysis-and-visualization-in-r.html#cb39-3" tabindex="-1"></a>scatter_PLvsSL</span></code></pre></div>
+<p><img src="_main_files/figure-html/scatterplot%20color-1.png" width="672" /></p>
+<p><strong>Now you try</strong></p>
+<p>Can you change the colors of the different species? Hint, look up <a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a>.Try it yourself, then reveal the code below.</p>
+<details>
+<summary>
+Click to show solution
+</summary>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="data-analysis-and-visualization-in-r.html#cb40-1" tabindex="-1"></a></span>
+<span id="cb40-2"><a href="data-analysis-and-visualization-in-r.html#cb40-2" tabindex="-1"></a>scatter_PLvsSL_color <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> iris) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length, <span class="at">colour =</span> Species)) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">&quot;Sepal Length (cm)&quot;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Petal Length (cm)&quot;</span>) <span class="sc">+</span> <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;purple&quot;</span>, <span class="st">&quot;blue&quot;</span>))</span></code></pre></div>
+</details>
+<p>Notice that when we color the points by species we see that <code>Petal.Length</code> seems to be different between setosa and the other species. A better way to visualize this would be to use a boxplot, we will do that below.</p>
+</div>
+<div id="boxplot" class="section level3 hasAnchor" number="5.8.4">
+<h3><span class="header-section-number">5.8.4</span> Boxplot<a href="data-analysis-and-visualization-in-r.html#boxplot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We will make a boxplot which is best used when there are single numerical variables. Boxplots are often used when you want to show the difference (or similarity) between two groups. We will use the <code>geom_boxplot</code>. We will still include a point layer with <code>geom_point</code> so that we display our raw data along with the boxplots. Notice that we have moved the <code>aes</code> argument into the <code>ggplot</code> function and placed the <code>geom_point</code> function after <code>geom_boxplot</code>. This tells ggplot2 to use the plotting attributes established in <code>ggplot(data = iris, aes(x = Species, y = Petal.Length))</code> for the entire plot and to put the point layer on top of the boxplots.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="data-analysis-and-visualization-in-r.html#cb41-1" tabindex="-1"></a>boxplot_PL <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Species, <span class="at">y =</span> Petal.Length)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span>  <span class="fu">xlab</span>(<span class="st">&quot;Species&quot;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Petal Length (cm)&quot;</span>)</span>
+<span id="cb41-2"><a href="data-analysis-and-visualization-in-r.html#cb41-2" tabindex="-1"></a></span>
+<span id="cb41-3"><a href="data-analysis-and-visualization-in-r.html#cb41-3" tabindex="-1"></a>boxplot_PL</span></code></pre></div>
+<p><img src="_main_files/figure-html/boxplot-1.png" width="672" /></p>
+<p><strong>Now you try</strong></p>
+<p>Can you change the colors of the different species like you did for the scatterpots? Hint, look up <a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a>. Try it yourself, then reveal the code below.</p>
+<details>
+<summary>
+Click to show solution
+</summary>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="data-analysis-and-visualization-in-r.html#cb42-1" tabindex="-1"></a></span>
+<span id="cb42-2"><a href="data-analysis-and-visualization-in-r.html#cb42-2" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Species, <span class="at">y =</span> Petal.Length, <span class="at">color =</span> Species)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span>  <span class="fu">xlab</span>(<span class="st">&quot;Species&quot;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Petal Length (cm)&quot;</span>) <span class="sc">+</span> <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;purple&quot;</span>, <span class="st">&quot;blue&quot;</span>))</span></code></pre></div>
+</details>
+</div>
+<div id="multipanel-figure" class="section level3 hasAnchor" number="5.8.5">
+<h3><span class="header-section-number">5.8.5</span> Multipanel figure<a href="data-analysis-and-visualization-in-r.html#multipanel-figure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We will use <a href="https://phanstiellab.github.io/plotgardener/index.html">plotgardener</a>(Kramer et al., 2022) to make a multipanel figure. Multipanel figures are commonly used in studies and allow us to package different, but related plots into a single figure. In plotgardener, we will first create a page of dimensions that we define using <code>pageCreate</code>, then we will place each of our plots onto that page using <code>plotGG</code>. We specify where we want to place the plots on the page using the <code>x</code> and <code>y</code> arguments, respectively. We defined the size of each plot using <code>width</code> and <code>height</code>, this makes it useful to control the aspect ratio of plots. The defauly units are inches.</p>
+<p>We will make sure this saves as a pdf by first opening a pdf, creating our figure in that pdf then closing the pdf.</p>
+<p>We will plot the scatterplot next to the boxplot.</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="data-analysis-and-visualization-in-r.html#cb43-1" tabindex="-1"></a><span class="co"># create pdf</span></span>
+<span id="cb43-2"><a href="data-analysis-and-visualization-in-r.html#cb43-2" tabindex="-1"></a><span class="fu">pdf</span>(<span class="st">&quot;multipanel_figure.pdf&quot;</span>, <span class="at">width =</span> <span class="dv">11</span>, <span class="at">height =</span> <span class="fl">8.5</span>)</span>
+<span id="cb43-3"><a href="data-analysis-and-visualization-in-r.html#cb43-3" tabindex="-1"></a></span>
+<span id="cb43-4"><a href="data-analysis-and-visualization-in-r.html#cb43-4" tabindex="-1"></a><span class="co"># Make page</span></span>
+<span id="cb43-5"><a href="data-analysis-and-visualization-in-r.html#cb43-5" tabindex="-1"></a><span class="fu">pageCreate</span>(<span class="at">width =</span> <span class="dv">11</span>, <span class="at">height =</span> <span class="fl">8.5</span>, <span class="at">showGuides =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb43-6"><a href="data-analysis-and-visualization-in-r.html#cb43-6" tabindex="-1"></a></span>
+<span id="cb43-7"><a href="data-analysis-and-visualization-in-r.html#cb43-7" tabindex="-1"></a><span class="co"># Scatter plot</span></span>
+<span id="cb43-8"><a href="data-analysis-and-visualization-in-r.html#cb43-8" tabindex="-1"></a><span class="fu">plotGG</span>(scatter_PLvsSL, <span class="at">x =</span> <span class="fl">0.1</span>, <span class="at">y =</span> <span class="fl">0.1</span>, <span class="at">width =</span> <span class="dv">4</span>, <span class="at">height =</span> <span class="dv">4</span>)</span>
+<span id="cb43-9"><a href="data-analysis-and-visualization-in-r.html#cb43-9" tabindex="-1"></a></span>
+<span id="cb43-10"><a href="data-analysis-and-visualization-in-r.html#cb43-10" tabindex="-1"></a><span class="co"># Scatter plot</span></span>
+<span id="cb43-11"><a href="data-analysis-and-visualization-in-r.html#cb43-11" tabindex="-1"></a><span class="fu">plotGG</span>(boxplot_PL, <span class="at">x =</span> <span class="fl">4.2</span>, <span class="at">y =</span> <span class="fl">0.1</span>, <span class="at">width =</span> <span class="dv">4</span>, <span class="at">height =</span> <span class="dv">4</span>)</span>
+<span id="cb43-12"><a href="data-analysis-and-visualization-in-r.html#cb43-12" tabindex="-1"></a></span>
+<span id="cb43-13"><a href="data-analysis-and-visualization-in-r.html#cb43-13" tabindex="-1"></a><span class="co"># Close the connection</span></span>
+<span id="cb43-14"><a href="data-analysis-and-visualization-in-r.html#cb43-14" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<p><strong>Now you try</strong></p>
+<p>Can you replace the plots with the plots colored by species? Hint, we have made these throughout this chapter. Try it yourself, then reveal the code below.</p>
+<details>
+<summary>
+Click to show solution
+</summary>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="data-analysis-and-visualization-in-r.html#cb44-1" tabindex="-1"></a></span>
+<span id="cb44-2"><a href="data-analysis-and-visualization-in-r.html#cb44-2" tabindex="-1"></a>boxplot_PL_color <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Species, <span class="at">y =</span> Petal.Length, <span class="at">color =</span> Species)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span>  <span class="fu">xlab</span>(<span class="st">&quot;Species&quot;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Petal Length (cm)&quot;</span>) <span class="sc">+</span> <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;purple&quot;</span>, <span class="st">&quot;blue&quot;</span>))</span>
+<span id="cb44-3"><a href="data-analysis-and-visualization-in-r.html#cb44-3" tabindex="-1"></a></span>
+<span id="cb44-4"><a href="data-analysis-and-visualization-in-r.html#cb44-4" tabindex="-1"></a><span class="co"># create pdf</span></span>
+<span id="cb44-5"><a href="data-analysis-and-visualization-in-r.html#cb44-5" tabindex="-1"></a><span class="fu">pdf</span>(<span class="st">&quot;multipanel_figure_v2.pdf&quot;</span>, <span class="at">width =</span> <span class="dv">11</span>, <span class="at">height =</span> <span class="fl">8.5</span>)</span>
+<span id="cb44-6"><a href="data-analysis-and-visualization-in-r.html#cb44-6" tabindex="-1"></a></span>
+<span id="cb44-7"><a href="data-analysis-and-visualization-in-r.html#cb44-7" tabindex="-1"></a><span class="co"># Make page</span></span>
+<span id="cb44-8"><a href="data-analysis-and-visualization-in-r.html#cb44-8" tabindex="-1"></a><span class="fu">pageCreate</span>(<span class="at">width =</span> <span class="dv">11</span>, <span class="at">height =</span> <span class="fl">8.5</span>, <span class="at">showGuides =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb44-9"><a href="data-analysis-and-visualization-in-r.html#cb44-9" tabindex="-1"></a></span>
+<span id="cb44-10"><a href="data-analysis-and-visualization-in-r.html#cb44-10" tabindex="-1"></a><span class="co"># Scatter plot</span></span>
+<span id="cb44-11"><a href="data-analysis-and-visualization-in-r.html#cb44-11" tabindex="-1"></a><span class="fu">plotGG</span>(scatter_PLvsSL_color, <span class="at">x =</span> <span class="fl">0.1</span>, <span class="at">y =</span> <span class="fl">0.1</span>, <span class="at">width =</span> <span class="dv">4</span>, <span class="at">height =</span> <span class="dv">4</span>)</span>
+<span id="cb44-12"><a href="data-analysis-and-visualization-in-r.html#cb44-12" tabindex="-1"></a></span>
+<span id="cb44-13"><a href="data-analysis-and-visualization-in-r.html#cb44-13" tabindex="-1"></a><span class="co"># Scatter plot</span></span>
+<span id="cb44-14"><a href="data-analysis-and-visualization-in-r.html#cb44-14" tabindex="-1"></a><span class="fu">plotGG</span>(boxplot_PL_color, <span class="at">x =</span> <span class="fl">4.2</span>, <span class="at">y =</span> <span class="fl">0.1</span>, <span class="at">width =</span> <span class="dv">4</span>, <span class="at">height =</span> <span class="dv">4</span>)</span>
+<span id="cb44-15"><a href="data-analysis-and-visualization-in-r.html#cb44-15" tabindex="-1"></a></span>
+<span id="cb44-16"><a href="data-analysis-and-visualization-in-r.html#cb44-16" tabindex="-1"></a><span class="co"># Close the connection</span></span>
+<span id="cb44-17"><a href="data-analysis-and-visualization-in-r.html#cb44-17" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+</details>
+<p>We are done! As always, please reach out with any questions or suggestions.</p>
 </div>
 </div>
 <div id="references-4" class="section level2 hasAnchor" number="5.9">
 <h2><span class="header-section-number">5.9</span> References<a href="data-analysis-and-visualization-in-r.html#references-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Kramer, N. E., Davis, E. S., Wenger, C. D., Deoudes, E. M., Parker, S. M., Love, M. I., &amp; Phanstiel, D. H. (2022). Plotgardener: cultivating precise multi-panel figures in R. Bioinformatics, 38(7), 2042-2045.</p>
 <p>R Core Team (2025). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. <a href="https://www.R-project.org/" class="uri">https://www.R-project.org/</a>.</p>
 <p>Wickham, H., et al. (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686. <a href="https://doi.org/10.21105/joss.01686" class="uri">https://doi.org/10.21105/joss.01686</a></p>
 

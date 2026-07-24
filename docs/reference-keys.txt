@@ -71,6 +71,8 @@ correlation
 regression
 t-test
 data-visualization
+plotting-best-practices
+what-is-ggplot2
 scatterplot
 boxplot
 multipanel-figure
