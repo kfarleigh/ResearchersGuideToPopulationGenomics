@@ -23,7 +23,7 @@
 <meta name="author" content="Keaka Farleigh" />
 
 
-<meta name="date" content="2026-07-24" />
+<meta name="date" content="2026-08-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -427,12 +427,12 @@ Click to show solution
 <p>Scatterplots are used to visualize the relationships between two numeric variables. Each data point is visualized as a dot. Scatterplots can be useful when we have tested the correlation between two variables or built a linear model. Let’s make one using the iris data.</p>
 <p>In this code, we will create a plot <code>ggplot(data = iris)</code> and then add a point layer <code>geom_point(aes(x = Sepal.Length, y = Petal.Length))</code>. We also label the axes with <code>xlab</code> and <code>ylab</code>, including the units.</p>
 <div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="data-analysis-and-visualization-in-r.html#cb38-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> iris) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length)) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">&quot;Sepal Length (cm)&quot;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Petal Length (cm)&quot;</span>)</span></code></pre></div>
-<p><img src="imgs/data_viz_scatternocolor.png" alt="" width="706" style="display: block; margin: auto;" /></p>
+<p><img src="imgs/data_viz_scatternocolor.png" width="706" style="display: block; margin: auto;" /></p>
 <p>Now let’s add some color. We will color the points by species.</p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="data-analysis-and-visualization-in-r.html#cb39-1" tabindex="-1"></a>scatter_PLvsSL <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> iris) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length, <span class="at">colour =</span> Species)) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">&quot;Sepal Length (cm)&quot;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Petal Length (cm)&quot;</span>)</span>
 <span id="cb39-2"><a href="data-analysis-and-visualization-in-r.html#cb39-2" tabindex="-1"></a></span>
 <span id="cb39-3"><a href="data-analysis-and-visualization-in-r.html#cb39-3" tabindex="-1"></a>scatter_PLvsSL</span></code></pre></div>
-<p><img src="imgs/data_viz_scattercolor.png" alt="" width="706" style="display: block; margin: auto;" /></p>
+<p><img src="imgs/data_viz_scattercolor.png" width="706" style="display: block; margin: auto;" /></p>
 <p><strong>Now you try</strong></p>
 <p>Can you change the colors of the different species? Hint, look up <a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a>.Try it yourself, then reveal the code below.</p>
 <details>
@@ -443,7 +443,7 @@ Click to show solution
 <span id="cb40-2"><a href="data-analysis-and-visualization-in-r.html#cb40-2" tabindex="-1"></a>scatter_PLvsSL_color <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> iris) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length, <span class="at">colour =</span> Species)) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">&quot;Sepal Length (cm)&quot;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Petal Length (cm)&quot;</span>) <span class="sc">+</span> <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;purple&quot;</span>, <span class="st">&quot;blue&quot;</span>))</span>
 <span id="cb40-3"><a href="data-analysis-and-visualization-in-r.html#cb40-3" tabindex="-1"></a></span>
 <span id="cb40-4"><a href="data-analysis-and-visualization-in-r.html#cb40-4" tabindex="-1"></a>scatter_PLvsSL_color</span></code></pre></div>
-<p><img src="imgs/data_viz_scattercolor_practice.png" alt="" width="706" style="display: block; margin: auto;" /></p>
+<p><img src="imgs/data_viz_scattercolor_practice.png" width="706" style="display: block; margin: auto;" /></p>
 </details>
 <p>Notice that when we color the points by species we see that <code>Petal.Length</code> seems to be different between setosa and the other species. A better way to visualize this would be to use a boxplot, we will do that below.</p>
 </div>
@@ -453,7 +453,7 @@ Click to show solution
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="data-analysis-and-visualization-in-r.html#cb41-1" tabindex="-1"></a>boxplot_PL <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Species, <span class="at">y =</span> Petal.Length)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span>  <span class="fu">xlab</span>(<span class="st">&quot;Species&quot;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Petal Length (cm)&quot;</span>)</span>
 <span id="cb41-2"><a href="data-analysis-and-visualization-in-r.html#cb41-2" tabindex="-1"></a></span>
 <span id="cb41-3"><a href="data-analysis-and-visualization-in-r.html#cb41-3" tabindex="-1"></a>boxplot_PL</span></code></pre></div>
-<p><img src="imgs/data_viz_boxplot_nocolor.png" alt="" width="706" style="display: block; margin: auto;" /></p>
+<p><img src="imgs/data_viz_boxplot_nocolor.png" width="706" style="display: block; margin: auto;" /></p>
 <p><strong>Now you try</strong></p>
 <p>Can you change the colors of the different species like you did for the scatterpots? Hint, look up <a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a>. Try it yourself, then reveal the code below.</p>
 <details>
@@ -464,7 +464,7 @@ Click to show solution
 <span id="cb42-2"><a href="data-analysis-and-visualization-in-r.html#cb42-2" tabindex="-1"></a>boxplot_PL_color <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Species, <span class="at">y =</span> Petal.Length, <span class="at">color =</span> Species)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span>  <span class="fu">xlab</span>(<span class="st">&quot;Species&quot;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Petal Length (cm)&quot;</span>) <span class="sc">+</span> <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;purple&quot;</span>, <span class="st">&quot;blue&quot;</span>))</span>
 <span id="cb42-3"><a href="data-analysis-and-visualization-in-r.html#cb42-3" tabindex="-1"></a></span>
 <span id="cb42-4"><a href="data-analysis-and-visualization-in-r.html#cb42-4" tabindex="-1"></a>boxplot_PL_color</span></code></pre></div>
-<p><img src="imgs/data_viz_boxplot_color.png" alt="" width="706" style="display: block; margin: auto;" /></p>
+<p><img src="imgs/data_viz_boxplot_color.png" width="706" style="display: block; margin: auto;" /></p>
 </details>
 </div>
 <div id="multipanel-figure" class="section level3 hasAnchor" number="5.8.5">
@@ -486,7 +486,7 @@ Click to show solution
 <span id="cb43-12"><a href="data-analysis-and-visualization-in-r.html#cb43-12" tabindex="-1"></a></span>
 <span id="cb43-13"><a href="data-analysis-and-visualization-in-r.html#cb43-13" tabindex="-1"></a><span class="co"># Close the connection</span></span>
 <span id="cb43-14"><a href="data-analysis-and-visualization-in-r.html#cb43-14" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
-<p><img src="imgs/data_viz_multipanel.png" alt="" width="946" style="display: block; margin: auto;" /></p>
+<p><img src="imgs/data_viz_multipanel.png" width="946" style="display: block; margin: auto;" /></p>
 <p><strong>Now you try</strong></p>
 <p>Can you replace the plots with the plots colored by species? Hint, we have made these throughout this chapter. Try it yourself, then reveal the code below.</p>
 <details>
@@ -510,7 +510,7 @@ Click to show solution
 <span id="cb44-15"><a href="data-analysis-and-visualization-in-r.html#cb44-15" tabindex="-1"></a></span>
 <span id="cb44-16"><a href="data-analysis-and-visualization-in-r.html#cb44-16" tabindex="-1"></a><span class="co"># Close the connection</span></span>
 <span id="cb44-17"><a href="data-analysis-and-visualization-in-r.html#cb44-17" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
-<p><img src="imgs/data_viz_multipanel2.png" alt="" width="946" style="display: block; margin: auto;" /></p>
+<p><img src="imgs/data_viz_multipanel2.png" width="946" style="display: block; margin: auto;" /></p>
 </details>
 <p>We are done! As always, please reach out with any questions or suggestions.</p>
 </div>
